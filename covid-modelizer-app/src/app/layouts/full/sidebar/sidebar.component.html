@@ -1,0 +1,32 @@
+<!-- ============================================================== -->
+<!-- sidebar -->
+<!-- ============================================================== -->
+<mat-nav-list appAccordion>
+    <mat-list-item appAccordionLink *ngFor="let menuitem of menuItems.getMenuitem()" routerLinkActive="selected" group="{{menuitem.state}}">
+        <a class="" appAccordionToggle [routerLink]="['/', menuitem.state]" *ngIf="menuitem.type === 'link'">
+            <mat-icon>{{ menuitem.icon }}</mat-icon>
+            <span>{{ menuitem.name }}</span>
+            <span fxFlex></span>
+            <span class="label label-{{ badge.type }}" *ngFor="let badge of menuitem.badge">{{ badge.value }}</span>
+        </a>
+    </mat-list-item>
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title>Contributeurs</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <p>Abdel Benamara</p>
+        <p>David Ekchajzer</p>
+        <p>Mathieu Ridet</p>
+        <p>Sophia Yalap</p>
+      </mat-card-content>
+      <mat-card-actions>
+        <a href="https://github.com/mathieuridet/CovidModelizer_Front">
+          <img border="0" align="center" src="assets/images/github.png"/>
+        </a>
+        <a href="https://google.com" target="_blank">
+          <img border="0" align="center" src="assets/images/qr-code.png"/>
+        </a>
+      </mat-card-actions>
+    </mat-card>
+</mat-nav-list>

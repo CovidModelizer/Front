@@ -1,0 +1,19 @@
+<mat-card>
+  <mat-card-content>
+    <div class="d-flex flex-wrap">
+      <div>
+        <mat-card-title>Depuis le début de l'épidémie</mat-card-title>
+        <mat-card-subtitle>Cas par jour</mat-card-subtitle>
+      </div>
+    </div>
+    <div class="chart-wrapper">
+      <canvas baseChart
+              [datasets]="lineChartData"
+              [labels]="lineChartLabels"
+              [options]="lineChartOptions"
+              [legend]="lineChartLegend"
+              [chartType]="lineChartType">
+      </canvas>
+    </div>
+  </mat-card-content>
+</mat-card>

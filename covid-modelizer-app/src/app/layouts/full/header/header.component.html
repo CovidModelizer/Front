@@ -1,0 +1,12 @@
+
+<!-- ============================================================== -->
+<!-- Profile - style you can find in header.scss -->
+<!-- ============================================================== -->
+<button [matMenuTriggerFor]="modeles" class="selectModel">Select Model</button>
+<mat-menu #modeles="matMenu" class="mymegamenu">
+  <button mat-menu-item [routerLink]="[path_modelisations]" [queryParams]="{ modele: 'lin' }">Modèle Linéaire </button>
+  <button mat-menu-item [routerLink]=path_modelisations [queryParams]="{ modele: 'sir' }">Modèle SIR </button>
+  <button mat-menu-item [routerLink]=path_modelisations [queryParams]="{ modele: 'svir' }">Modèle SVIR </button>
+  <button mat-menu-item [routerLink]=path_modelisations [queryParams]="{ modele: 'ml' }">Modèle Machine Learning </button>
+</mat-menu>
+
