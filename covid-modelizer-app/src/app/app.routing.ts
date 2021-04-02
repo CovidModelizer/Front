@@ -1,8 +1,7 @@
-import { Routes } from '@angular/router';
+import {Routes} from '@angular/router';
 
-import { FullComponent } from './layouts/full/full.component';
+import {FullComponent} from './layouts/full/full.component';
 import {ModelisationsComponent} from './modelisations/modelisations/modelisations.component';
-import {SituationReelleComponent} from './situation-reelle/situation-reelle/situation-reelle.component';
 
 export const AppRoutes: Routes = [
   {
@@ -11,7 +10,7 @@ export const AppRoutes: Routes = [
     children: [
       {
         path: '',
-        redirectTo: '/situation-reelle',
+        redirectTo: '/donnees-reelles',
         pathMatch: 'full'
       },
       {
@@ -19,8 +18,8 @@ export const AppRoutes: Routes = [
         component: ModelisationsComponent
       },
       {
-        path: 'situation-reelle',
-        component: SituationReelleComponent
+        path: 'donnees-reelles',
+        loadChildren: () => import('./donnees-reelles/donnees-reelles.module').then(m => m.DonneesReellesModule)
       }
     ]
   }

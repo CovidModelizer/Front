@@ -1,12 +1,24 @@
-
 <!-- ============================================================== -->
 <!-- Profile - style you can find in header.scss -->
 <!-- ============================================================== -->
-<button [matMenuTriggerFor]="modeles" class="selectModel">Select Model</button>
+<button *ngIf="titrePage==='Modélisations'" [matMenuTriggerFor]="modeles"
+        class="selectModel">{{this.labelModel}}</button>
 <mat-menu #modeles="matMenu" class="mymegamenu">
-  <button mat-menu-item [routerLink]="[path_modelisations]" [queryParams]="{ modele: 'lin' }">Modèle Linéaire </button>
-  <button mat-menu-item [routerLink]=path_modelisations [queryParams]="{ modele: 'sir' }">Modèle SIR </button>
-  <button mat-menu-item [routerLink]=path_modelisations [queryParams]="{ modele: 'svir' }">Modèle SVIR </button>
-  <button mat-menu-item [routerLink]=path_modelisations [queryParams]="{ modele: 'ml' }">Modèle Machine Learning </button>
+  <button (click)="setLabelModel('Modèle Linéaire')" [queryParams]="{ modele: 'lin' }"
+          [routerLink]="[path_modelisations]" mat-menu-item>
+    Modèle Linéaire
+  </button>
+  <button (click)="setLabelModel('Modèle SIR')" [queryParams]="{ modele: 'sir' }"
+          [routerLink]=path_modelisations mat-menu-item>
+    Modèle SIR
+  </button>
+  <button (click)="setLabelModel('Modèle SVIR')" [queryParams]="{ modele: 'svir' }"
+          [routerLink]=path_modelisations mat-menu-item>
+    Modèle SVIR
+  </button>
+  <button (click)="setLabelModel('Modèle Machine Learning')" [queryParams]="{ modele: 'ml' }"
+          [routerLink]=path_modelisations mat-menu-item>Modèle
+    Machine Learning
+  </button>
 </mat-menu>
 

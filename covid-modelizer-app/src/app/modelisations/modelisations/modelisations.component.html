@@ -1,21 +1,19 @@
 <p>*{{modele}}*</p>
 
-<div fxLayout="row wrap" >
-  <div fxFlex.gt-lg="100" *ngIf="modele == ''" fxFlex.gt-md="100" fxFlex.gt-xs="100" fxFlex="100">
+<div fxLayout="row wrap">
+  <div *ngIf="modele == ''" fxFlex="100" fxFlex.gt-lg="100" fxFlex.gt-md="100" fxFlex.gt-xs="100">
     <p>TODO : Explications des différents modèles ?</p>
   </div>
-  <div fxFlex.gt-lg="100" *ngIf="modele == 'lin'" fxFlex.gt-md="100" fxFlex.gt-xs="100" fxFlex="100">
-    test11
+  <div *ngIf="modele == 'lin'" fxFlex="100" fxFlex.gt-lg="100" fxFlex.gt-md="100" fxFlex.gt-xs="100">
     <app-modele-lineaire></app-modele-lineaire>
   </div>
-  <div fxFlex.gt-lg="100" *ngIf="modele == 'sir'" fxFlex.gt-md="100" fxFlex.gt-xs="100" fxFlex="100">
-    test2
+  <div *ngIf="modele == 'sir'" fxFlex="100" fxFlex.gt-lg="100" fxFlex.gt-md="100" fxFlex.gt-xs="100">
     <app-modele-sir></app-modele-sir>
   </div>
-  <div fxFlex.gt-lg="100" *ngIf="modele == 'svir'" fxFlex.gt-md="100" fxFlex.gt-xs="100" fxFlex="100">
+  <div *ngIf="modele == 'svir'" fxFlex="100" fxFlex.gt-lg="100" fxFlex.gt-md="100" fxFlex.gt-xs="100">
     <app-modele-svir></app-modele-svir>
   </div>
-  <div fxFlex.gt-lg="100" *ngIf="modele == 'ml'" fxFlex.gt-md="100" fxFlex.gt-xs="100" fxFlex="100">
+  <div *ngIf="modele == 'ml'" fxFlex="100" fxFlex.gt-lg="100" fxFlex.gt-md="100" fxFlex.gt-xs="100">
     <app-modele-machine-learning></app-modele-machine-learning>
   </div>
 </div>

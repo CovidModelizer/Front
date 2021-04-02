@@ -1,7 +1,6 @@
-import { MediaMatcher } from '@angular/cdk/layout';
-import {ChangeDetectorRef, Component,OnDestroy,AfterViewInit} from '@angular/core';
-import { MenuItems } from '../../shared/menu-items/menu-items';
-import {Router} from "@angular/router";
+import {MediaMatcher} from '@angular/cdk/layout';
+import {AfterViewInit, ChangeDetectorRef, Component, OnDestroy} from '@angular/core';
+import {MenuItems} from '../../shared/menu-items/menu-items';
 
 
 /** @title Responsive sidenav */
@@ -11,6 +10,9 @@ import {Router} from "@angular/router";
   styleUrls: []
 })
 export class FullComponent implements OnDestroy, AfterViewInit {
+
+  // Titre de page dynamique
+  titrePage = 'Informations générales';
   mobileQuery: MediaQueryList;
 
   private _mobileQueryListener: () => void;
@@ -28,5 +30,11 @@ export class FullComponent implements OnDestroy, AfterViewInit {
   ngOnDestroy(): void {
     this.mobileQuery.removeListener(this._mobileQueryListener);
   }
-  ngAfterViewInit() {}
+
+  ngAfterViewInit() {
+  }
+
+  setTitrePage(newTitre: string): void {
+    this.titrePage = newTitre;
+  }
 }

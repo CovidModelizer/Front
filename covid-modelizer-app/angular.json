@@ -4,7 +4,7 @@
   "newProjectRoot": "projects",
   "projects": {
     "material": {
-      "root": "",
+      "root": "e2e",
       "sourceRoot": "src",
       "projectType": "application",
       "architect": {
@@ -16,7 +16,7 @@
               "rxjs-compat",
               "rxjs",
               "hammerjs",
-              "chartist"              
+              "chartist"
             ],
             "outputPath": "dist",
             "index": "src/index.html",
