@@ -17,6 +17,7 @@ export class DonneesReellesComponent implements OnInit {
 
   	ngOnInit(): void {
      	this.getAllSituationsReelles();
+      console.log(this.allSituationsReelles);
   	}
 
 	getAllSituationsReelles(): void {
