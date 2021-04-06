@@ -1,0 +1,27 @@
+<!-- ============================================================== -->
+<!-- Profile - style you can find in header.scss -->
+<!-- ============================================================== -->
+<button *ngIf="titrePage==='Modélisations'" [matMenuTriggerFor]="modeles"
+        class="btn btn-default btn-sm selectModel">
+        <span style="font-color: white;" class="glyphicon glyphicon-chevron-down"></span>
+        {{labelModel}}
+</button>
+<mat-menu #modeles="matMenu" class="mymegamenu">
+  <button (click)="setLabelModel('Modèle Linéaire')" [queryParams]="{ modele: 'lin' }"
+          [routerLink]="[path_modelisations]" mat-menu-item>
+    Modèle Linéaire
+  </button>
+  <button (click)="setLabelModel('Modèle SIR')" [queryParams]="{ modele: 'sir' }"
+          [routerLink]=path_modelisations mat-menu-item>
+    Modèle SIR
+  </button>
+  <button (click)="setLabelModel('Modèle SVIR')" [queryParams]="{ modele: 'svir' }"
+          [routerLink]=path_modelisations mat-menu-item>
+    Modèle SVIR
+  </button>
+  <button (click)="setLabelModel('Modèle Machine Learning')" [queryParams]="{ modele: 'ml' }"
+          [routerLink]=path_modelisations mat-menu-item>Modèle
+    Machine Learning
+  </button>
+</mat-menu>
+

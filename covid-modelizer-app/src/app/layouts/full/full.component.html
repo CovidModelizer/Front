@@ -1,0 +1,72 @@
+<!-- ============================================================== -->
+<!-- Main wrapper - style you can find in pages.scss -->
+<!-- ============================================================== -->
+<div class="main-container">
+  <!-- ============================================================== -->
+  <!-- Begin Topbar - style you can find in header.scss -->
+  <!-- ============================================================== -->
+  <mat-toolbar class="topbar">
+      <!-- Logo & Nom APP -->
+      <div class="navbar-header" fxFlex="30" fxFlex.gt-lg="30" fxFlex.gt-md="30" fxFlex.gt-xs="30">
+        <a class="navbar-brand" href="index.html" style="padding-top: 15px;">
+          <!-- Logo icon -->
+          <b>
+            <!-- Dark Logo icon -->
+            <img alt="homepage" class="dark-logo" src="assets/images/logo-icon.png">
+            <!-- Light Logo icon -->
+            <img alt="homepage" class="light-logo" src="assets/images/logo-light-icon.png">
+          </b>
+          <!--End Logo icon -->
+          <!-- Logo text -->
+          <span fxShow="false" fxShow.gt-xs>
+            <p style="color: white; padding-left: 3px; font-size: 20px; padding-top: 7px">Covid Modelizer</p>
+          </span>
+        </a>
+        <!-- (Menu) Affichage Sidebar ou pas -->
+        <button (click)="snav.toggle()" mat-icon-button style="color: white; padding-left: 30px; padding-top: 3px" value="sidebarclosed">
+          <mat-icon style="font-size: 30px;">menu</mat-icon>
+        </button>
+        <span fxFlex></span>
+      </div>
+
+      
+
+      <!-- Affichage Titre de la page -->
+      <mat-panel-title style="color: white; text-align: center;" fxFlex="40" fxFlex.gt-lg="40" fxFlex.gt-md="40" fxFlex.gt-xs="40">
+        {{titrePage}}
+      </mat-panel-title>
+      <!-- Menu en haut à droite (label modèles) -->
+      <app-header style="text-align: right;" [titrePage]="titrePage" fxFlex="30" fxFlex.gt-lg="30" fxFlex.gt-md="30" fxFlex.gt-xs="30"></app-header>
+  </mat-toolbar>
+
+  <!-- ============================================================== -->
+  <!-- End Topbar - style you can find in pages.scss -->
+  <!-- ============================================================== -->
+  <mat-sidenav-container [style.marginTop.px]="mobileQuery.matches ? 0 : 0" class="example-sidenav-container">
+    <!-- ============================================================== -->
+    <!-- Begin Sidebar - style you can find in sidebar.scss -->
+    <!-- ============================================================== -->
+    <mat-sidenav #snav [disableClose]="mobileQuery.matches" [mode]="mobileQuery.matches ? 'side' : 'over'"
+                 [opened]="mobileQuery.matches"
+                 class="dark-sidebar pl-xs" fixedTopGap="0" id="snav">
+      <app-sidebar (parentFunction)="setTitrePage($event)"></app-sidebar>
+    </mat-sidenav>
+    <!-- ============================================================== -->
+    <!-- End Sidebar - style you can find in sidebar.scss -->
+    <!-- ============================================================== -->
+
+    <!-- ============================================================== -->
+    <!-- Begin Page container - style you can find in pages.scss -->
+    <!-- ============================================================== -->
+    <mat-sidenav-content class="page-wrapper">
+      <div class="page-content">
+        <router-outlet>
+          <app-spinner></app-spinner>
+        </router-outlet>
+      </div>
+    </mat-sidenav-content>
+    <!-- ============================================================== -->
+    <!-- End Page container - style you can find in pages.scss -->
+    <!-- ============================================================== -->
+  </mat-sidenav-container>
+</div>
