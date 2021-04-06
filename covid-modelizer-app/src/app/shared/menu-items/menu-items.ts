@@ -13,7 +13,7 @@ const MENUITEMS = [
   {state: 'donnees-reelles', params: '', type: 'link', name: 'Informations générales', icon: 'info_outline'},
   {state: 'modelisations', params: 'lin', type: 'link', name: 'Modélisations', icon: 'help_outline'},
   {state: '?', params: '', type: 'link', name: 'Se faire vacciner', icon: 'help_outline'},
-  {state: '?', params: '', type: 'link', name: 'Tests d\'éligibilité', icon: 'edit'},
+  {state: 'eligibilite-vaccin', params: '', type: 'link', name: 'Tests d\'éligibilité', icon: 'edit'},
   {state: '?', params: '', type: 'link', name: 'Liens utiles', icon: 'link'},
 ];
 

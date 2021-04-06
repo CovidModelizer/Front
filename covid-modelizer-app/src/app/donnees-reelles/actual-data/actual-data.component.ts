@@ -18,10 +18,9 @@ export class ActualDataComponent implements OnInit {
 
   ngOnInit(): void {
     // Laisser le temps au programme de récupérer toutes les données SituationReelle
-    setTimeout(() => { this.getCurrentSituationReelle(); }, 20);
+    setTimeout(() => { this.getCurrentSituationReelle(); }, 200);
   }
 
-  
 
   getCurrentSituationReelle() {
     this.currentSituationReelle = this.allSituationsReelles[this.allSituationsReelles.length-1];

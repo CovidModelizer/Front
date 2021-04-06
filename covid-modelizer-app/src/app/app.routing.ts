@@ -1,4 +1,5 @@
 import {Routes} from '@angular/router';
+import { EligibiliteVaccinComponent } from './eligibilite-vaccin/eligibilite-vaccin.component';
 
 import {FullComponent} from './layouts/full/full.component';
 import {ModelisationsComponent} from './modelisations/modelisations/modelisations.component';
@@ -20,6 +21,10 @@ export const AppRoutes: Routes = [
       {
         path: 'donnees-reelles',
         loadChildren: () => import('./donnees-reelles/donnees-reelles.module').then(m => m.DonneesReellesModule)
+      },
+       {
+        path: 'eligibilite-vaccin',
+        component: EligibiliteVaccinComponent
       }
     ]
   }
