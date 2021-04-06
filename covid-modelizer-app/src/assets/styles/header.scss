@@ -62,3 +62,10 @@ button.selectModel{
   flex: 1 0 auto;
 }
 
+.logoCovid {
+  animation: mymove 10s infinite;
+}
+
+@keyframes mymove {
+  50% {transform: rotate(180deg);}
+}

@@ -9,12 +9,12 @@ export interface Menu {
 }
 
 const MENUITEMS = [
-  {state: '?', params: '', type: 'link', name: 'Newsletter', icon: 'question_answer'},
-  {state: 'donnees-reelles', params: '', type: 'link', name: 'Informations générales', icon: 'info_outline'},
-  {state: 'modelisations', params: 'lin', type: 'link', name: 'Modélisations', icon: 'help_outline'},
-  {state: '?', params: '', type: 'link', name: 'Se faire vacciner', icon: 'help_outline'},
-  {state: 'eligibilite-vaccin', params: '', type: 'link', name: 'Tests d\'éligibilité', icon: 'edit'},
-  {state: '?', params: '', type: 'link', name: 'Liens utiles', icon: 'link'},
+  {state: 'donnees-reelles', params: '', type: 'link', name: 'Informations générales', icon: "assets/images/information.png"},
+  {state: 'modelisations', params: 'lin', type: 'link', name: 'Modélisations', icon: 'assets/images/graph.png'},
+  {state: '?', params: '', type: 'link', name: 'Infections', icon: 'assets/images/cross.png'},
+  {state: '?', params: '', type: 'link', name: 'Vaccin', icon: 'assets/images/injection.png'},
+  {state: 'eligibilite-vaccin', params: '', type: 'link', name: 'Se faire vacciner', icon: 'assets/images/injection.png'},
+  {state: '?', params: '', type: 'link', name: 'API', icon: 'assets/images/api.png'},
 ];
 
 @Injectable()

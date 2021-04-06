@@ -6,7 +6,7 @@
                  routerLinkActive="selected">
     <a (click)="setTitrePage(menuitem.name)" *ngIf="menuitem.type === 'link'" [queryParams]="{modele: menuitem.params}" [routerLink]="['/', menuitem.state]" appAccordionToggle
        class="">
-      <mat-icon>{{ menuitem.icon }}</mat-icon>
+      <img style="width: 20px; margin: 10px;" src="{{ menuitem.icon }}">
       <span>{{ menuitem.name }}</span>
       <span fxFlex></span>
       <span *ngFor="let badge of menuitem.badge" class="label label-{{ badge.type }}">{{ badge.value }}</span>
@@ -24,10 +24,10 @@
     </mat-card-content>
     <mat-card-actions>
       <a href="https://github.com/mathieuridet/CovidModelizer_Front">
-        <img align="center" border="0" src="assets/images/github.png"/>
+        <img src="assets/images/github.png" style="margin-left: 30px;"/>
       </a>
-      <a href="https://google.com" target="_blank">
-        <img align="center" border="0" style="width: 50px;" src="assets/images/qr-code.png"/>
+      <a href="https://www.gouvernement.fr/info-coronavirus" target="_blank">
+        <img style="width: 50px;margin-left: 30px;" src="assets/images/qr-code.png"/>
       </a>
     </mat-card-actions>
   </mat-card>
