@@ -15,6 +15,7 @@ import {MaterialModule} from './material.module';
 import {FormsModule} from '@angular/forms';
 import {FlexLayoutModule} from '@angular/flex-layout';
 import {HttpClientModule} from '@angular/common/http';
+import { EligibiliteVaccinComponent } from './eligibilite-vaccin/eligibilite-vaccin.component';
 
 
 @NgModule({
@@ -23,7 +24,8 @@ import {HttpClientModule} from '@angular/common/http';
     FullComponent,
     AppHeaderComponent,
     SpinnerComponent,
-    AppSidebarComponent
+    AppSidebarComponent,
+    EligibiliteVaccinComponent
   ],
   imports: [
     BrowserModule,

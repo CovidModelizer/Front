@@ -21,7 +21,6 @@ export class ActualDataComponent implements OnInit {
     setTimeout(() => { this.getCurrentSituationReelle(); }, 200);
   }
 
-  
 
   getCurrentSituationReelle() {
     console.log('INIT DATA TODAY');
