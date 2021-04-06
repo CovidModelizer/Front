@@ -12,19 +12,20 @@ export class AppHeaderComponent implements OnInit {
   @Input() titrePage = '';
 
   // tslint:disable-next-line:variable-name
-  path_modelisations = 'modelisations';
+  path_modelisations = '';
 
   setLabelModel(newLabel: string): void {
     this.labelModel = newLabel;
   }
 
   ngOnInit(): void {
+    this.path_modelisations = window.location.pathname.split('/')[1];
     this.initLabelModelAtStartup(window.location.search.split('=')[1]);
   }
 
   initLabelModelAtStartup(location: string): void {
     switch(location) {
-      case 'lin': {
+      case undefined: {
         this.setLabelModel('Modèle Linéaire');
         break
       }

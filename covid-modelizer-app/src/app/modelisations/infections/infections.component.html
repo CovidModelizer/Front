@@ -1,0 +1,16 @@
+<p>INFECTIONS</p>
+TODO : passer les datas aux composants
+<div fxLayout="row wrap">
+  <div *ngIf="modele === 'lin'" fxFlex="100" fxFlex.gt-lg="100" fxFlex.gt-md="100" fxFlex.gt-xs="100">
+    <app-modele-lineaire></app-modele-lineaire>
+  </div>
+  <div *ngIf="modele === 'sir'" fxFlex="100" fxFlex.gt-lg="100" fxFlex.gt-md="100" fxFlex.gt-xs="100">
+    <app-modele-sir></app-modele-sir>
+  </div>
+  <div *ngIf="modele == 'svir'" fxFlex="100" fxFlex.gt-lg="100" fxFlex.gt-md="100" fxFlex.gt-xs="100">
+    <app-modele-svir></app-modele-svir>
+  </div>
+  <div *ngIf="modele == 'ml'" fxFlex="100" fxFlex.gt-lg="100" fxFlex.gt-md="100" fxFlex.gt-xs="100">
+    <app-modele-machine-learning></app-modele-machine-learning>
+  </div>
+</div>

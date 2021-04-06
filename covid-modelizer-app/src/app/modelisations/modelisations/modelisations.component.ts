@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {ActivatedRoute} from '@angular/router';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-modelisations',
@@ -8,19 +8,14 @@ import {ActivatedRoute} from '@angular/router';
 })
 export class ModelisationsComponent implements OnInit {
 
-  private route: ActivatedRoute;
-  public modele = '';
-
-  // tslint:disable-next-line:variable-name
-  constructor(private _route: ActivatedRoute) {
-    this.route = _route;
+  constructor(private router: Router) {
   }
 
   ngOnInit(): void {
-    this.route.queryParams.subscribe(params => {
-      this.modele = params.modele;
-    });
-    console.log(this.modele);
+  }
+
+  goTo(path: string): void {
+    this.router.navigate([path]);
   }
 
 }

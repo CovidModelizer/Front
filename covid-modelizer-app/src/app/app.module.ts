@@ -1,7 +1,7 @@
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
 import {RouterModule} from '@angular/router';
-import {LocationStrategy, PathLocationStrategy} from '@angular/common';
+import {CommonModule, LocationStrategy, PathLocationStrategy} from '@angular/common';
 import {AppRoutes} from './app.routing';
 import {AppComponent} from './app.component';
 import {FullComponent} from './layouts/full/full.component';
@@ -28,6 +28,7 @@ import { EligibiliteVaccinComponent } from './eligibilite-vaccin/eligibilite-vac
     EligibiliteVaccinComponent
   ],
   imports: [
+    CommonModule,
     BrowserModule,
     BrowserAnimationsModule,
     MaterialModule,

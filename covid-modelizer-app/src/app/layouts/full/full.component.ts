@@ -1,6 +1,8 @@
 import {MediaMatcher} from '@angular/cdk/layout';
-import {AfterViewInit, ChangeDetectorRef, Component, OnDestroy, OnInit} from '@angular/core';
+import {AfterViewInit, ChangeDetectorRef, Component, OnDestroy, OnInit, ViewChild} from '@angular/core';
 import {MenuItems} from '../../shared/menu-items/menu-items';
+import { AppHeaderComponent } from './header/header.component';
+
 
 /** @title Responsive sidenav */
 @Component({
@@ -9,6 +11,8 @@ import {MenuItems} from '../../shared/menu-items/menu-items';
   styleUrls: []
 })
 export class FullComponent implements OnInit, OnDestroy, AfterViewInit {
+
+  @ViewChild(AppHeaderComponent) header!: AppHeaderComponent;
 
   // Titre de page dynamique
   titrePage = '';
@@ -38,7 +42,10 @@ export class FullComponent implements OnInit, OnDestroy, AfterViewInit {
   }
 
   setTitrePage(newTitre: string): void {
+    // Ne pas avoir de soucis de chemin lorsqu'on passe de Vaccin à Infections (et vice-versa)
+    if(this.header!= undefined) this.header.path_modelisations = newTitre.toLowerCase();
     this.titrePage = newTitre;
+
   }
 
   initTitrePage() {

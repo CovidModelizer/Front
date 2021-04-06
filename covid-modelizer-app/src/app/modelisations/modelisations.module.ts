@@ -15,6 +15,8 @@ import {ModeleMachineLearningComponent} from './modele-machine-learning/modele-m
 import {ChartsModule} from 'ng2-charts';
 import {ModelisationsRoute} from './modelisations-routing.module';
 import {MaterialModule} from "../material.module";
+import { VaccinComponent } from './vaccin/vaccin.component';
+import { InfectionsComponent } from './infections/infections.component';
 
 @NgModule({
   imports: [
@@ -35,7 +37,9 @@ import {MaterialModule} from "../material.module";
     ModeleLineaireComponent,
     ModeleSirComponent,
     ModeleSvirComponent,
-    ModeleMachineLearningComponent
+    ModeleMachineLearningComponent,
+    VaccinComponent,
+    InfectionsComponent
   ]
 })
 export class ModelisationsModule {

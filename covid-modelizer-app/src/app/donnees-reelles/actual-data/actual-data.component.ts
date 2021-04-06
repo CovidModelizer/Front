@@ -23,9 +23,8 @@ export class ActualDataComponent implements OnInit {
 
 
   getCurrentSituationReelle() {
-    console.log('INIT DATA TODAY');
     this.currentSituationReelle = this.allSituationsReelles[this.allSituationsReelles.length-1];
-    console.log(this.currentSituationReelle);
+    //console.log(this.currentSituationReelle);
   }
 
 
