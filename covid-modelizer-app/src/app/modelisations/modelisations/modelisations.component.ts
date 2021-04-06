@@ -9,7 +9,7 @@ import {ActivatedRoute} from '@angular/router';
 export class ModelisationsComponent implements OnInit {
 
   private route: ActivatedRoute;
-  public modele: string | undefined = '';
+  public modele = '';
 
   // tslint:disable-next-line:variable-name
   constructor(private _route: ActivatedRoute) {
@@ -20,6 +20,7 @@ export class ModelisationsComponent implements OnInit {
     this.route.queryParams.subscribe(params => {
       this.modele = params.modele;
     });
+    console.log(this.modele);
   }
 
 }

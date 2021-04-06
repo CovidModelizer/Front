@@ -1,13 +1,11 @@
 <p>*{{modele}}*</p>
 
 <div fxLayout="row wrap">
-  <div *ngIf="modele == ''" fxFlex="100" fxFlex.gt-lg="100" fxFlex.gt-md="100" fxFlex.gt-xs="100">
-    <p>TODO : Explications des différents modèles ?</p>
-  </div>
-  <div *ngIf="modele == 'lin'" fxFlex="100" fxFlex.gt-lg="100" fxFlex.gt-md="100" fxFlex.gt-xs="100">
+  <div *ngIf="modele === 'lin' || modele === ''" fxFlex="100" fxFlex.gt-lg="100" fxFlex.gt-md="100" fxFlex.gt-xs="100">
+    <p>modèle linéaire</p>
     <app-modele-lineaire></app-modele-lineaire>
   </div>
-  <div *ngIf="modele == 'sir'" fxFlex="100" fxFlex.gt-lg="100" fxFlex.gt-md="100" fxFlex.gt-xs="100">
+  <div *ngIf="modele === 'sir'" fxFlex="100" fxFlex.gt-lg="100" fxFlex.gt-md="100" fxFlex.gt-xs="100">
     <app-modele-sir></app-modele-sir>
   </div>
   <div *ngIf="modele == 'svir'" fxFlex="100" fxFlex.gt-lg="100" fxFlex.gt-md="100" fxFlex.gt-xs="100">

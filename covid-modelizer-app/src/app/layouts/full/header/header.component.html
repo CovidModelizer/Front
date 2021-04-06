@@ -2,7 +2,10 @@
 <!-- Profile - style you can find in header.scss -->
 <!-- ============================================================== -->
 <button *ngIf="titrePage==='Modélisations'" [matMenuTriggerFor]="modeles"
-        class="selectModel">{{this.labelModel}}</button>
+        class="btn btn-default btn-sm selectModel">
+        <span style="font-color: white;" class="glyphicon glyphicon-chevron-down"></span>
+        {{labelModel}}
+</button>
 <mat-menu #modeles="matMenu" class="mymegamenu">
   <button (click)="setLabelModel('Modèle Linéaire')" [queryParams]="{ modele: 'lin' }"
           [routerLink]="[path_modelisations]" mat-menu-item>

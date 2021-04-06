@@ -4,7 +4,7 @@
 <mat-nav-list appAccordion>
   <mat-list-item *ngFor="let menuitem of menuItems.getMenuitem()" appAccordionLink group="{{menuitem.state}}"
                  routerLinkActive="selected">
-    <a (click)="setTitrePage(menuitem.name)" *ngIf="menuitem.type === 'link'" [routerLink]="['/', menuitem.state]" appAccordionToggle
+    <a (click)="setTitrePage(menuitem.name)" *ngIf="menuitem.type === 'link'" [queryParams]="{modele: menuitem.params}" [routerLink]="['/', menuitem.state]" appAccordionToggle
        class="">
       <mat-icon>{{ menuitem.icon }}</mat-icon>
       <span>{{ menuitem.name }}</span>

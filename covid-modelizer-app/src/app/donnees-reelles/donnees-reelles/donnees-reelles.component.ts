@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {DonneesReellesService} from '../donnees-reelles.service';
+import {SituationReelle} from '../SituationReelle';
 
 @Component({
   selector: 'app-donnees-reelles',
@@ -7,9 +9,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DonneesReellesComponent implements OnInit {
 
-  constructor() { }
+	allSituationsReelles: Array<SituationReelle>;
 
-  ngOnInit(): void {
-  }
+	constructor(private donneesReellesService: DonneesReellesService) { 
+		this.allSituationsReelles = new Array<SituationReelle>();
+	}
 
+  	ngOnInit(): void {
+     	this.getAllSituationsReelles();
+  	}
+
+	getAllSituationsReelles(): void {
+      this.donneesReellesService.getAllSituationReelle().subscribe((data) => {
+        this.allSituationsReelles = <SituationReelle[]>data;
+      });
+  	}
 }

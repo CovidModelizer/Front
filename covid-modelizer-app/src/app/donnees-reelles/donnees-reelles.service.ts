@@ -7,18 +7,15 @@ import {Observable} from 'rxjs';
 })
 export class DonneesReellesService {
 
-  private url = 'http://152.228.165.238:8080';
+  private URL_REST_API = 'http://152.228.165.238:8080';
 
   constructor(private http: HttpClient) {
   }
 
   getAllSituationReelle(): Observable<any> {
-    return this.http.get(this.url + '/donneesReelles');
+    return this.http.get(this.URL_REST_API + '/reel/complet');
   }
 
   // TODO : Autres appels APIs
 
-  getNbCasSinceBeginning(): Observable<any> {
-    return this.http.get(this.url + '/findAllUntilToday');
-  }
 }

@@ -1,6 +1,5 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, Input} from '@angular/core';
 import {SituationReelle} from '../SituationReelle';
-import {DonneesReellesService} from '../donnees-reelles.service';
 
 @Component({
   selector: 'app-actual-data',
@@ -9,25 +8,23 @@ import {DonneesReellesService} from '../donnees-reelles.service';
 })
 export class ActualDataComponent implements OnInit {
 
-  allSituationsReelles: Array<SituationReelle> | undefined;
+  @Input() allSituationsReelles: Array<SituationReelle>;
+  currentSituationReelle: SituationReelle;
 
-  constructor(private donneesReellesService: DonneesReellesService) {
+  constructor() {
+    this.allSituationsReelles = new Array<SituationReelle>();
+    this.currentSituationReelle = new SituationReelle();
   }
 
   ngOnInit(): void {
-    // this.getAllSituationsReelles();
-    // console.log(this.allSituationsReelles);
+    // Laisser le temps au programme de récupérer toutes les données SituationReelle
+    setTimeout(() => { this.getCurrentSituationReelle(); }, 20);
   }
 
-  getAllSituationsReelles(): void {
-    this.donneesReellesService.getAllSituationReelle().subscribe(
-      (result: { situationsReelles: any }) => {
-        this.allSituationsReelles = result.situationsReelles;
-      }, (error: any) => {
-        console.log(error);
-      }
-    );
+  
 
+  getCurrentSituationReelle() {
+    this.currentSituationReelle = this.allSituationsReelles[this.allSituationsReelles.length-1];
   }
 
 

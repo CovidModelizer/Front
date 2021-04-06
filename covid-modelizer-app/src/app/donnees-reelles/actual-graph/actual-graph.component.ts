@@ -1,8 +1,9 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, Input} from '@angular/core';
 import {ChartDataSets} from 'chart.js';
 import {Label} from 'ng2-charts';
 import {Utils} from '../../shared/utils';
 import {DonneesReellesService} from '../donnees-reelles.service';
+import {SituationReelle} from '../SituationReelle';
 
 @Component({
   selector: 'app-actual-graph',
@@ -11,8 +12,11 @@ import {DonneesReellesService} from '../donnees-reelles.service';
 })
 export class ActualGraphComponent implements OnInit {
 
+  @Input() allSituationsReelles: Array<SituationReelle>;
+  nbCasCumulesDepuisDebut: Array<number>;
+
   realValueData: number[] | undefined;
-  months: any[] | undefined;
+  days: any[] | undefined;
 
   lineChartData: ChartDataSets[] | undefined;
   lineChartLabels: Label[] | undefined;
@@ -23,22 +27,21 @@ export class ActualGraphComponent implements OnInit {
   lineChartType = 'line';
 
   constructor(private donneesReellesService: DonneesReellesService) {
+    this.allSituationsReelles = new Array<SituationReelle>();
+    this.nbCasCumulesDepuisDebut = new Array<number>();
   }
 
   ngOnInit(): void {
-    /*
-    this.situationReelleService.getNbCasSinceBeginning().subscribe(
-    (result) => {
-      this.realValueData = result;
-    }, (error: any) => {
-      console.log(error);
-    });
-     */
-    this.realValueData = [5500, 7000, 4000, 4500, 8000, 10000, 3000, 7000];
+    setTimeout(() => { this.fillCasFromAllData(); }, 200);
+    this.realValueData = this.nbCasCumulesDepuisDebut;
     this.lineChartData = [{data: this.realValueData, label: 'Real value', lineTension: 0}];
+    this.lineChartLabels = Utils.getAllDaysSinceTheBeginning(this.days);
+  }
 
-    this.months = Utils.getAllMonthsSinceTheBeginning(this.months);
-    this.lineChartLabels = this.months;
+  fillCasFromAllData() {
+    for(let elt of this.allSituationsReelles){
+      this.nbCasCumulesDepuisDebut.push(Number(elt.casConfirmes));
+    }
   }
 
 }
