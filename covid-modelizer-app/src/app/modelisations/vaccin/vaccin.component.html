@@ -1,8 +1,6 @@
-<p>VACCIN</p>
-TODO : passer les datas aux composants
+<!-- TODO : passer les datas aux composants -->
 <div fxLayout="row wrap">
-  <div *ngIf="modele === 'lin'" fxFlex="100" fxFlex.gt-lg="100" fxFlex.gt-md="100" fxFlex.gt-xs="100">
-    <p>modèle linéaire</p>
+  <div *ngIf="modele === '' || modele === undefined" fxFlex="100" fxFlex.gt-lg="100" fxFlex.gt-md="100" fxFlex.gt-xs="100">
     <app-modele-lineaire></app-modele-lineaire>
   </div>
   <div *ngIf="modele === 'sir'" fxFlex="100" fxFlex.gt-lg="100" fxFlex.gt-md="100" fxFlex.gt-xs="100">

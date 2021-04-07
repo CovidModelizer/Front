@@ -2,7 +2,6 @@ import 'hammerjs';
 import {NgModule} from '@angular/core';
 import {RouterModule} from '@angular/router';
 import {HttpClientModule} from '@angular/common/http';
-import {CommonModule} from '@angular/common';
 import {BrowserModule} from '@angular/platform-browser';
 import {CdkTableModule} from '@angular/cdk/table';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
@@ -20,7 +19,6 @@ import { InfectionsComponent } from './infections/infections.component';
 
 @NgModule({
   imports: [
-    CommonModule,
     BrowserModule,
     RouterModule.forChild(ModelisationsRoute),
     HttpClientModule,

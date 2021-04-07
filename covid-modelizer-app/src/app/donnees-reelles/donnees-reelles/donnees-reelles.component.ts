@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {DonneesReellesService} from '../donnees-reelles.service';
-import {SituationReelle} from '../SituationReelle';
+import {SituationReelle} from '../../shared/model/SituationReelle';
 
 @Component({
   selector: 'app-donnees-reelles',

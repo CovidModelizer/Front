@@ -3,7 +3,7 @@ import {ChartDataSets} from 'chart.js';
 import {Label} from 'ng2-charts';
 import {Utils} from '../../shared/utils';
 import {DonneesReellesService} from '../donnees-reelles.service';
-import {SituationReelle} from '../SituationReelle';
+import {SituationReelle} from '../../shared/model/SituationReelle';
 
 @Component({
   selector: 'app-actual-graph',

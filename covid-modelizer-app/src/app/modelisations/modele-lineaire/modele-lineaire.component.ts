@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import {ChartDataSets} from 'chart.js';
 import {Label} from 'ng2-charts';
 import {ModelisationsService} from '../modelisations.service';
@@ -10,6 +10,10 @@ import {Utils} from '../../shared/utils';
   styleUrls: ['./modele-lineaire.component.css']
 })
 export class ModeleLineaireComponent implements OnInit {
+
+  // Vaccin ou Infections
+  // TODO : Affichage cumulPremieresInjections dans graphe
+  @Input() categorie = '';
 
   realValueData: number[] | undefined;
   months: any[] | undefined;
