@@ -22,4 +22,5 @@ export class VaccinComponent implements OnInit {
     });
   }
 
+
 }

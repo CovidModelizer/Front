@@ -11,11 +11,11 @@
           [routerLink]="path_modelisations" mat-menu-item>
     Modèle Linéaire
   </button>
-  <button (click)="setLabelModel('Modèle SIR')" [queryParams]="{ modele: 'sir' }"
+  <button *ngIf="path_modelisations==='infections'" (click)="setLabelModel('Modèle SIR')" [queryParams]="{ modele: 'sir' }"
           [routerLink]="path_modelisations" mat-menu-item>
     Modèle SIR
   </button>
-  <button (click)="setLabelModel('Modèle SVIR')" [queryParams]="{ modele: 'svir' }"
+  <button *ngIf="path_modelisations==='vaccin'" (click)="setLabelModel('Modèle SVIR')" [queryParams]="{ modele: 'svir' }"
           [routerLink]="path_modelisations" mat-menu-item>
     Modèle SVIR
   </button>

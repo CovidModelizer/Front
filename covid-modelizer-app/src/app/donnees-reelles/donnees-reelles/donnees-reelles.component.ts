@@ -21,8 +21,11 @@ export class DonneesReellesComponent implements OnInit {
   	}
 
 	getAllSituationsReelles(): void {
-      this.donneesReellesService.getAllSituationReelle().subscribe((data) => {
-        this.allSituationsReelles = <SituationReelle[]>data;
-      });
+		console.log('getAllSituationsReelles');
+      	this.donneesReellesService.getAllSituationReelle().subscribe((data) => {
+			console.log(data);
+	  		//sessionStorage.setItem("allSituationsReelles", data);
+        	this.allSituationsReelles = <SituationReelle[]>data;
+      	});
   	}
 }
