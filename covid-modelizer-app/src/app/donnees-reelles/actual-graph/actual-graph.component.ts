@@ -40,7 +40,7 @@ export class ActualGraphComponent implements OnInit {
 
   fillCasFromAllData() {
     for(let elt of this.allSituationsReelles){
-      this.nbCasCumulesDepuisDebut.push(Number(elt.casConfirmes));
+      this.nbCasCumulesDepuisDebut.push(Number(elt.cumulCasConfirmes));
     }
   }
 

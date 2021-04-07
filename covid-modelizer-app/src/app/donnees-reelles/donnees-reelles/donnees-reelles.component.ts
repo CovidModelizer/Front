@@ -9,7 +9,8 @@ import {SituationReelle} from '../../shared/model/SituationReelle';
 })
 export class DonneesReellesComponent implements OnInit {
 
-	allSituationsReelles: Array<SituationReelle>;
+	//allSituationsReelles: Array<SituationReelle>;
+	allSituationsReelles: SituationReelle[];
 
 	constructor(private donneesReellesService: DonneesReellesService) { 
 		this.allSituationsReelles = new Array<SituationReelle>();
@@ -23,9 +24,9 @@ export class DonneesReellesComponent implements OnInit {
 	getAllSituationsReelles(): void {
 		console.log('getAllSituationsReelles');
       	this.donneesReellesService.getAllSituationReelle().subscribe((data) => {
-			console.log(data);
 	  		//sessionStorage.setItem("allSituationsReelles", data);
         	this.allSituationsReelles = <SituationReelle[]>data;
+			console.log(this.allSituationsReelles);
       	});
   	}
 }
