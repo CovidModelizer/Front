@@ -9,24 +9,26 @@ import {SituationReelle} from '../../shared/model/SituationReelle';
 })
 export class DonneesReellesComponent implements OnInit {
 
-	//allSituationsReelles: Array<SituationReelle>;
-	allSituationsReelles: SituationReelle[];
+	allCasParJour: Array<number>;
+	currentSituationReelle: SituationReelle;
 
 	constructor(private donneesReellesService: DonneesReellesService) { 
-		this.allSituationsReelles = new Array<SituationReelle>();
+		this.allCasParJour = new Array<number>();
+		this.currentSituationReelle = new SituationReelle();
 	}
 
   	ngOnInit(): void {
-     	this.getAllSituationsReelles();
-      	//console.log(this.allSituationsReelles);
+     	this.allCasParJour = this.getAllCasParJour();
   	}
 
-	getAllSituationsReelles(): void {
-		console.log('getAllSituationsReelles');
-      	this.donneesReellesService.getAllSituationReelle().subscribe((data) => {
-	  		//sessionStorage.setItem("allSituationsReelles", data);
-        	this.allSituationsReelles = <SituationReelle[]>data;
-			console.log(this.allSituationsReelles);
+	getAllCasParJour(): Array<number> {
+		let dataToDisplay = new Array<number>();
+      	this.donneesReellesService.getAllSituationsReelles().subscribe(data => {
+			this.currentSituationReelle = data[data.length-1];
+        	for(let elt of data) {
+				dataToDisplay.push(Number(elt.nouveauxCasConfirmes));
+			  }
       	});
+		return dataToDisplay;
   	}
 }

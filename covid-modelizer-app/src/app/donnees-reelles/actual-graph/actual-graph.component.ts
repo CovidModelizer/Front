@@ -12,8 +12,7 @@ import {SituationReelle} from '../../shared/model/SituationReelle';
 })
 export class ActualGraphComponent implements OnInit {
 
-  @Input() allSituationsReelles: Array<SituationReelle>;
-  nbCasCumulesDepuisDebut: Array<number>;
+  @Input() allCasParJour: Array<number>;
 
   realValueData: number[] | undefined;
   days: any[] | undefined;
@@ -27,21 +26,13 @@ export class ActualGraphComponent implements OnInit {
   lineChartType = 'line';
 
   constructor(private donneesReellesService: DonneesReellesService) {
-    this.allSituationsReelles = new Array<SituationReelle>();
-    this.nbCasCumulesDepuisDebut = new Array<number>();
+    this.allCasParJour = new Array<number>();
   }
 
   ngOnInit(): void {
-    setTimeout(() => { this.fillCasFromAllData(); }, 200);
-    this.realValueData = this.nbCasCumulesDepuisDebut;
+    this.realValueData = this.allCasParJour;
     this.lineChartData = [{data: this.realValueData, label: 'Real value', lineTension: 0}];
     this.lineChartLabels = Utils.getAllDaysSinceTheBeginning(this.days);
-  }
-
-  fillCasFromAllData() {
-    for(let elt of this.allSituationsReelles){
-      this.nbCasCumulesDepuisDebut.push(Number(elt.cumulCasConfirmes));
-    }
   }
 
 }

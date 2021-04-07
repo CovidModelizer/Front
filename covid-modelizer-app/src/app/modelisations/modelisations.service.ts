@@ -1,9 +1,18 @@
 import { Injectable } from '@angular/core';
+import {HttpClient} from '@angular/common/http';
+import {Observable} from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ModelisationsService {
 
-  constructor() { }
+  private URL_REST_API = 'http://152.228.165.238:8080/modelisation';
+
+  constructor(private http: HttpClient) {
+  }
+
+  getVaccinationsLinéaire(): Observable<any> {
+    return this.http.get(this.URL_REST_API + '/vaccin?model=LIN');
+  }
 }

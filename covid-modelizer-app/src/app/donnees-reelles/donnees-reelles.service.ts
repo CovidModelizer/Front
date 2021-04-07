@@ -12,7 +12,7 @@ export class DonneesReellesService {
   constructor(private http: HttpClient) {
   }
 
-  getAllSituationReelle(): Observable<any> {
+  getAllSituationsReelles(): Observable<any> {
     return this.http.get(this.URL_REST_API + '/reel/complet');
   }
 

@@ -30,4 +30,19 @@ export class Utils {
     }
     return days;
   }
+
+  static getAllDaysSinceTheBeginningPlusOneMonth(days: any[] | undefined): string[] {
+    const startDate = moment('2020-03-01');
+    const endDate = moment().add(1, 'month');
+    days = [];
+
+    if (endDate.isBefore(startDate)) {
+      throw new Error('End date must be greated than start date.');
+    }
+    while (startDate.isBefore(endDate)) {
+      days.push(startDate.format('DD/MM/YYYY'));
+      startDate.add(1, 'day');
+    }
+    return days;
+  }
 }
