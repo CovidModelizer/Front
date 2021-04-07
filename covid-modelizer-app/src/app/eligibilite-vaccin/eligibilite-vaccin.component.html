@@ -2,42 +2,44 @@
     <div id="age_form">
         <h3>age</h3>
         <label for="moins18">Moins de 18 ans</label>
-        <input type="radio" id="moins18" name="age" value="moins18" [ngModel]="age">
+        <input type="radio" id="moins18" name="age" value="moins18" [(ngModel)]="age" (change)="estEligible($event)">
         <br>
         <label for="entre18et49">Entre 18 et 49 ans</label>
-        <input type="radio" id="entre18et49" name="age" value="entre18et49" [ngModel]="age">
+        <input type="radio" id="entre18et49" name="age" value="entre18et49" [(ngModel)]="age" (change)="estEligible($event)">
         <br>
         <label for="entre50et54">Entre 50 et 54 ans</label>
-        <input type="radio" id="entre50et54" name="age" value="entre50et54" [ngModel]="age">
+        <input type="radio" id="entre50et54" name="age" value="entre50et54" [(ngModel)]="age" (change)="estEligible($event)">
         <br>
         <label for="entre55et69">Entre 55 et 69 ans</label>
-        <input type="radio" id="entre55et69" name="age" value="entre55et69" [ngModel]="age">
+        <input type="radio" id="entre55et69" name="age" value="entre55et69" [(ngModel)]="age" (change)="estEligible($event)">
         <br>
         <label for="plus70">Plus de 70 ans</label>
-        <input type="radio" id="plus70" name="age" value="plus70" [ngModel]="age">
+        <input type="radio" id="plus70" name="age" value="plus70" [(ngModel)]="age" (change)="estEligible($event)">
     </div>
     <br>
-    <div id="Enceinte">
+
+    <div id="enceinte_form" *ngIf="age === 'entre18et49'">
         <h3>Êtes vous enceinte ?</h3>
-        <label for="moins18">Oui</label>
-        <input type="radio" id="oui" name="Enceinte" value="oui">
+        <label for="oui">Oui</label>
+        <input type="radio" id="oui" name="enceinte" value="oui" [(ngModel)]="enceinte" (change)="estEligible($event)">
         <br>
-        <label for="entre18et49">Non</label>
-        <input type="radio" id="non" name="Enceinte" value="non">
-        <br>
-    </div>
-    <br>
-    <div id="Pro">
-        <h3>Êtes vous un proffessionnel de santé, personnel d'un établissement médico-social, pompier ou aide à domicile ?</h3>
-        <label for="moins18">Oui</label>
-        <input type="radio" id="oui" name="Pro" value="oui">
-        <br>
-        <label for="entre18et49">Non</label>
-        <input type="radio" id="non" name="Pro" value="non">
+        <label for="non">Non</label>
+        <input type="radio" id="non" name="enceinte" value="non" [(ngModel)]="enceinte" (change)="estEligible($event)">
         <br>
     </div>
     <br>
-    <div id="Risque">
+
+    <div id="pro_form" *ngIf="displayProForm()">
+        <h3>Êtes vous un professionnel de santé, personnel d'un établissement médico-social, pompier ou aide à domicile ?</h3>
+        <label for="oui">Oui</label>
+        <input type="radio" id="oui" name="pro" value="oui" [(ngModel)]="pro" (change)="estEligible($event)">
+        <br>
+        <label for="non">Non</label>
+        <input type="radio" id="non" name="pro" value="non" [(ngModel)]="pro" (change)="estEligible($event)">
+        <br>
+    </div>
+    <br>
+    <div id="malade_form" *ngIf="displayMaladeForm()">
         <h3>Présentez-vous <a target="_blank" href="https://solidarites-sante.gouv.fr/IMG/pdf/liste_maladies_rares_cosv_fmr-2.pdf">une pathologie conduisant à un risque de forme grave</a> ?</h3>
         <label for="moins18">Oui</label>
         <input type="radio" id="oui" name="Risque" value="oui">
@@ -48,19 +50,21 @@
     </div>
 </form>
 
-<div id="results">
-    <div id="Pfizer-BioNTech" class="result">
-        <h3>Pfizer-BioNTech</h3>
-        <span id="text-pfizer">-</span>
-    </div>
 
-    <div id="Moderna" class="result">
-        <h3>Moderna</h3>
-        <span>-</span>
-    </div>
-
-    <div id="AstraZeneca" class="result">
-        <h3>AstraZeneca</h3>
-        <span>-</span>
-    </div>
+<div id="results" *ngIf="displayResult() === true">
+        <div id="Pfizer-BioNTech" class="result">
+            <h3>Pfizer-BioNTech</h3>
+            <span id="text-pfizer">-</span>
+        </div>
+    
+        <div id="Moderna" class="result">
+            <h3>Moderna</h3>
+            <span>-</span>
+        </div>
+    
+        <div id="AstraZeneca" class="result">
+            <h3>AstraZeneca</h3>
+            <span>-</span>
+        </div>
+    
 </div>
