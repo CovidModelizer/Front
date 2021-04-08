@@ -1,20 +1,11 @@
-<p>INFECTIONS</p>
-<br>
-<p>{{ modele }}</p>
-TODO : passer les datas aux composants
 <div fxLayout="row wrap">
   <div *ngIf="modele === '' || modele === undefined" fxFlex="100" fxFlex.gt-lg="100" fxFlex.gt-md="100" fxFlex.gt-xs="100">
-    lineaire !!!!
-    <app-modele-lineaire></app-modele-lineaire>
+    <app-modele-lineaire [categorie]="categorie"></app-modele-lineaire>
   </div>
   <div *ngIf="modele === 'sir'" fxFlex="100" fxFlex.gt-lg="100" fxFlex.gt-md="100" fxFlex.gt-xs="100">
-    sir !!!
     <app-modele-sir></app-modele-sir>
   </div>
-  <div *ngIf="modele == 'svir'" fxFlex="100" fxFlex.gt-lg="100" fxFlex.gt-md="100" fxFlex.gt-xs="100">
-    <app-modele-svir></app-modele-svir>
-  </div>
   <div *ngIf="modele == 'ml'" fxFlex="100" fxFlex.gt-lg="100" fxFlex.gt-md="100" fxFlex.gt-xs="100">
-    <app-modele-machine-learning></app-modele-machine-learning>
+    <app-modele-machine-learning [categorie]="categorie"></app-modele-machine-learning>
   </div>
 </div>

@@ -12,7 +12,8 @@ export class ModelisationsService {
   constructor(private http: HttpClient) {
   }
 
-  getVaccinationsLinéaire(): Observable<any> {
-    return this.http.get(this.URL_REST_API + '/vaccin?model=LIN');
+  getDonneesModeliseesByModel(categorie: string, model: string): Observable<any> {
+    return this.http.get(this.URL_REST_API + '/'+categorie+'?model='+model);
   }
+
 }

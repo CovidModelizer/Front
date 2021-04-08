@@ -21,7 +21,7 @@ export const AppRoutes: Routes = [
         component: ModelisationsComponent
       },
       {
-        path: 'infections',
+        path: 'cas',
         component: InfectionsComponent
       },
       {

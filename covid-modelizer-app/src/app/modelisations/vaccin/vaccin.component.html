@@ -3,11 +3,8 @@
   <div *ngIf="modele === '' || modele === undefined" fxFlex="100" fxFlex.gt-lg="100" fxFlex.gt-md="100" fxFlex.gt-xs="100">
     <app-modele-lineaire [categorie]="categorie"></app-modele-lineaire>
   </div>
-  <div *ngIf="modele === 'sir'" fxFlex="100" fxFlex.gt-lg="100" fxFlex.gt-md="100" fxFlex.gt-xs="100">
-    <app-modele-sir [categorie]="categorie"></app-modele-sir>
-  </div>
   <div *ngIf="modele == 'svir'" fxFlex="100" fxFlex.gt-lg="100" fxFlex.gt-md="100" fxFlex.gt-xs="100">
-    <app-modele-svir [categorie]="categorie"></app-modele-svir>
+    <app-modele-svir></app-modele-svir>
   </div>
   <div *ngIf="modele == 'ml'" fxFlex="100" fxFlex.gt-lg="100" fxFlex.gt-md="100" fxFlex.gt-xs="100">
     <app-modele-machine-learning [categorie]="categorie"></app-modele-machine-learning>

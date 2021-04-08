@@ -1,9 +1,10 @@
 import { Component, Input, OnInit } from '@angular/core';
-import {ChartDataSets} from 'chart.js';
+import {ChartDataSets, ChartOptions, ChartType} from 'chart.js';
 import {Label} from 'ng2-charts';
 import {ModelisationsService} from '../modelisations.service';
 import {DonneesReellesService} from '../../donnees-reelles/donnees-reelles.service';
-import {Utils} from '../../shared/utils';
+
+const MODEL = 'LIN';
 
 @Component({
   selector: 'app-modele-lineaire',
@@ -12,45 +13,65 @@ import {Utils} from '../../shared/utils';
 })
 export class ModeleLineaireComponent implements OnInit {
 
-  /**
-   * Bar & Line Chart in a chart : https://stackblitz.com/edit/ng2-charts-bar-and-line
-   */
-
-  // Vaccin ou Infections
+  // vaccin ou cas
   @Input() categorie = '';
   titreGraphe = '';
-  casOuVaccinsCumules: number[] | undefined;
+  donneesReellesCumules: number[] | undefined;
   donneesModeliseesCumulees: number[] | undefined;
-  labelCasOuVaccinsCumules = '';
+  labelDonneesReellesCumulees = '';
   labelDonneesModelisees = '';
   days: any[] | undefined;
   chartData: ChartDataSets[] | undefined;
   chartLabels: Label[] | undefined;
-  chartOptions = {
-    responsive: true
-  };
+  chartOptions: ChartOptions | undefined;
   chartLegend = true;
-  //chartType = 'bar';
-  chartType = 'line';
+  chartType: ChartType = 'bar';
 
   constructor(private modelisationsService: ModelisationsService, private donneesReellesService: DonneesReellesService) {
-    this.casOuVaccinsCumules = new Array<number>();
+    this.donneesReellesCumules = new Array<number>();
     this.donneesModeliseesCumulees = new Array<number>();
   }
 
   ngOnInit(): void {
+    this.days = [];
     this.setTitreGraphe();
+    this.setChartLegends();
     this.setLabelCasOuVaccinsCumules();
     this.setLabelDonneesModelisees();
     this.getAllDataToDisplay();
-    /**
-     * TODO : Afficher le second dataset en histogramme et sur les bonnes dates : https://www.chartjs.org/docs/latest/charts/bar.html
-     */
     this.chartData = [
-      { data: this.casOuVaccinsCumules, label: this.labelCasOuVaccinsCumules, fill: false}/*,
-      { data: this.donneesModeliseesCumulees, label: this.labelDonneesModelisees, type: 'line', lineTension: 0 },*/
+      { data: this.donneesReellesCumules, label: this.labelDonneesReellesCumulees },
+      { data: this.donneesModeliseesCumulees, label: this.labelDonneesModelisees, type: 'line', lineTension: 0, fill: false }
     ];
-    this.chartLabels = Utils.getAllDaysSinceTheBeginningPlusOneMonth(this.days);
+    this.chartLabels = this.days;
+  }
+
+  /**
+   * Labels des axes du graphe
+   */
+  setChartLegends() {
+    this.chartOptions = {
+      responsive: true,
+      scales: {
+        yAxes: [
+         {
+          display: true,
+          scaleLabel: {
+           display: true,
+           labelString: this.categorie === 'vaccin' ? "Nombre de "+this.categorie : "Nombre de "+this.categorie+" positifs",
+          },
+         },
+        ],
+        xAxes: [
+         {
+          scaleLabel: {
+           display: true,
+           labelString: "Date",
+          },
+         },
+        ],
+       },
+    };
   }
 
   setTitreGraphe(): void {
@@ -63,9 +84,9 @@ export class ModeleLineaireComponent implements OnInit {
 
   setLabelCasOuVaccinsCumules(): void {
     if(this.categorie === 'vaccin') {
-      this.labelCasOuVaccinsCumules = 'Vaccinations réelles';
+      this.labelDonneesReellesCumulees = 'Vaccinations réelles';
     } else {
-      this.labelCasOuVaccinsCumules = 'Infections réelles';
+      this.labelDonneesReellesCumulees = 'Infections réelles';
     }
   }
 
@@ -78,33 +99,48 @@ export class ModeleLineaireComponent implements OnInit {
   }
 
   getAllDataToDisplay(): void {
-    let casOuVaccinsCumules = new Array<number>();
+    // Date à partir de laquelle on commence la récupération des données réelles (date de la première prédiction)
+    let dateDebutGraphe: any;
+
+    // Récupération des données modélisées cumulées à afficher
+    let donneesModeliseesCumulees = new Array<number>();
+    if(this.categorie === 'vaccin' || this.categorie === 'cas') {
+      this.modelisationsService.getDonneesModeliseesByModel(this.categorie, MODEL).subscribe(data => {
+      dateDebutGraphe = data[0].date;
+      for(let elt of data) {
+        donneesModeliseesCumulees.push(Number(elt.value));
+        // Récupération de la plage de temps sur laquelle faire le graphe
+        this.days?.push(elt.date);
+      }
+      });
+    } else {
+      // ERROR
+      console.log('ERROR : categorie doit être égale à \'vaccin\' ou \'cas\' !');
+    }
+    this.donneesModeliseesCumulees = donneesModeliseesCumulees;
+
+    // Récupération des données réelles cumulées à afficher
+    let donneesReellesCumules = new Array<number>();
     this.donneesReellesService.getAllSituationsReelles().subscribe(data => {
       if(this.categorie === 'vaccin') {
         for(let elt of data) {
-          casOuVaccinsCumules.push(Number(elt.cumulPremieresInjections));
+          // On ne récupère que les valeurs à partir de la date de la 1ère prédiction
+          if(elt.date >= dateDebutGraphe) {
+            donneesReellesCumules.push(Number(elt.cumulPremieresInjections));
+          }
         }
-      } else if(this.categorie === 'infections') {
+      } else if(this.categorie === 'cas') {
         for(let elt of data) {
-          casOuVaccinsCumules.push(Number(elt.cumulCasConfirmes));
+          if(elt.date >= dateDebutGraphe) {
+            donneesReellesCumules.push(Number(elt.cumulCasConfirmes));
+          }
         }
       } else {
-        // Error
-        console.log('Error : categorie doit être égale à \'vaccin\' ou \'infections\' !');
+        // ERROR
+        console.log('ERROR : categorie doit être égale à \'vaccin\' ou \'cas\' !');
       }
     });
-    this.casOuVaccinsCumules = casOuVaccinsCumules;
-    let donneesModeliseesCumulees = new Array<number>();
-    this.modelisationsService.getVaccinationsLinéaire().subscribe(data => {
-      console.log(data);
-      if(this.categorie === 'vaccin') {
-        for(let elt of data) {
-          donneesModeliseesCumulees.push(Number(elt.value));
-        }
-      }
-    });
-    console.log(donneesModeliseesCumulees);
-    this.donneesModeliseesCumulees = donneesModeliseesCumulees;
+    this.donneesReellesCumules = donneesReellesCumules;
   }
 
 }

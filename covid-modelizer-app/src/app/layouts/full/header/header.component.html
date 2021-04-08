@@ -1,7 +1,7 @@
 <!-- ============================================================== -->
 <!-- Profile - style you can find in header.scss -->
 <!-- ============================================================== -->
-<button *ngIf="titrePage==='Vaccin' || titrePage==='Infections'" [matMenuTriggerFor]="modeles"
+<button *ngIf="titrePage==='Vaccinations' || titrePage==='Infections'" [matMenuTriggerFor]="modeles"
         class="btn btn-default btn-sm selectModel">
         <span style="font-color: white;" class="glyphicon glyphicon-chevron-down"></span>
         {{labelModel}}
@@ -11,7 +11,7 @@
           [routerLink]="path_modelisations" mat-menu-item>
     Modèle Linéaire
   </button>
-  <button *ngIf="path_modelisations==='infections'" (click)="setLabelModel('Modèle SIR')" [queryParams]="{ modele: 'sir' }"
+  <button *ngIf="path_modelisations==='cas'" (click)="setLabelModel('Modèle SIR')" [queryParams]="{ modele: 'sir' }"
           [routerLink]="path_modelisations" mat-menu-item>
     Modèle SIR
   </button>
