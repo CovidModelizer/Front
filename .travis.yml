@@ -28,8 +28,7 @@ before_install:
 install:
   - npm install
 
-after_success:
- 
+script:
   - docker login -u $DOCKER_USER -p $DOCKER_PASS
   - docker-compose build
   - docker push $IMAGE_NAME:latest
