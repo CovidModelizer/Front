@@ -84,7 +84,6 @@ export class ModeleSirComponent implements OnInit {
     }
     });
     this.donneesModeliseesCumulees = donneesModeliseesCumulees;
-    console.log(this.donneesModeliseesCumulees);
 
     // Récupération des données réelles cumulées à afficher
     let donneesReellesCumules = new Array<number>();

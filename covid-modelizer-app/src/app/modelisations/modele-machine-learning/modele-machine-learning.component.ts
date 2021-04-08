@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, ComponentFactoryResolver, Input, OnInit } from '@angular/core';
 import {ChartDataSets, ChartOptions, ChartType} from 'chart.js';
 import {Label} from 'ng2-charts';
 import {ModelisationsService} from '../modelisations.service';
@@ -16,6 +16,7 @@ export class ModeleMachineLearningComponent implements OnInit {
   // vaccin ou cas
   @Input() categorie = '';
   titreGraphe = '';
+  dateDebutGraphe = '';
   donneesReellesCumules: number[] | undefined;
   donneesModeliseesCumulees: number[] | undefined;
   labelDonneesReellesCumulees = '';
@@ -27,18 +28,18 @@ export class ModeleMachineLearningComponent implements OnInit {
   chartLegend = true;
   chartType: ChartType = 'bar';
 
-  constructor(private modelisationsService: ModelisationsService, private donneesReellesService: DonneesReellesService) {
+  constructor(public modelisationsService: ModelisationsService, public donneesReellesService: DonneesReellesService) {
     this.donneesReellesCumules = new Array<number>();
     this.donneesModeliseesCumulees = new Array<number>();
   }
 
   ngOnInit(): void {
-    this.days = [];
+    this.modelisationsService.resetPlageGraphe();
+    this.getAllDataToDisplay();
     this.setTitreGraphe();
     this.setChartLegends();
     this.setLabelCasOuVaccinsCumules();
     this.setLabelDonneesModelisees();
-    this.getAllDataToDisplay();
     this.chartData = [
       { data: this.donneesReellesCumules, label: this.labelDonneesReellesCumulees },
       { data: this.donneesModeliseesCumulees, label: this.labelDonneesModelisees, type: 'line', lineTension: 0, fill: false }
@@ -99,6 +100,20 @@ export class ModeleMachineLearningComponent implements OnInit {
   }
 
   getAllDataToDisplay(): void {
+    this.donneesModeliseesCumulees = this.modelisationsService.getDonneesModeliseesCumuleesByCategorieEtModel(this.categorie, MODEL);
+    this.days = this.modelisationsService.getPlageGraphe();
+    console.log(this.days);
+    let premierJourPlage = '';
+    if(this.days && this.days?.length > 0) {
+      console.log('plage non vide');
+      premierJourPlage = this.days[0];
+    }
+    console.log(premierJourPlage);
+    //this.donneesReellesCumules = this.donneesReellesService.getDonneesReellesCumuleesByCategorieEtModelEtDateDebut(this.categorie, MODEL, premierJourPlage);
+  }
+
+  /*
+  getAllDataToDisplay(): void {
     // Date à partir de laquelle on commence la récupération des données réelles (date de la première prédiction)
     let dateDebutGraphe: any;
 
@@ -142,5 +157,6 @@ export class ModeleMachineLearningComponent implements OnInit {
     });
     this.donneesReellesCumules = donneesReellesCumules;
   }
+  */
 
 }

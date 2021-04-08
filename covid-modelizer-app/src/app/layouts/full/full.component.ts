@@ -62,7 +62,7 @@ export class FullComponent implements OnInit, OnDestroy, AfterViewInit {
         this.setTitrePage('Vaccinations');
         break;
       }
-      case '/infections': {
+      case '/cas': {
         this.setTitrePage('Infections');
         break;
       }
