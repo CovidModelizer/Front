@@ -11,7 +11,7 @@ export class EligibiliteVaccinComponent implements OnInit {
   
 
   public age = '';
-  public enceinte = 'non';
+  public enceinte = '';
   public pro = '';
   public malade = '';
 
@@ -50,8 +50,46 @@ export class EligibiliteVaccinComponent implements OnInit {
     this.age === LIBELLES_AGES[4])
   }
 
+  resetValues(niveau:number):void{
+switch(niveau){
+  case(0):{
+    this.enceinte='';
+    this.pro='';
+    this.malade='';
+    break;
+  }
+  case(1):{
+    this.pro='';
+    this.malade='';
+    break;
+  }
+  case(2):{
+    this.malade='';
+    break;
+  }
+  default:{
+    //Error
+    break;
+  }
+}
+  }
   // Retourne vrai si eligible a au - un des 3 vaccins dispos
-  estEligible(evt: any): void {
+  estEligible(age:string, enceinte:string, pro:string, malade:string): void {
+    if(age!==''){
+      if(age!==this.age) this.resetValues(0);
+      this.age = age;
+    }
+    else if(enceinte!==''){
+      if(enceinte!==this.enceinte) this.resetValues(1)
+      this.enceinte = enceinte;
+    }
+    else if(pro!==''){
+      if(pro!==this.pro) this.resetValues(2);
+      this.pro = pro;
+    }
+    else if(malade!==''){
+      this.malade = malade;
+    }
     if(this.displayResult() === false) {
       // C'est pas le moment d'afficher les résultats
     } else {
@@ -150,9 +188,4 @@ export class EligibiliteVaccinComponent implements OnInit {
       }
     }
   }
-
-
-
 }
-
-
