@@ -50,6 +50,7 @@ export class EligibiliteVaccinComponent implements OnInit {
     this.age === LIBELLES_AGES[4])
   }
 
+
   resetValues(niveau:number):void{
 switch(niveau){
   case(0):{
@@ -72,7 +73,12 @@ switch(niveau){
     break;
   }
 }
+
   }
+  colorPfizer = '#717472'; //Gris
+  colorModerna = '#717472'; //Gris
+  colorAstrazeneca = '#717472'; //Gris
+
   // Retourne vrai si eligible a au - un des 3 vaccins dispos
   estEligible(age:string, enceinte:string, pro:string, malade:string): void {
     if(age!==''){
@@ -96,6 +102,9 @@ switch(niveau){
       switch(this.age) {
         case(LIBELLES_AGES[0]): {
           // TODO : Cadres Vaccins en rouge
+          this.colorPfizer = '#b92e2e'; //Rouge
+          this.colorModerna = '#b92e2e'; //Rouge
+          this.colorAstrazeneca = '#b92e2e'; //Rouge
           this.eligiblePfizer = -1;
           this.eligibleModerna = -1;
           this.eligibleAstraZeneca = -1;
@@ -105,26 +114,40 @@ switch(niveau){
         case(LIBELLES_AGES[1] || LIBELLES_AGES[2] || LIBELLES_AGES[3]): {
           if(this.enceinte === 'oui') {
             // TODO : Cadres Vaccins en gris (pas sûre de l'éligiblité)
+            this.colorPfizer = '#717472'; //Gris
+            this.colorModerna = '#717472'; //Gris
+            this.colorAstrazeneca = '#717472'; //Gris
             this.commentaire1 = 'Votre situation doit être évaluée par un spécialiste.';
           } else if(this.enceinte === 'non'){
             if(this.pro === 'oui') {
+              this.colorPfizer = '#168838'; //Vert
+              this.colorModerna = '#168838';
               this.eligiblePfizer = 1;
               this.eligibleModerna = 1;
               if(this.age === LIBELLES_AGES[1] || this.age === LIBELLES_AGES[2]) {
+                this.colorAstrazeneca = '#b92e2e';
                 this.eligibleAstraZeneca = -1;
               } else {
+                this.colorAstrazeneca = '#168838';
                 this.eligibleAstraZeneca = 1;
               }
             } else if(this.pro === 'non') {
               if(this.malade === 'oui') {
+                this.colorPfizer = '#168838'; //Vert
+                this.colorModerna = '#168838';
                 this.eligiblePfizer = 1;
                 this.eligibleModerna = 1;
                 if(this.age === LIBELLES_AGES[1] || this.age === LIBELLES_AGES[2]) {
+                  this.colorAstrazeneca = '#b92e2e';
                   this.eligibleAstraZeneca = -1;
                 } else {
+                  this.colorAstrazeneca = '#168838';
                   this.eligibleAstraZeneca = 1;
                 }
               } else if(this.malade === 'non') {
+                this.colorPfizer = '#b92e2e'; //Rouge
+                this.colorModerna = '#b92e2e'; //Rouge
+                this.colorAstrazeneca = '#b92e2e';
                 this.eligiblePfizer = -1;
                 this.eligibleModerna = -1;
                 this.eligibleAstraZeneca = -1;
@@ -149,15 +172,24 @@ switch(niveau){
         }
         case(LIBELLES_AGES[3]): {
           if(this.pro === 'oui') {
+            this.colorPfizer = '#168838';
+            this.colorModerna = '#168838'; 
+            this.colorAstrazeneca = '#168838';
             this.eligiblePfizer = 1;
             this.eligibleModerna = 1;
             this.eligibleAstraZeneca = 1;
           } else if(this.pro === 'non') {
             if(this.malade === 'oui') {
+              this.colorPfizer = '#168838';
+              this.colorModerna = '#168838'; 
+              this.colorAstrazeneca = '#168838';
               this.eligiblePfizer = 1;
               this.eligibleModerna = 1;
               this.eligibleAstraZeneca = 1;
             } else if(this.malade === 'non') {
+              this.colorPfizer = '#b92e2e'; //Rouge
+              this.colorModerna = '#b92e2e'; //Rouge
+              this.colorAstrazeneca = '#b92e2e'; //Rouge
               this.eligiblePfizer = -1;
               this.eligibleModerna = -1;
               this.eligibleAstraZeneca = -1;
@@ -176,6 +208,9 @@ switch(niveau){
           break;
         }
         case(LIBELLES_AGES[4]): {
+          this.colorPfizer = '#168838';
+          this.colorModerna = '#168838'; 
+          this.colorAstrazeneca = '#168838';
           this.eligiblePfizer = 1;
           this.eligibleModerna = 1;
           this.eligibleAstraZeneca = 1;
