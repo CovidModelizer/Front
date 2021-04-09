@@ -1,3 +1,4 @@
+[![Build Status](https://travis-ci.com/CovidModelizer/Front.svg?branch=main)](https://travis-ci.com/CovidModelizer/Front)
 # Covid_Modelizer_Front
 
 ## Accès
