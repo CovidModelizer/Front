@@ -10,6 +10,7 @@ export class InfectionsComponent implements OnInit {
 
   private route: ActivatedRoute;
   public modele = 'lin'; // On tombe sur le modèle linéaire par défaut
+  public categorie = 'infection';
 
   // tslint:disable-next-line:variable-name
   constructor(private _route: ActivatedRoute) {
@@ -20,7 +21,6 @@ export class InfectionsComponent implements OnInit {
     this.route.queryParams.subscribe(params => {
       this.modele = params.modele;
     });
-    console.log(this.modele);
   }
 
 }

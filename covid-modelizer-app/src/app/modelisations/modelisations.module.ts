@@ -1,26 +1,24 @@
 import 'hammerjs';
-import {NgModule} from '@angular/core';
-import {RouterModule} from '@angular/router';
-import {HttpClientModule} from '@angular/common/http';
-import {CommonModule} from '@angular/common';
-import {BrowserModule} from '@angular/platform-browser';
-import {CdkTableModule} from '@angular/cdk/table';
-import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {FlexLayoutModule} from '@angular/flex-layout';
-import {ModelisationsComponent} from './modelisations/modelisations.component';
-import {ModeleLineaireComponent} from './modele-lineaire/modele-lineaire.component';
-import {ModeleSirComponent} from './modele-sir/modele-sir.component';
-import {ModeleSvirComponent} from './modele-svir/modele-svir.component';
-import {ModeleMachineLearningComponent} from './modele-machine-learning/modele-machine-learning.component';
-import {ChartsModule} from 'ng2-charts';
-import {ModelisationsRoute} from './modelisations-routing.module';
-import {MaterialModule} from "../material.module";
-import { VaccinComponent } from './vaccin/vaccin.component';
+import { NgModule } from '@angular/core';
+import { RouterModule } from '@angular/router';
+import { HttpClientModule } from '@angular/common/http';
+import { BrowserModule } from '@angular/platform-browser';
+import { CdkTableModule } from '@angular/cdk/table';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { ModelisationsComponent } from './modelisations/modelisations.component';
+import { ModeleLineaireComponent } from './modele-lineaire/modele-lineaire.component';
+import { ModeleSirComponent } from './modele-sir/modele-sir.component';
+import { ModeleSvirComponent } from './modele-svir/modele-svir.component';
+import { ModeleMachineLearningComponent } from './modele-machine-learning/modele-machine-learning.component';
+import { ChartsModule } from 'ng2-charts';
+import { ModelisationsRoute } from './modelisations-routing.module';
+import { MaterialModule } from "../material.module";
 import { InfectionsComponent } from './infections/infections.component';
+import { VaccinationsComponent } from './vaccinations/vaccinations.component';
 
 @NgModule({
   imports: [
-    CommonModule,
     BrowserModule,
     RouterModule.forChild(ModelisationsRoute),
     HttpClientModule,
@@ -38,7 +36,7 @@ import { InfectionsComponent } from './infections/infections.component';
     ModeleSirComponent,
     ModeleSvirComponent,
     ModeleMachineLearningComponent,
-    VaccinComponent,
+    VaccinationsComponent,
     InfectionsComponent
   ]
 })

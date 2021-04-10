@@ -1,10 +1,10 @@
-import {Routes} from '@angular/router';
+import { Routes } from '@angular/router';
 import { EligibiliteVaccinComponent } from './eligibilite-vaccin/eligibilite-vaccin.component';
 
-import {FullComponent} from './layouts/full/full.component';
+import { FullComponent } from './layouts/full/full.component';
+import { ModelisationsComponent } from './modelisations/modelisations/modelisations.component';
 import { InfectionsComponent } from './modelisations/infections/infections.component';
-import {ModelisationsComponent} from './modelisations/modelisations/modelisations.component';
-import { VaccinComponent } from './modelisations/vaccin/vaccin.component';
+import { VaccinationsComponent } from './modelisations/vaccinations/vaccinations.component';
 
 export const AppRoutes: Routes = [
   {
@@ -25,14 +25,14 @@ export const AppRoutes: Routes = [
         component: InfectionsComponent
       },
       {
-        path: 'vaccin',
-        component: VaccinComponent
+        path: 'vaccinations',
+        component: VaccinationsComponent
       },
       {
         path: 'donnees-reelles',
         loadChildren: () => import('./donnees-reelles/donnees-reelles.module').then(m => m.DonneesReellesModule)
       },
-       {
+      {
         path: 'eligibilite-vaccin',
         component: EligibiliteVaccinComponent
       }

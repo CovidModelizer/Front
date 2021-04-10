@@ -1,0 +1,6 @@
+version: "3"
+services:
+  covid_modelizer_front:
+    build: .
+    image: covidmodelizer/front:latest
+    container_name: covid_modelizer_front
