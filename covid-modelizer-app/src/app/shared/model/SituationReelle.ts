@@ -122,4 +122,12 @@ export class SituationReelle {
 		this.totalPrisesRendezVousSemaine = totalPrisesRendezVousSemaine;
   	}
   	*/
+
+	getDate(): Date {
+		return this.date;
+	}
+
+	setDate(newDate: Date): void {
+		this.date = newDate;
+	}
 }

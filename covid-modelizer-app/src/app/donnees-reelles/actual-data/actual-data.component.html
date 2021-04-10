@@ -3,31 +3,35 @@
     <div class="d-flex flex-wrap">
       <div>
         <!-- Faire pareil pour les jours précédents en cliquant sur une flèche de gauche -->
-        <mat-card-title>Aujourd'hui</mat-card-title>
+        <mat-card-title>
+          {{donneesJourTitle}}
+          <button id="goOneDayBefore" (click)="goOneDayBeforeOrAfter(-1)" [disabled]="isGoingBackPossible() == false"><img src="assets/images/left-chevron.png"/></button>
+          <button id="goOneDayAfter" (click)="goOneDayBeforeOrAfter(1)" [disabled]="isGoingAfterPossible() == false"><img src="assets/images/right-chevron.png"/></button>        
+        </mat-card-title>
         <mat-card-subtitle>Données reflétant la situation actuelle</mat-card-subtitle>
       </div>
     </div>
 
-    <div class="m-t-30" fxLayout="row" fxLayoutWrap="wrap">
-      <div fxFlex="100" fxFlex.gt-sm="20%" fxFlex.gt-xs="20%">
+    <div class="m-t-30 actual-data" fxLayout="row" fxLayoutWrap="wrap">
+      <div class="l1" fxFlex="100" fxFlex.gt-sm="20%" fxFlex.gt-xs="20%">
         <h3 class="m-0 font-light">{{currentSituationReelle.nouveauxCasConfirmes}}</h3>
-        <small>Cas</small>
+        <p>Cas</p>
       </div>
-      <div fxFlex="100" fxFlex.gt-sm="20%" fxFlex.gt-xs="20%">
+      <div class="l1" fxFlex="100" fxFlex.gt-sm="20%" fxFlex.gt-xs="20%">
         <h3 class="m-0 font-light">{{currentSituationReelle.nouveauxDeces}}</h3>
-        <small>Décès</small>
+        <p>Décès</p>
       </div>
-      <div fxFlex="100" fxFlex.gt-sm="20%" fxFlex.gt-xs="20%">
+      <div class="l1" fxFlex="100" fxFlex.gt-sm="20%" fxFlex.gt-xs="20%">
         <h3 class="m-0 font-light">{{currentSituationReelle.nouvellesHospitalisations}}</h3>
-        <small>Hospitalisations</small>
+        <p>Hospitalisations</p>
       </div>
-      <div fxFlex="100" fxFlex.gt-sm="20%" fxFlex.gt-xs="20%">
+      <div class="l1" fxFlex="100" fxFlex.gt-sm="20%" fxFlex.gt-xs="20%">
         <h3 class="m-0 font-light">{{currentSituationReelle.nouvellesReanimations}}</h3>
-        <small>Réanimations</small>
+        <p>Réanimations</p>
       </div>
-      <div fxFlex="100" fxFlex.gt-sm="33.33%" fxFlex.gt-xs="20%">
+      <div class="l1" fxFlex="100" fxFlex.gt-sm="20%" fxFlex.gt-xs="20%">
         <h3 class="m-0 font-light">{{currentSituationReelle.nouvellesPremieresInjections}}</h3>
-        <small>Vaccinations</small>
+        <p>Vaccinations</p>
       </div>
     </div>
   </mat-card-content>
