@@ -51,7 +51,6 @@ export class SituationReelle {
 		this.casPossiblesEhpad = '';
 		this.cumulPremieresInjections = '';
 		this.date = new Date();
-		//this.date = new Date(new Date().valueOf() - 1000*60*60*24); Useful de mi-nuit à 5h actuellement car 2j de données absents !!!
 		this.nouveauxDeces = '';
 		this.cumulDeces = '';
 		this.nouveauxDecesEhpad = '';

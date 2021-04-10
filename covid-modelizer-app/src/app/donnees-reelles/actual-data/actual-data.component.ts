@@ -17,17 +17,17 @@ export class ActualDataComponent implements OnInit {
   @Input() currentSituationReelle: SituationReelle;
   donneesJourTitle = 'Aujourd\'hui';
   dateDonneesAffichees: Date;
-  DATE_VEILLE: Date;  // Date dernières données dispo (cf ngOnInit ci-dessous)
+  DATE_JOUR: Date;  // Date dernières données dispo (cf ngOnInit ci-dessous)
 
   constructor(private donneesReellesService: DonneesReellesService) {
     this.currentSituationReelle = new SituationReelle();
     this.dateDonneesAffichees = REAL_DATE_JOUR; // Juste pour de l'initialisation
-    this.DATE_VEILLE = REAL_DATE_JOUR           // Juste pour de l'initialisation
+    this.DATE_JOUR = REAL_DATE_JOUR           // Juste pour de l'initialisation
   }
 
   ngOnInit(): void {
     this.dateDonneesAffichees = new Date(this.currentSituationReelle.getDate().valueOf() - 1000*60*60*24);
-    this.DATE_VEILLE = this.currentSituationReelle.date;
+    this.DATE_JOUR = this.currentSituationReelle.date;
   }
 
   isGoingBackPossible(): boolean {
@@ -35,7 +35,7 @@ export class ActualDataComponent implements OnInit {
   }
 
   isGoingAfterPossible(): boolean {
-    return Utils.isDate1BeforeDate2(this.dateDonneesAffichees, this.DATE_VEILLE);
+    return Utils.isDate1BeforeDate2(this.dateDonneesAffichees, this.DATE_JOUR);
   }
 
   /**
@@ -57,7 +57,7 @@ export class ActualDataComponent implements OnInit {
   }
 
   setDonneesJoursTitle(newTitleDate: Date): void {
-    if(Utils.isDate1EqualsDate2(newTitleDate, this.DATE_VEILLE)) this.donneesJourTitle = 'Aujourd\'hui';
+    if(Utils.isDate1EqualsDate2(newTitleDate, REAL_DATE_JOUR)) this.donneesJourTitle = 'Aujourd\'hui';
     else this.donneesJourTitle = Utils.getDayBeforeOrAfterGivenDate(newTitleDate, 0); // Juste pour format string
     // MaJ la date des données affichées pour le prochain appel
     this.dateDonneesAffichees = new Date(newTitleDate);
