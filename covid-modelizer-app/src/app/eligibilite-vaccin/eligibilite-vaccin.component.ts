@@ -23,8 +23,8 @@ export class EligibiliteVaccinComponent implements OnInit {
   private colorModerna = '';
   private colorAstrazeneca = ''; 
 
-  private commentaire1 = 'Vous êtes éligible à la vaccination.';
-  private datePossibleVaccination = 'Date de vaccination possible : ';
+  private commentaire1 = '';
+  private datePossibleVaccination = '';
 
   constructor() { 
   }
@@ -82,17 +82,25 @@ export class EligibiliteVaccinComponent implements OnInit {
     if(age!==''){
       if(age!==this.age) this.resetValues(0);
       this.age = age;
+      this.commentaire1 = '';
+      this.datePossibleVaccination = '';
     }
     else if(enceinte!==''){
       if(enceinte!==this.enceinte) this.resetValues(1)
       this.enceinte = enceinte;
+      this.commentaire1 = '';
+      this.datePossibleVaccination = '';
     }
     else if(pro!==''){
       if(pro!==this.pro) this.resetValues(2);
       this.pro = pro;
+      this.commentaire1 = '';
+      this.datePossibleVaccination = '';
     }
     else if(malade!==''){
       this.malade = malade;
+      this.commentaire1 = '';
+      this.datePossibleVaccination = '';
     }
     if(this.displayResult() === false) {
       // C'est pas le moment d'afficher les résultats
@@ -122,6 +130,7 @@ export class EligibiliteVaccinComponent implements OnInit {
               this.eligibleModerna = 1;
               this.colorAstrazeneca = '#b92e2e';
               this.eligibleAstraZeneca = -1;
+              this.commentaire1 = 'Vous êtes éligible à la vaccination.';
             } else if(this.pro === 'non') {
               if(this.malade === 'oui') {
                 this.colorPfizer = '#168838'; //Vert
@@ -130,6 +139,7 @@ export class EligibiliteVaccinComponent implements OnInit {
                 this.eligibleModerna = 1;
                 this.colorAstrazeneca = '#b92e2e';
                 this.eligibleAstraZeneca = -1;
+                this.commentaire1 = 'Vous êtes éligible à la vaccination.';
               } else if(this.malade === 'non') {
                 this.colorPfizer = '#b92e2e'; //Rouge
                 this.colorModerna = '#b92e2e'; //Rouge
@@ -138,7 +148,7 @@ export class EligibiliteVaccinComponent implements OnInit {
                 this.eligibleModerna = -1;
                 this.eligibleAstraZeneca = -1;
                 this.commentaire1 = 'Vous n\'êtes pas encore éligible à la vaccination contre la COVID-19.';
-                this.datePossibleVaccination += 'à partir de mi-juin.';
+                this.datePossibleVaccination += 'Date de vaccination possible : à partir de mi-juin.';
                  
               } else {
                 console.log('est MALADE KO');
@@ -157,6 +167,7 @@ export class EligibiliteVaccinComponent implements OnInit {
             this.colorModerna = '#168838';
             this.eligiblePfizer = 1;
             this.eligibleModerna = 1;
+            this.commentaire1 = 'Vous êtes éligible à la vaccination.';
             if(this.age === LIBELLES_AGES[2]){
               this.eligibleAstraZeneca = -1;
               this.colorAstrazeneca = '#b92e2e'; //Rouge
@@ -171,6 +182,7 @@ export class EligibiliteVaccinComponent implements OnInit {
               this.colorModerna = '#168838';
               this.eligiblePfizer = 1;
               this.eligibleModerna = 1;
+              this.commentaire1 = 'Vous êtes éligible à la vaccination.';
               if(this.age === LIBELLES_AGES[2]){
                 this.eligibleAstraZeneca = -1;
                 this.colorAstrazeneca = '#b92e2e'; //Rouge
@@ -188,9 +200,9 @@ export class EligibiliteVaccinComponent implements OnInit {
               this.eligibleAstraZeneca = -1;
               this.commentaire1 = 'Vous n\'êtes pas encore éligible à la vaccination contre la COVID-19.';
               if(this.age === LIBELLES_AGES[2]) {
-                this.datePossibleVaccination += 'à partir de mi-mai.';
+                this.datePossibleVaccination += 'Date de vaccination possible : à partir de mi-mai.';
               } else {
-                this.datePossibleVaccination += 'à partir de mi-avril pour les personnes âgées de 60 à 70 ans et à partir de mi-mai pour les personnes âgées de 50 à 60 ans.';
+                this.datePossibleVaccination += 'Date de vaccination possible : à partir de mi-avril pour les personnes âgées de 60 à 70 ans et à partir de mi-mai pour les personnes âgées de 50 à 60 ans.';
               }
             } else {
               console.log('est MALADE KO');
@@ -207,6 +219,7 @@ export class EligibiliteVaccinComponent implements OnInit {
           this.eligiblePfizer = 1;
           this.eligibleModerna = 1;
           this.eligibleAstraZeneca = 1;
+          this.commentaire1 = 'Vous êtes éligible à la vaccination.';
           break;
         }
         default: {
@@ -217,9 +230,8 @@ export class EligibiliteVaccinComponent implements OnInit {
     }
   }
 
-  // TODO
-  // Pas de style au survol des cadres de résultats?
-  // Montrer les choix sélectionnés (boutons plus gris/bordure marquée/avec un effet qui reste/autre ?)
+//TODO
+//Fixer le bug des 55-69 ans
 }
 
 

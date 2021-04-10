@@ -52,7 +52,12 @@
     </mat-card-content>
 </mat-card>
 -->
-
+<mat-card>
+    <mat-card-content>
+        <p class="intro">Ce questionnaire est un formulaire d'éligibilité vaccinale. Il tient compte de votre profil et votre situation personnelle pour déterminer votre niveau d'éligibilité à recevoir le vaccin de la COVID-19. Le résultat de ce formulaire est conforme à la stratégie vaccinale du Gouvernement.</p>
+        <p class="intro">Aucune de vos données ne sont enregistrées dans notre système.</p> 
+    </mat-card-content>
+</mat-card>
 <mat-card>
     <mat-card-content>
         <form>
@@ -90,19 +95,23 @@
             </div>
 
         </form>
-
-        <div id="results" *ngIf="displayResult() === true">
-            <div id="Pfizer-BioNTech" class="result">
-                <div class="result1" [ngStyle]="{'background-color' : colorPfizer, 'border-radius' : '10px'}">Pfizer-BioNTech</div>
-            </div>
-
-            <div id="Moderna" class="result">
-                <div class="result2" [ngStyle]="{'background-color' : colorModerna, 'border-radius' : '10px'}">Moderna</div>
-            </div>
-
-            <div id="AstraZeneca" class="result">
-                <div class="result3" [ngStyle]="{'background-color' : colorAstrazeneca, 'border-radius' : '10px'}">AstraZeneca</div>
-            </div>
-    </div>
+        
     </mat-card-content>
 </mat-card>
+
+<div id="results" *ngIf="displayResult() === true">
+    <p class="com">{{commentaire1}}</p>
+    <p>         </p>
+    <p class="com">{{datePossibleVaccination}}</p>
+    <div id="Pfizer-BioNTech" class="result">
+        <div class="result1" [ngStyle]="{'background-color' : colorPfizer, 'border-radius' : '10px'}">Pfizer-BioNTech</div>
+    </div>
+
+    <div id="Moderna" class="result">
+        <div class="result2" [ngStyle]="{'background-color' : colorModerna, 'border-radius' : '10px'}">Moderna</div>
+    </div>
+
+    <div id="AstraZeneca" class="result">
+        <div class="result3" [ngStyle]="{'background-color' : colorAstrazeneca, 'border-radius' : '10px'}">AstraZeneca</div>
+    </div>
+</div>

@@ -6,17 +6,12 @@
 .result{
     background-color : #b92e2e;
     float:left;
-    margin-right: 100px;
+    margin-right: 50px;
     color:white;
     border-radius: 10px;
+    margin-left : 80px;
 }
 
-.result:hover{
-    color : #717472;
-    background-color: white;
-    border-color: #717472;
-    border-width: thick;
-}
 
 .result1{
     padding : 40px;
@@ -39,3 +34,16 @@
     padding-right: 40px;
     font-size: 20px;
 }
+
+.com{
+    font-size : 15px;
+    font-weight: bold;
+    margin-left : 18px;
+    /*text-align : center;*/
+}
+
+.intro{
+    font-size : 15px;
+    font-weight: bold;
+}
+
