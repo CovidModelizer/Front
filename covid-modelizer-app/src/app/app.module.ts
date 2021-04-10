@@ -26,6 +26,7 @@ import { ModeleSvirComponent } from './modelisations/modele-svir/modele-svir.com
 import { ModeleMachineLearningComponent } from './modelisations/modele-machine-learning/modele-machine-learning.component';
 import { DonneesReellesModule } from './donnees-reelles/donnees-reelles.module';
 import { ModelisationsModule } from './modelisations/modelisations.module';
+import { EventEmitterService } from './shared/event-emitter.service';
 
 
 @NgModule({
@@ -49,6 +50,7 @@ import { ModelisationsModule } from './modelisations/modelisations.module';
     RouterModule.forRoot(AppRoutes)
   ],
   providers: [
+    EventEmitterService,
     {
       provide: LocationStrategy,
       useClass: PathLocationStrategy

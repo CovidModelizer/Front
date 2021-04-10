@@ -1,7 +1,8 @@
 import {MediaMatcher} from '@angular/cdk/layout';
-import {AfterViewInit, ChangeDetectorRef, Component, OnDestroy, OnInit, ViewChild} from '@angular/core';
+import {AfterViewInit, ChangeDetectorRef, Component, OnChanges, OnDestroy, OnInit, ViewChild} from '@angular/core';
 import {MenuItems} from '../../shared/menu-items/menu-items';
 import { AppHeaderComponent } from './header/header.component';
+import { EventEmitterService } from '../../shared/event-emitter.service';
 
 
 /** @title Responsive sidenav */
@@ -23,7 +24,8 @@ export class FullComponent implements OnInit, OnDestroy, AfterViewInit {
   constructor(
     changeDetectorRef: ChangeDetectorRef,
     media: MediaMatcher,
-    public menuItems: MenuItems
+    public menuItems: MenuItems,
+    private eventEmitterService: EventEmitterService
   ) {
     this.mobileQuery = media.matchMedia('(min-width: 768px)');
     this._mobileQueryListener = () => changeDetectorRef.detectChanges();
@@ -32,6 +34,10 @@ export class FullComponent implements OnInit, OnDestroy, AfterViewInit {
 
   ngOnInit() {
     this.initTitrePage();
+
+    this.eventEmitterService.subsVar = this.eventEmitterService.invokeChangePageTitleFunction.subscribe((title:string) => {    
+      this.setTitrePage(title); 
+    });
   }
 
   ngOnDestroy(): void {

@@ -7,7 +7,7 @@ import {Observable} from 'rxjs';
 })
 export class ModelisationsService {
 
-  private URL_REST_API = 'http://152.228.165.238:8080/modelisation';
+  private URL_REST_API = 'http://api.covid-modelizer.fr/modelisation';
   public days: Array<any>;
 
   constructor(private http: HttpClient) {
