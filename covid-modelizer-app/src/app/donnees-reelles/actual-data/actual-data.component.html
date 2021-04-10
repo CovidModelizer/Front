@@ -3,7 +3,11 @@
     <div class="d-flex flex-wrap">
       <div>
         <!-- Faire pareil pour les jours précédents en cliquant sur une flèche de gauche -->
-        <mat-card-title>Aujourd'hui</mat-card-title>
+        <mat-card-title>
+          {{donneesJourTitle}}
+          <button id="goOneDayBefore" (click)="goOneDayBeforeOrAfter(-1)" [disabled]="isGoingBackPossible() == false"><img src="assets/images/left-chevron.png"/></button>
+          <button id="goOneDayAfter" (click)="goOneDayBeforeOrAfter(1)" [disabled]="isGoingAfterPossible() == false"><img src="assets/images/right-chevron.png"/></button>        
+        </mat-card-title>
         <mat-card-subtitle>Données reflétant la situation actuelle</mat-card-subtitle>
       </div>
     </div>

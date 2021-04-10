@@ -8,14 +8,18 @@ import {SituationReelle} from '../shared/model/SituationReelle';
 })
 export class DonneesReellesService {
 
-  private URL_REST_API = 'http://152.228.165.238:8080';
+  private URL_REST_API = 'http://api.covid-modelizer.fr/reel';
 
   constructor(private http: HttpClient) {
   }
 
   // ******************* Appels REST ********************
   getAllSituationsReelles(): Observable<any> {
-    return this.http.get(this.URL_REST_API + '/reel/complet');
+    return this.http.get(this.URL_REST_API + '/complet');
+  }
+
+  getSituationReelleByDate(date: string): Observable<any> {
+    return this.http.get(this.URL_REST_API + '/complet/date?date='+date);
   }
 
   // ********************** Autres **********************
