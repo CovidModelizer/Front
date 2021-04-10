@@ -1,11 +1,11 @@
-import {Component, OnInit, Input} from '@angular/core';
-import {SituationReelle} from '../../shared/model/SituationReelle';
+import { Component, OnInit, Input } from '@angular/core';
+import { SituationReelle } from '../../shared/model/SituationReelle';
 import { DonneesReellesService } from '../donnees-reelles.service';
-import {Utils} from '../../shared/utils';
+import { Utils } from '../../shared/utils';
 
 const REAL_DATE_JOUR = new Date();
 const DATE_DEBUT_EPIDEMIE = new Date('2020-03-02'); // recup le 1er élément de getAllSituationsReelles ?
-const DATE_VEILLE = new Date(new Date().valueOf() - 1000*60*60*24);
+const DATE_VEILLE = new Date(new Date().valueOf() - 1000 * 60 * 60 * 24);
 
 @Component({
   selector: 'app-actual-data',
@@ -26,7 +26,7 @@ export class ActualDataComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.dateDonneesAffichees = new Date(this.currentSituationReelle.getDate().valueOf() - 1000*60*60*24);
+    this.dateDonneesAffichees = new Date(this.currentSituationReelle.getDate().valueOf() - 1000 * 60 * 60 * 24);
     this.DATE_JOUR = this.currentSituationReelle.date;
   }
 
@@ -43,7 +43,7 @@ export class ActualDataComponent implements OnInit {
    * @param newTitleDate -1 = jour précédent & 1 = jour suivant
    */
   goOneDayBeforeOrAfter(nbJoursToGo: number): void {
-    if((nbJoursToGo > 0 && this.isGoingAfterPossible()) || (nbJoursToGo < 0 && this.isGoingBackPossible())) {
+    if ((nbJoursToGo > 0 && this.isGoingAfterPossible()) || (nbJoursToGo < 0 && this.isGoingBackPossible())) {
       let dateDonneesAAfficher = Utils.getDayBeforeOrAfterGivenDate(this.dateDonneesAffichees, nbJoursToGo);
       this.donneesReellesService.getSituationReelleByDate(dateDonneesAAfficher).subscribe(data => {
         this.currentSituationReelle = data[0];
@@ -53,17 +53,14 @@ export class ActualDataComponent implements OnInit {
       console.log('ERROR : Action impossible !');
       // ERROR
     }
-    
+
   }
 
   setDonneesJoursTitle(newTitleDate: Date): void {
-    if(Utils.isDate1EqualsDate2(newTitleDate, REAL_DATE_JOUR)) this.donneesJourTitle = 'Aujourd\'hui';
+    if (Utils.isDate1EqualsDate2(newTitleDate, REAL_DATE_JOUR)) this.donneesJourTitle = 'Aujourd\'hui';
     else this.donneesJourTitle = Utils.getDayBeforeOrAfterGivenDate(newTitleDate, 0); // Juste pour format string
     // MaJ la date des données affichées pour le prochain appel
     this.dateDonneesAffichees = new Date(newTitleDate);
   }
-
-  
-
 
 }

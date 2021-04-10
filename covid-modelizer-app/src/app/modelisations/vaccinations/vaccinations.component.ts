@@ -4,16 +4,16 @@ import { DonneesReellesService } from 'src/app/donnees-reelles/donnees-reelles.s
 import { SituationReelle } from 'src/app/shared/model/SituationReelle';
 
 @Component({
-  selector: 'app-vaccin',
-  templateUrl: './vaccin.component.html',
-  styleUrls: ['./vaccin.component.css']
+  selector: 'app-vaccinations',
+  templateUrl: './vaccinations.component.html',
+  styleUrls: ['./vaccinations.component.css']
 })
-export class VaccinComponent implements OnInit {
+export class VaccinationsComponent implements OnInit {
 
   public currentSituationReelle: SituationReelle;
   private route: ActivatedRoute;
   public modele = 'lin'; // On tombe sur le modèle linéaire par défaut
-  public categorie = 'vaccin';
+  public categorie = 'vaccination';
 
   // tslint:disable-next-line:variable-name
   constructor(private _route: ActivatedRoute, private donneesReellesService: DonneesReellesService) {

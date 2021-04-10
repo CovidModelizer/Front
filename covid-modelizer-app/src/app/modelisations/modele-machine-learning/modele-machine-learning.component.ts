@@ -58,7 +58,7 @@ export class ModeleMachineLearningComponent implements OnInit {
           display: true,
           scaleLabel: {
            display: true,
-           labelString: this.categorie === 'vaccin' ? "Nombre de "+this.categorie : "Nombre de "+this.categorie+" positifs",
+           labelString: this.categorie === 'vaccination' ? "Nombre de "+this.categorie : "Nombre de "+this.categorie+" positifs",
           },
          },
         ],
@@ -75,7 +75,7 @@ export class ModeleMachineLearningComponent implements OnInit {
   }
 
   setTitreGraphe(): void {
-    if(this.categorie === 'vaccin') {
+    if(this.categorie === 'vaccination') {
       this.titreGraphe = 'Comparaison vaccinations cumulées réelles et modélisées par jour';
     } else {
       this.titreGraphe = 'Comparaison infections cumulées réelles et modélisées par jour';
@@ -83,7 +83,7 @@ export class ModeleMachineLearningComponent implements OnInit {
   }
 
   setLabelCasOuVaccinsCumules(): void {
-    if(this.categorie === 'vaccin') {
+    if(this.categorie === 'vaccination') {
       this.labelDonneesReellesCumulees = 'Vaccinations réelles';
     } else {
       this.labelDonneesReellesCumulees = 'Infections réelles';
@@ -91,7 +91,7 @@ export class ModeleMachineLearningComponent implements OnInit {
   }
 
   setLabelDonneesModelisees(): void {
-    if(this.categorie === 'vaccin') {
+    if(this.categorie === 'vaccination') {
       this.labelDonneesModelisees = 'Vaccinations modélisées';
     } else {
       this.labelDonneesModelisees = 'Infections modélisées';
@@ -104,7 +104,7 @@ export class ModeleMachineLearningComponent implements OnInit {
 
     // Récupération des données modélisées cumulées à afficher
     let donneesModeliseesCumulees = new Array<number>();
-    if(this.categorie === 'vaccin' || this.categorie === 'cas') {
+    if(this.categorie === 'vaccination' || this.categorie === 'infection') {
       this.modelisationsService.getDonneesModeliseesByModel(this.categorie, MODEL).subscribe(data => {
       dateDebutGraphe = data[0].date;
       for(let elt of data) {
@@ -115,21 +115,21 @@ export class ModeleMachineLearningComponent implements OnInit {
       });
     } else {
       // ERROR
-      console.log('ERROR : categorie doit être égale à \'vaccin\' ou \'cas\' !');
+      console.log('ERROR : categorie doit être égale à \'infection\' \'vaccination\' !');
     }
     this.donneesModeliseesCumulees = donneesModeliseesCumulees;
 
     // Récupération des données réelles cumulées à afficher
     let donneesReellesCumules = new Array<number>();
     this.donneesReellesService.getAllSituationsReelles().subscribe(data => {
-      if(this.categorie === 'vaccin') {
+      if(this.categorie === 'vaccination') {
         for(let elt of data) {
           // On ne récupère que les valeurs à partir de la date de la 1ère prédiction
           if(elt.date >= dateDebutGraphe) {
             donneesReellesCumules.push(Number(elt.nouvellesPremieresInjections));
           }
         }
-      } else if(this.categorie === 'cas') {
+      } else if(this.categorie === 'infection') {
         for(let elt of data) {
           if(elt.date >= dateDebutGraphe) {
             donneesReellesCumules.push(Number(elt.nouveauxCasConfirmes));
@@ -137,7 +137,7 @@ export class ModeleMachineLearningComponent implements OnInit {
         }
       } else {
         // ERROR
-        console.log('ERROR : categorie doit être égale à \'vaccin\' ou \'cas\' !');
+        console.log('ERROR : categorie doit être égale à \'infection\' ou \'vaccination\' !');
       }
     });
     this.donneesReellesCumules = donneesReellesCumules;
