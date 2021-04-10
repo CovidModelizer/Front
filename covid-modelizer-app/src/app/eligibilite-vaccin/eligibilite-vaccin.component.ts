@@ -11,17 +11,20 @@ export class EligibiliteVaccinComponent implements OnInit {
   
 
   public age = '';
-  public enceinte = '';
-  public pro = '';
-  public malade = '';
+  private enceinte = '';
+  private pro = '';
+  private malade = '';
 
   // -1 : rouge, 0 : gris, 1 : vert
-  public eligiblePfizer = 0;
-  public eligibleModerna = 0;
-  public eligibleAstraZeneca = 0;
+  private eligiblePfizer = 0;
+  private eligibleModerna = 0;
+  private eligibleAstraZeneca = 0;
+  private colorPfizer = '';
+  private colorModerna = '';
+  private colorAstrazeneca = ''; 
 
-  public commentaire1 = 'Vous êtes éligible à la vaccination.';
-  public datePossibleVaccination = 'Date de vaccination possible : ';
+  private commentaire1 = 'Vous êtes éligible à la vaccination.';
+  private datePossibleVaccination = 'Date de vaccination possible : ';
 
   constructor() { 
   }
@@ -50,44 +53,35 @@ export class EligibiliteVaccinComponent implements OnInit {
     this.age === LIBELLES_AGES[4])
   }
 
-
   resetValues(niveau:number):void{
-switch(niveau){
-  case(0):{
-    this.enceinte='';
-    this.pro='';
-    this.malade='';
-    break;
+    switch(niveau){
+      case(0):{
+        this.enceinte='';
+        this.pro='';
+        this.malade='';
+        break;
+      }
+      case(1):{
+        this.pro='';
+        this.malade='';
+        break;
+      }
+      case(2):{
+        this.malade='';
+        break;
+      }
+      default:{
+        //Error
+        break;
+      }
+    }
   }
-  case(1):{
-    this.pro='';
-    this.malade='';
-    break;
-  }
-  case(2):{
-    this.malade='';
-    break;
-  }
-  default:{
-    //Error
-    break;
-  }
-}
-
-  }
-  colorPfizer = '';
-  colorModerna = '';
-  colorAstrazeneca = ''; 
 
   // Retourne vrai si eligible a au - un des 3 vaccins dispos
   estEligible(age:string, enceinte:string, pro:string, malade:string): void {
     if(age!==''){
-      console.log('Age avant if ' + age);
-      console.log('This age avant if' + this.age);
       if(age!==this.age) this.resetValues(0);
       this.age = age;
-      console.log('Age après if ' + age);
-      console.log('This age après if' + this.age);
     }
     else if(enceinte!==''){
       if(enceinte!==this.enceinte) this.resetValues(1)
@@ -103,10 +97,8 @@ switch(niveau){
     if(this.displayResult() === false) {
       // C'est pas le moment d'afficher les résultats
     } else {
-      console.log(this.age);
       switch(this.age) {
         case(LIBELLES_AGES[0]): {
-          // TODO : Cadres Vaccins en rouge
           this.colorPfizer = '#b92e2e'; //Rouge
           this.colorModerna = '#b92e2e'; //Rouge
           this.colorAstrazeneca = '#b92e2e'; //Rouge
@@ -118,7 +110,6 @@ switch(niveau){
         }
         case(LIBELLES_AGES[1]): {
           if(this.enceinte === 'oui') {
-            // TODO : Cadres Vaccins en gris (pas sûre de l'éligiblité)
             this.colorPfizer = '#717472'; //Gris
             this.colorModerna = '#717472'; //Gris
             this.colorAstrazeneca = '#717472'; //Gris
@@ -160,14 +151,13 @@ switch(niveau){
           }
           break;
         }
-        case(LIBELLES_AGES[3] || LIBELLES_AGES[2]): {
+        case(LIBELLES_AGES[2] || LIBELLES_AGES[3]): {
           if(this.pro === 'oui') {
             this.colorPfizer = '#168838';
             this.colorModerna = '#168838';
             this.eligiblePfizer = 1;
             this.eligibleModerna = 1;
             if(this.age === LIBELLES_AGES[2]){
-              console.log('pro KO');
               this.eligibleAstraZeneca = -1;
               this.colorAstrazeneca = '#b92e2e'; //Rouge
             }
@@ -182,7 +172,6 @@ switch(niveau){
               this.eligiblePfizer = 1;
               this.eligibleModerna = 1;
               if(this.age === LIBELLES_AGES[2]){
-                console.log('malade KO');
                 this.eligibleAstraZeneca = -1;
                 this.colorAstrazeneca = '#b92e2e'; //Rouge
               }
@@ -221,15 +210,16 @@ switch(niveau){
           break;
         }
         default: {
-          console.log('age KO');
+          console.log('age KO: ' + this.age);
           break;
         }
       }
     }
   }
 
-
-
+  // TODO
+  // Pas de style au survol des cadres de résultats?
+  // Montrer les choix sélectionnés (boutons plus gris/bordure marquée/avec un effet qui reste/autre ?)
 }
 
 
