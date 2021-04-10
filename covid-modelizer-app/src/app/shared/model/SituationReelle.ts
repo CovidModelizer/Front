@@ -1,45 +1,69 @@
 export class SituationReelle {
 
-	casConfirmes: string;
-	casConfirmesEhpad: string;
-	casPossiblesEhpad: string;
-	cumulPremieresInjections: string;
 	date: Date;
-	deces: string;
-	decesEhpad: string; 
-	gueris: string;
+	r0: string;
+	cumulCasConfirmes: string;
+	nouveauxCasConfirmes: string;
+	cumulCasConfirmesEhpad: string;
+	nouveauxCasConfirmesEhpad: string;
+	casPossiblesEhpad: string;
+	cumulGueris: string;
+	nouveauxGueris: string;
+	cumulDeces: string;
+	nouveauxDeces: string;
+	cumulDecesEhpad: string;
+	nouveauxDecesEhpad: string;
+	reanimation: string; 
 	hospitalises: string;
-	livraisonsCumulNombreDosesModerna: string; 
-	livraisonsCumulNombreDosesPfizer: string; 
-	livraisonsCumulNombreTotalDoses: string; 
+	testsRealises: string;
+	testsPositifs: string; 
 	nouvellesHospitalisations: string;
-	nouvellesPremieresInjections: string; 
 	nouvellesReanimations: string;
+	cumulPremieresInjections: string;
+	nouvellesPremieresInjections: string; 
+	stockNombreTotalDoses: string; 
+	stockNombreDosesPfizer: string; 
+	stockNombreDosesModerna: string; 
+	stockEhpadNombreDosesPfizer: string; 
+	cumulLivraisonsNombreTotalDoses: string;
+	nouvellesLivraisonsNombreTotalDoses: string;
+	cumulLivraisonsNombreDosesPfizer: string;
+	nouvellesLivraisonsNombreDosesPfizer: string;
+	cumulLivraisonsNombreDosesModerna: string;
+	nouvellesLivraisonsNombreDosesModerna: string;
+	totalPrisesRendezVousSemaine: string;
 	prisesRendezVousSemaineRang1: string; 
 	prisesRendezVousSemaineRang2: string; 
-	r0: string;
-	reanimation: string; 
-	stockEhpadNombreDosesPfizer: string; 
-	stockNombreDosesModerna: string; 
-	stockNombreDosesPfizer: string; 
-	stockNombreTotalDoses: string; 
-	testsPositifs: string; 
-	testsRealises: string;
-	totalPrisesRendezVousSemaine: string;
+	sirS: string;
+	sirI: string;
+	sirR: string;
+	svirS: string;
+	svirV: string;
+	svirI: string;
+	svirR: string;
+	svirNouveauxTauxVaccination: string;
 
 	constructor() {
-		this.casConfirmes = '';
-		this.casConfirmesEhpad = '';
+		this.nouveauxCasConfirmes = '';
+		this.cumulCasConfirmes = '';
+		this.nouveauxCasConfirmesEhpad = '';
+		this.cumulCasConfirmesEhpad = '';
 		this.casPossiblesEhpad = '';
 		this.cumulPremieresInjections = '';
 		this.date = new Date();
-		this.deces = '';
-		this.decesEhpad = ''; 
-		this.gueris = '';
+		this.nouveauxDeces = '';
+		this.cumulDeces = '';
+		this.nouveauxDecesEhpad = '';
+		this.cumulDecesEhpad = ''; 
+		this.nouveauxGueris = '';
+		this.cumulGueris = '';
 		this.hospitalises = '';
-		this.livraisonsCumulNombreDosesModerna = ''; 
-		this.livraisonsCumulNombreDosesPfizer = ''; 
-		this.livraisonsCumulNombreTotalDoses = ''; 
+		this.nouvellesLivraisonsNombreTotalDoses = '';
+		this.cumulLivraisonsNombreTotalDoses = ''; 
+		this.cumulLivraisonsNombreDosesPfizer = '';
+		this.nouvellesLivraisonsNombreDosesPfizer = '';
+		this.cumulLivraisonsNombreDosesModerna = '';
+		this.nouvellesLivraisonsNombreDosesModerna = ''; 
 		this.nouvellesHospitalisations = '';
 		this.nouvellesPremieresInjections = ''; 
 		this.nouvellesReanimations = '';
@@ -54,6 +78,14 @@ export class SituationReelle {
 		this.testsPositifs = ''; 
 		this.testsRealises = '';
 		this.totalPrisesRendezVousSemaine = '';
+		this.sirS = '';
+		this.sirI = '';
+		this.sirR = '';
+		this.svirS = '';
+		this.svirV = '';
+		this.svirI = '';
+		this.svirR = '';
+		this.svirNouveauxTauxVaccination = '';
 	}
 
 	/*
@@ -90,4 +122,12 @@ export class SituationReelle {
 		this.totalPrisesRendezVousSemaine = totalPrisesRendezVousSemaine;
   	}
   	*/
+
+	getDate(): Date {
+		return this.date;
+	}
+
+	setDate(newDate: Date): void {
+		this.date = newDate;
+	}
 }

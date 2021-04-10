@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { EventEmitterService } from '../../shared/event-emitter.service';
 
 @Component({
   selector: 'app-modelisations',
@@ -8,7 +9,7 @@ import { Router } from '@angular/router';
 })
 export class ModelisationsComponent implements OnInit {
 
-  constructor(private router: Router) {
+  constructor(private router: Router, private eventEmitterService: EventEmitterService) {
   }
 
   ngOnInit(): void {
@@ -16,6 +17,22 @@ export class ModelisationsComponent implements OnInit {
 
   goTo(path: string): void {
     this.router.navigate([path]);
+    let pageTitle = this.setPageTitleByPath(path);
+    this.eventEmitterService.onModelisationsComponentButtonClick(pageTitle);
   }
+
+  private setPageTitleByPath(path: string) {
+    let pageTitle = '';
+    if (path === 'infections') {
+      pageTitle = 'Infections';
+    } else if (path === 'vaccinations') {
+      pageTitle = 'Vaccinations';
+    } else {
+      // ERROR
+    }
+    return pageTitle;
+  }
+
+
 
 }

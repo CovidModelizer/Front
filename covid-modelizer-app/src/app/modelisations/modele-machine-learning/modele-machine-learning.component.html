@@ -1,1 +1,20 @@
-<p>modele-machine-learning works!</p>
+<mat-card>
+  <mat-card-content>
+    <div class="d-flex flex-wrap">
+      <div>
+        <mat-card-title>Temporalité</mat-card-title>
+        <mat-card-subtitle>{{ titreGraphe }}</mat-card-subtitle>
+      </div>
+    </div>
+    <div class="chart-wrapper">
+      <canvas baseChart
+              [datasets]="chartData"
+              [labels]="chartLabels"
+              [options]="chartOptions"
+              [legend]="chartLegend"
+              [chartType]="chartType">
+      </canvas>
+    </div>
+  </mat-card-content>
+</mat-card>
+  
