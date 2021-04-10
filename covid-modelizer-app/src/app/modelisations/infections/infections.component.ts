@@ -10,7 +10,7 @@ export class InfectionsComponent implements OnInit {
 
   private route: ActivatedRoute;
   public modele = 'lin'; // On tombe sur le modèle linéaire par défaut
-  public categorie = 'cas';
+  public categorie = 'infection';
 
   // tslint:disable-next-line:variable-name
   constructor(private _route: ActivatedRoute) {

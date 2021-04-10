@@ -75,7 +75,7 @@ export class ModeleSirComponent implements OnInit {
 
     // Récupération des données modélisées cumulées à afficher
     let donneesModeliseesCumulees = new Array<number>();
-    this.modelisationsService.getDonneesModeliseesByModel('cas', MODEL).subscribe(data => {
+    this.modelisationsService.getDonneesModeliseesByModel('infection', MODEL).subscribe(data => {
     dateDebutGraphe = data[0].date;
     for(let elt of data) {
       donneesModeliseesCumulees.push(Number(elt.value));

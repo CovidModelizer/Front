@@ -23,9 +23,9 @@ export class ModelisationsComponent implements OnInit {
 
   private setPageTitleByPath(path: string) {
     let pageTitle = '';
-    if(path === 'cas') {
+    if (path === 'infections') {
       pageTitle = 'Infections';
-    } else if(path === 'vaccin') {
+    } else if (path === 'vaccinations') {
       pageTitle = 'Vaccinations';
     } else {
       // ERROR
