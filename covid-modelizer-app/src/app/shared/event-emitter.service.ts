@@ -14,7 +14,6 @@ export class EventEmitterService {
   }
 
   onModelisationsComponentButtonClick(titre: string) {    
-    console.log(titre);
     this.invokeChangePageTitleFunction.emit(titre);    
   }
 }

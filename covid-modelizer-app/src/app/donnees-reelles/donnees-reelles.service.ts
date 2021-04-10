@@ -10,6 +10,7 @@ export class DonneesReellesService {
 
   private URL_REST_API = 'http://api.covid-modelizer.fr/reel';
 
+
   constructor(private http: HttpClient) {
   }
 
@@ -46,7 +47,6 @@ export class DonneesReellesService {
         console.log('ERROR : categorie doit être égale à \'vaccin\' ou \'cas\' !');
       }
     });
-    console.log(donneesReellesCumules);
     return donneesReellesCumules;
   }
 
