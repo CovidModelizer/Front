@@ -6,7 +6,7 @@ import { Subscription } from 'rxjs/internal/Subscription';
 })
 export class EventEmitterService {
 
-  changePageTitle = new EventEmitter();    
+  invokeChangePageTitleFunction = new EventEmitter();    
   subsVar: Subscription;
 
   constructor() { 
@@ -15,6 +15,6 @@ export class EventEmitterService {
 
   onModelisationsComponentButtonClick(titre: string) {    
     console.log(titre);
-    this.changePageTitle.emit(titre);    
+    this.invokeChangePageTitleFunction.emit(titre);    
   }
 }
