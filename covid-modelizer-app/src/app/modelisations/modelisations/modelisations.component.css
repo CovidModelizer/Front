@@ -1,0 +1,12 @@
+.titre{
+    display: inline-block;
+    margin-right: 10px;
+}
+.arrow{
+    display: inline-block;
+    margin-bottom: 7px;
+}
+
+.cardElement:hover{
+   color: gray;
+}
