@@ -27,6 +27,7 @@ import { ModeleMachineLearningComponent } from './modelisations/modele-machine-l
 import { DonneesReellesModule } from './donnees-reelles/donnees-reelles.module';
 import { ModelisationsModule } from './modelisations/modelisations.module';
 import { EventEmitterService } from './shared/event-emitter.service';
+import { ContributeursComponent } from './contributeurs/contributeurs.component';
 
 
 @NgModule({
@@ -36,7 +37,8 @@ import { EventEmitterService } from './shared/event-emitter.service';
     AppHeaderComponent,
     SpinnerComponent,
     AppSidebarComponent,
-    EligibiliteVaccinComponent
+    EligibiliteVaccinComponent,
+    ContributeursComponent
   ],
   imports: [
     CommonModule,

@@ -9,6 +9,7 @@ const MENUITEMS = [
     ]},
   {state: 'eligibilite-vaccin', type: 'intern_link', name: 'Se faire vacciner', icon: 'assets/images/injection.png'},
   {state: 'null', type: 'extern_link', name: 'API', icon: 'assets/images/api.png'},
+  {state: 'contributeurs', type: 'intern_link', name: 'Contributeurs', icon: 'assets/images/group.png'},
 ];
 
 @Injectable()

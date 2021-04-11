@@ -9,4 +9,5 @@
 
 .cardElement:hover{
    color: gray;
+   cursor: pointer;
 }
