@@ -4,41 +4,35 @@
 }
 
 .result{
-    background-color : #b92e2e;
-    float:left;
-    margin-right: 50px;
+    display: inline-block;
     color:white;
     border-radius: 10px;
-    margin-left : 80px;
+    margin : 2%;
+    margin-left : 11%;
 }
 
 
 .result1{
-    padding : 40px;
     font-size: 20px;
+    padding : 20px;
 }
 
 
 .result2{
-    padding-top : 40px;
-    padding-bottom : 40px;
-    padding-left: 60px;
-    padding-right: 60px;
     font-size: 20px;
+    padding-top : 20px;
+    padding-bottom : 20px;
+    padding-right : 40px;
+    padding-left : 40px;
 }
 
 .result3{
-    padding-top : 40px;
-    padding-bottom : 40px;
-    padding-left: 40px;
-    padding-right: 40px;
     font-size: 20px;
+    padding : 20px;
 }
 
 .com{
     font-size : 15px;
     font-weight: bold;
-    margin-left : 18px;
-    /*text-align : center;*/
+    text-align : center;
 }
-
