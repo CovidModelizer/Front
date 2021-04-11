@@ -1,5 +1,27 @@
 <mat-card>
   <mat-card-content>
+    <div class="d-flex flex-wrap">
+      <div>
+        <mat-card-title>Données clefs</mat-card-title>
+        <mat-card-subtitle>Prédictions</mat-card-subtitle>
+      </div>
+    </div>
+
+    <div class="m-t-30" fxLayout="row" fxLayoutWrap="wrap">
+      <div class="datesClesEstimees" class="l1" fxFlex="100" fxFlex.gt-sm="50%" fxFlex.gt-xs="50%">
+        <h3 class="m-0 font-light">{{ nbCasJ14 }}</h3>
+        <p>Nombre d'infectés J+21</p>
+      </div>
+      <div class="datesClesEstimees" class="l1" fxFlex="100" fxFlex.gt-sm="50%" fxFlex.gt-xs="50%">
+        <h3 class="m-0 font-light">{{isConfinement()}}</h3>
+        <p>Confinement prévu</p>
+      </div>
+    </div>
+  </mat-card-content>
+</mat-card>
+
+<mat-card>
+  <mat-card-content>
      <div class="d-flex flex-wrap">
       <div>
         <mat-card-title>Temporalité</mat-card-title>
@@ -17,4 +39,10 @@
     </div>
   </mat-card-content>
 </mat-card>
-  
+
+<mat-card>
+  <mat-card-content>
+      <h3>Modélisation SIR</h3>
+      <p class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse rutrum ligula sit amet convallis convallis. Nulla facilisi. Nam nec tincidunt massa. Phasellus maximus velit felis, sed convallis lorem feugiat sed. Mauris mollis molestie arcu eu porttitor. Morbi pellentesque mollis nisi a cursus. Nam porttitor ante ac risus pharetra varius. Phasellus ut vulputate nisl, vel maximus lorem. Aenean volutpat varius nisl quis dignissim. Aliquam facilisis ornare dui, vitae dapibus mauris sollicitudin ut. Vivamus ac iaculis velit, vel convallis diam. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Sed fermentum nisl non felis efficitur, eu feugiat dui imperdiet. Praesent sed euismod dolor. Praesent sit amet pharetra risus. Aenean euismod tortor ac consectetur scelerisque. </p>
+  </mat-card-content>
+</mat-card>

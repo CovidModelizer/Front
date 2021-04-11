@@ -1,24 +1,3 @@
-<mat-card>
-  <mat-card-content>
-    <div class="d-flex flex-wrap">
-      <div>
-        <mat-card-title>Dates clés</mat-card-title>
-        <mat-card-subtitle>Dates estimées</mat-card-subtitle>
-      </div>
-    </div>
-
-    <div class="m-t-30" fxLayout="row" fxLayoutWrap="wrap">
-      <div class="datesClesEstimees" fxFlex="100" fxFlex.gt-sm="50%" fxFlex.gt-xs="50%">
-        <h3 class="m-0 font-light">?</h3>
-        <p>Confinement</p>
-      </div>
-      <div class="datesClesEstimees" fxFlex="100" fxFlex.gt-sm="50%" fxFlex.gt-xs="50%">
-        <h3 class="m-0 font-light">?</h3>
-        <p>Immunité collective</p>
-      </div>
-    </div>
-  </mat-card-content>
-</mat-card>
 <div fxLayout="row wrap">
   <div *ngIf="modele === '' || modele === undefined" fxFlex="100" fxFlex.gt-lg="100" fxFlex.gt-md="100" fxFlex.gt-xs="100">
     <app-modele-lineaire [categorie]="categorie"></app-modele-lineaire>

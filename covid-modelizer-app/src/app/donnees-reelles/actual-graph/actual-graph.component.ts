@@ -31,7 +31,7 @@ export class ActualGraphComponent implements OnInit {
 
   ngOnInit(): void {
     this.realValueData = this.allCasParJour;
-    this.lineChartData = [{data: this.realValueData, label: 'Real value', lineTension: 0}];
+    this.lineChartData = [{data: this.realValueData, label: 'Infections cumulées', lineTension: 0}];
     this.lineChartLabels = Utils.getAllDaysSinceTheBeginning(this.days);
   }
 
