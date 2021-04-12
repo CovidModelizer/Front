@@ -9,22 +9,23 @@
     <!-- Ligne 1 -->
     <div class="m-t-30" fxLayout="row" fxLayoutWrap="wrap">
       <div class="eltActualData" fxFlex="100" fxFlex.gt-sm="33,33%" fxFlex.gt-xs="33,33%">
-        <h3 class="m-0 font-light">+ {{currentSituationReelle.nouvellesLivraisonsNombreDosesPfizer}}</h3>
-        <p>Livraisons de doses Pfizer<br>(sur la semaine)</p>
+        <h3 class="m-0 font-medium">+ {{currentSituationReelle.nouvellesLivraisonsNombreDosesPfizer}}</h3>
+        <p class="legende">Livraisons de doses Pfizer<br>(sur la semaine)</p>
       </div>
       <div class="eltActualData" fxFlex="100" fxFlex.gt-sm="33,33%" fxFlex.gt-xs="33,33%">
-        <h3 class="m-0 font-light">+ {{currentSituationReelle.nouvellesPremieresInjections}}</h3>
-        <p style="font-size: 14px;"><strong>Nouvelles premières injections</strong></p>
+        <h3 class="m-0 font-medium">+ {{currentSituationReelle.nouvellesPremieresInjections}}</h3>
+        <p style="font-size: large; font-weight: bold;">Nouvelles premières injections</p>
       </div>
       <div class="eltActualData" fxFlex="100" fxFlex.gt-sm="33,33%" fxFlex.gt-xs="33,33%">
-        <h3 class="m-0 font-light">+ {{currentSituationReelle.nouvellesLivraisonsNombreDosesModerna}}</h3>
-        <p>Livraisons de doses Moderna<br>(sur la semaine)</p>
+        <h3 class="m-0 font-medium">+ {{currentSituationReelle.nouvellesLivraisonsNombreDosesModerna}}</h3>
+        <p class="legende">Livraisons de doses Moderna<br>(sur la semaine)</p>
       </div>
     </div>
   </mat-card-content>
 </mat-card>
 <div fxLayout="row wrap">
-  <div *ngIf="modele === '' || modele === undefined" fxFlex="100" fxFlex.gt-lg="100" fxFlex.gt-md="100" fxFlex.gt-xs="100">
+  <div *ngIf="modele === 'lin' || modele === undefined" fxFlex="100" fxFlex.gt-lg="100" fxFlex.gt-md="100"
+    fxFlex.gt-xs="100">
     <app-modele-lineaire [categorie]="categorie"></app-modele-lineaire>
   </div>
   <div *ngIf="modele == 'svir'" fxFlex="100" fxFlex.gt-lg="100" fxFlex.gt-md="100" fxFlex.gt-xs="100">

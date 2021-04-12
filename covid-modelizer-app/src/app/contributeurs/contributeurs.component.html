@@ -1,98 +1,38 @@
-<mat-card  fxFlex.gt-sm="100%" fxFlex.gt-xs="100%" class="oh text-center little-profile">
-    <img mat-card-image src="assets/images/Background 1.jpg" alt="Photo of a Shiba Inu">
+<mat-card *ngFor="let contrib of contributeurs" fxFlex.gt-sm="100%" fxFlex.gt-xs="100%"
+    class="oh text-center little-profile">
+    <img mat-card-image src="assets/images/Background 1.jpg" alt="background-image">
     <mat-card-content>
         <div class="pro-img">
-            <img src="assets/images/Abdel.jpeg" width="100" alt="user" class="img-circle">
+            <img src="{{contrib.lien_photo}}" width="100" alt="user" class="img-circle">
         </div>
-        <h3 class="m-b-0">Abdel<br>Benamara</h3>
-        <h6 class="m-t-0 ">Data Scientist &amp; Développeur FullStack</h6>
-        <mat-card-actions>
-            <button mat-raised-button color="warn" >Github</button>
-        </mat-card-actions>
-        <mat-card-actions>
-            <button mat-raised-button color="warn">LinkedIn</button>
-        </mat-card-actions>
+        <h3 class="m-b-0">{{contrib.prenom}} <br> {{contrib.nom}}</h3>
+        <br>
+        <h4 class="m-t-0 poste_projet">Contributions : <br> {{contrib.poste_projet}}</h4>
+        <br>
+        <br>
+        <div class="m-t-30 actual-data" fxLayout="row" fxLayoutWrap="wrap">
+            <div class="logo1" fxFlex="100" fxFlex.gt-sm="45%" fxFlex.gt-xs="45%">
+                <a href="{{contrib.lien_github}}">
+                    <img class="github-logo" src="assets/images/github.png" />
+                </a>
+            </div>
+            <div class="logo2" fxFlex="100" fxFlex.gt-sm="45%" fxFlex.gt-xs="45%">
+                <a href="{{contrib.lien_linkedin}}">
+                    <img class="linkedin-logo" src="assets/images/contributeurs-linkedin.png" />
+                </a>
+            </div>
+        </div>
         <div>
             <br>
-            <h3 class="m-0 font-light">MIAGE Paris 1 APP</h3>
+            <h3 class="m-0 font-light">{{contrib.parcours_univ_actuel}}</h3>
+            <br>
+            <!--
+            <hr>
+            <h3 class="m-0 font-light poste_pro">{{contrib.poste_pro}}</h3>
             <br>
             <hr>
-            <h3 class="m-0 font-light">Apprenti innovation Analyst chez BNP Paribas</h3>
-            <br>
-            <hr>
-            <h3 class="m-0 font-light">Certifié Stanford Machine Learning</h3>
-        </div>
-    </mat-card-content>
-</mat-card>
-
-<mat-card fxFlex.gt-sm="100%" fxFlex.gt-xs="100%" class="oh text-center little-profile">
-    <img mat-card-image src="assets/images/Background 1.jpg" alt="Photo of a Shiba Inu">
-    <mat-card-content>
-        <div class="pro-img">
-            <img src="assets/images/David.PNG" width="100" alt="user" class="img-circle">
-        </div>
-        <h3 class="m-b-0">David<br>Ekchajzer</h3>
-        <h6 class="m-t-0 ">Développeur FullStack &amp; Infogérant</h6>
-        <mat-card-actions>
-            <button mat-raised-button color="warn">Github</button>
-        </mat-card-actions>
-        <div>
-            <br>
-            <h3 class="m-0 font-light">MIAGE Paris 1 APP</h3>
-            <br>
-            <hr>
-            <h3 class="m-0 font-light">Apprenti chargé de projet à OMC</h3>
-            <br>
-            <hr>
-            <h3 class="m-0 font-light">Spécialisation Numérique Responsable</h3>
-        </div>
-    </mat-card-content>
-</mat-card>
-
-<mat-card  fxFlex.gt-sm="100%" fxFlex.gt-xs="100%" class="oh text-center little-profile">
-    <img mat-card-image src="assets/images/Background 1.jpg" alt="Photo of a Shiba Inu">
-    <mat-card-content>
-        <div class="pro-img">
-            <img src="assets/images/Mathieu.jpeg" width="100" alt="user" class="img-circle">
-        </div>
-        <h3 class="m-b-0">Mathieu<br>Ridet</h3>
-        <h6 class="m-t-0 ">Développeur FullStack &amp; Chargé de projet front</h6>
-        <mat-card-actions>
-            <button mat-raised-button color="warn">Github</button>
-        </mat-card-actions>
-        <div>
-            <br>
-            <h3 class="m-0 font-light">MIAGE Paris 1 APP</h3>
-            <br>
-            <hr>
-            <h3 class="m-0 font-light">Apprenti Développeur FullStack chez Covea</h3>
-            <br>
-            <hr>
-            <h3 class="m-0 font-light">Spring Batch - Angular</h3>
-        </div>
-    </mat-card-content>
-</mat-card>
-
-<mat-card fxFlex.gt-sm="100%" fxFlex.gt-xs="100%" class="oh text-center little-profile">
-    <img mat-card-image src="assets/images/Background 1.jpg" alt="Photo of a Shiba Inu">
-    <mat-card-content>
-        <div class="pro-img">
-            <img src="assets/images/Sophia.jpeg" width="100" alt="user" class="img-circle">
-        </div>
-        <h3 class="m-b-0">Sophia<br>Yalap</h3>
-        <h6 class="m-t-0 ">Data Scientist &amp; Développeuse FullStack</h6>
-        <mat-card-actions>
-            <button mat-raised-button color="warn">Github</button>
-        </mat-card-actions>
-        <div>
-            <br>
-            <h3 class="m-0 font-light">MIAGE Paris 1 APP</h3>
-            <br>
-            <hr>
-            <h3 class="m-0 font-light">Apprentie Chef de projet Data & Intelligence Artificielle chez Saint-Gobain</h3>
-            <br>
-            <hr>
-            <h3 class="m-0 font-light">Certifiée Stanford Machine Learning</h3>
+            <h3 class="m-0 font-light">{{contrib.specialisations}}</h3>
+            -->
         </div>
     </mat-card-content>
 </mat-card>

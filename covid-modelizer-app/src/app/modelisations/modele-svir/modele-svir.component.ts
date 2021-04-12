@@ -13,10 +13,10 @@ const MODEL = 'SVR';
 })
 export class ModeleSvirComponent implements OnInit {
 
-  titreGraphe = 'Comparaison infections cumulées réelles et modélisées par jour';
+  titreGraphe = 'Mise en comparaison entre les vaccinations cumulées réelles et modélisées';
   donneesReellesCumules: number[] | undefined;
   donneesModeliseesCumulees: number[] | undefined;
-  labelDonneesReellesCumulees = 'Vaccinations réelles réalisées';
+  labelDonneesReellesCumulees = 'Vaccinations réelles';
   labelDonneesModelisees = 'Vaccinations modélisées';
   days: any[] | undefined;
   chartData: ChartDataSets[] | undefined;
@@ -53,7 +53,7 @@ export class ModeleSvirComponent implements OnInit {
           display: true,
           scaleLabel: {
            display: true,
-           labelString: "Nombre de vaccinations",
+           labelString: "Cumul de vaccinations",
           },
          },
         ],

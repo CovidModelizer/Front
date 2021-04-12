@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import {ChartDataSets, ChartOptions, ChartType} from 'chart.js';
-import {Label} from 'ng2-charts';
-import {ModelisationsService} from '../modelisations.service';
-import {DonneesReellesService} from '../../donnees-reelles/donnees-reelles.service';
+import { ChartDataSets, ChartOptions, ChartType } from 'chart.js';
+import { Label } from 'ng2-charts';
+import { ModelisationsService } from '../modelisations.service';
+import { DonneesReellesService } from '../../donnees-reelles/donnees-reelles.service';
 
 const MODEL = 'SIR';
 
@@ -13,9 +13,9 @@ const MODEL = 'SIR';
 })
 export class ModeleSirComponent implements OnInit {
 
-  titreGraphe = 'Comparaison infections cumulées réelles et modélisées par jour';
+  titreGraphe = 'Mise en comparaison entre le total actuel d\'infections réelles et modélisées';
   donneesReellesCumules: number[] | undefined;
-  nbCasJ14: any = '';
+  nbCasJ21: any = '';
   donneesModeliseesCumulees: number[] | undefined;
   labelDonneesReellesCumulees = 'Infections réelles';
   labelDonneesModelisees = 'Infections modélisées';
@@ -50,23 +50,23 @@ export class ModeleSirComponent implements OnInit {
       responsive: true,
       scales: {
         yAxes: [
-         {
-          display: true,
-          scaleLabel: {
-           display: true,
-           labelString: "Nombre de cas positifs",
+          {
+            display: true,
+            scaleLabel: {
+              display: true,
+              labelString: "Total de personnes encore infectées",
+            },
           },
-         },
         ],
         xAxes: [
-         {
-          scaleLabel: {
-           display: true,
-           labelString: "Date",
+          {
+            scaleLabel: {
+              display: true,
+              labelString: "Date",
+            },
           },
-         },
         ],
-       },
+      },
     };
   }
 
@@ -77,31 +77,31 @@ export class ModeleSirComponent implements OnInit {
     // Récupération des données modélisées cumulées à afficher
     let donneesModeliseesCumulees = new Array<number>();
     this.modelisationsService.getDonneesModeliseesByModel('infection', MODEL).subscribe(data => {
-    dateDebutGraphe = data[0].date;
-    this.nbCasJ14 = data[data.length-1].value;
-    for(let elt of data) {
-      donneesModeliseesCumulees.push(Number(elt.value));
-      // Récupération de la plage de temps sur laquelle faire le graphe
-      this.days?.push(elt.date);
-    }
+      dateDebutGraphe = data[0].date;
+      this.nbCasJ21 = data[data.length - 1].value;
+      for (let elt of data) {
+        donneesModeliseesCumulees.push(Number(elt.value));
+        // Récupération de la plage de temps sur laquelle faire le graphe
+        this.days?.push(elt.date);
+      }
     });
     this.donneesModeliseesCumulees = donneesModeliseesCumulees;
 
     // Récupération des données réelles cumulées à afficher
     let donneesReellesCumules = new Array<number>();
     this.donneesReellesService.getAllSituationsReelles().subscribe(data => {
-      for(let elt of data) {
+      for (let elt of data) {
         // On ne récupère que les valeurs à partir de la date de la 1ère prédiction
-        if(elt.date >= dateDebutGraphe) {
+        if (elt.date >= dateDebutGraphe) {
           donneesReellesCumules.push(Number(elt.sirI));
         }
       }
     });
     this.donneesReellesCumules = donneesReellesCumules;
   }
-  
+
   isConfinement(): string {
-    if( this.nbCasJ14 > 30000){
+    if (this.nbCasJ21 > 30000) {
       return "OUI";
     }
     return "NON";

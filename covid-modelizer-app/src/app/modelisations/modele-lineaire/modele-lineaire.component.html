@@ -9,12 +9,12 @@
 
     <div class="m-t-30" fxLayout="row" fxLayoutWrap="wrap">
       <div class="datesClesEstimees" class="l1" fxFlex="100" fxFlex.gt-sm="50%" fxFlex.gt-xs="50%">
-        <h3 class="m-0 font-light">+ {{ nbCasJ14 }}</h3>
-        <p>Nouvelles infections J+21</p>
+        <h3 class="m-0 font-medium">+ {{ nbCasJ21 }}</h3>
+        <p class="legende">Nouvelles infections J+21</p>
       </div>
       <div class="datesClesEstimees" class="l1" fxFlex="100" fxFlex.gt-sm="50%" fxFlex.gt-xs="50%">
-        <h3 class="m-0 font-light">{{isConfinement()}}</h3>
-        <p>Confinement prévu</p>
+        <h3 class="m-0 font-medium">{{isConfinement()}}</h3>
+        <p class="legende">Confinement prévu</p>
       </div>
     </div>
   </mat-card-content>
@@ -24,33 +24,46 @@
   <mat-card-content>
     <div class="d-flex flex-wrap">
       <div>
-        <mat-card-title>Temporalité</mat-card-title>
+        <mat-card-title>Modélisation du nombre cumulé {{deter}}{{ categorie }}s</mat-card-title>
         <mat-card-subtitle>{{ titreGraphe }}</mat-card-subtitle>
       </div>
     </div>
     <div class="chart-wrapper">
-      <canvas baseChart
-              [datasets]="chartData"
-              [labels]="chartLabels"
-              [options]="chartOptions"
-              [legend]="chartLegend"
-              [chartType]="chartType">
+      <canvas baseChart [datasets]="chartData" [labels]="chartLabels" [options]="chartOptions" [legend]="chartLegend"
+        [chartType]="chartType">
       </canvas>
     </div>
   </mat-card-content>
 </mat-card>
 
-<mat-card *ngIf="categorie==='infection'">
+<mat-card *ngIf="categorie === 'infection'">
   <mat-card-content>
-      <h3>Modélisation linéaire</h3>
-      <p class="text">Le modèle linéaire utilisé ici est un modèle de régression linéaire "simple" avec une seule variable qui est le cumul de personnes infectées en France depuis le début de la pandémie. Ce modèle nous permet de prédire le nombre cumulé de personnes testées positives à la COVID-19 dans les jours à venir.</p>
+    <h3>Modélisation linéaire</h3>
+    <p class="text">Le modèle linéaire utilisé ici est un modèle de régression linéaire à une seule variable <span
+        class="text" style="font-family: 'Verdana'; font-style: italic;">x1</span> :
+    </p>
+    <ul class="text">
+      <li><span class="text variable">x1</span> : le
+        cumul de personnes infectées en France depuis le début de la pandémie</li>
+    </ul>
+    <br>
+    <p class="text">Ce modèle nous permet de prédire le nombre cumulé de personnes testées positives à la COVID-19 dans
+      les jours à venir.</p>
   </mat-card-content>
 </mat-card>
 
-<mat-card *ngIf="categorie==='vaccination'">
+<mat-card *ngIf="categorie === 'vaccination'">
   <mat-card-content>
-      <h3>Modélisation linéaire</h3>
-      <p class="text">Le modèle linéaire utilisé ici est un modèle de régression linéaire "simple" avec une seule variable qui est le nombre de doses injectées en France depuis le début de la pandémie. Ce modèle nous permet de prédire le nombre cumulé de doses injectées dans les jours à venir.</p>
+    <h3>Modélisation linéaire</h3>
+    <p class="text">Le modèle linéaire utilisé ici est un modèle de régression linéaire à une seule variable <span
+        class="text variable">x1</span> :
+    </p>
+    <ul class="text">
+      <li><span class="text variable">x1</span> : le cumul de premières
+        injections de vaccin contre la COVID-19 en France depuis le début de la pandémie</li>
+    </ul>
+    <br>
+    <p class="text">Ce modèle nous permet de prédire le nombre cumulé de premières doses qui seront injectées dans les
+      jours à venir.</p>
   </mat-card-content>
 </mat-card>
-
