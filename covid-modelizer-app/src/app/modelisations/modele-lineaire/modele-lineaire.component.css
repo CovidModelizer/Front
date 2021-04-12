@@ -1,3 +1,18 @@
-.l1{
+.l1 {
     text-align: center;
+}
+
+mat-card-title {
+    font-family: 'Trebuchet MS';
+    font-size: large;
+    font-weight: bold;
+}
+
+mat-card-subtitle, .legende, .text {
+    font-size: medium;
+}
+
+.variable {
+    font-family: 'Verdana';
+    font-style: italic;
 }

@@ -1,13 +1,18 @@
-.titre{
+.titre {
     display: inline-block;
     margin-right: 10px;
 }
-.arrow{
+
+.arrow {
     display: inline-block;
     margin-bottom: 7px;
 }
 
-.cardElement:hover{
-   color: gray;
-   cursor: pointer;
+.cardElement:hover {
+    color: gray;
+    cursor: pointer;
+}
+
+.text {
+    font-size: medium;
 }

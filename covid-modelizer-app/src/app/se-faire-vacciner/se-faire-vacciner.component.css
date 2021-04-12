@@ -1,0 +1,38 @@
+.text {
+    font-size: medium;
+}
+
+.btn-space {
+    margin-right: 10px;
+    background-color: rgb(194, 194, 194);
+}
+
+.result {
+    display: flex;
+    justify-content: space-around;
+    color: white;
+    border-radius: 10px;
+    margin: 2%;
+}
+
+.result1 {
+    font-size: 20px;
+    padding: 20px;
+}
+
+.result2 {
+    font-size: 20px;
+    padding: 20px 40px;
+}
+
+.result3 {
+    font-size: 20px;
+    padding: 20px;
+}
+
+.com {
+    font-size: medium;
+    font-weight: bold;
+    text-align: center;
+    margin: 2%;
+}

@@ -1,4 +1,5 @@
-<mat-card *ngFor="let contrib of contributeurs" fxFlex.gt-sm="100%" fxFlex.gt-xs="100%" class="oh text-center little-profile">
+<mat-card *ngFor="let contrib of contributeurs" fxFlex.gt-sm="100%" fxFlex.gt-xs="100%"
+    class="oh text-center little-profile">
     <img mat-card-image src="assets/images/Background 1.jpg" alt="background-image">
     <mat-card-content>
         <div class="pro-img">
@@ -12,12 +13,12 @@
         <div class="m-t-30 actual-data" fxLayout="row" fxLayoutWrap="wrap">
             <div class="logo1" fxFlex="100" fxFlex.gt-sm="45%" fxFlex.gt-xs="45%">
                 <a href="{{contrib.lien_github}}">
-                    <img class="github-logo" src="assets/images/github.png"/>
+                    <img class="github-logo" src="assets/images/github.png" />
                 </a>
             </div>
             <div class="logo2" fxFlex="100" fxFlex.gt-sm="45%" fxFlex.gt-xs="45%">
                 <a href="{{contrib.lien_linkedin}}">
-                    <img class="linkedin-logo" src="assets/images/contributeurs-linkedin.png"/>
+                    <img class="linkedin-logo" src="assets/images/contributeurs-linkedin.png" />
                 </a>
             </div>
         </div>

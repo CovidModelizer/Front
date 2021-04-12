@@ -1,9 +1,9 @@
-import {Component, OnInit, Input} from '@angular/core';
-import {ChartDataSets} from 'chart.js';
-import {Label} from 'ng2-charts';
-import {Utils} from '../../shared/utils';
-import {DonneesReellesService} from '../donnees-reelles.service';
-import {SituationReelle} from '../../shared/model/SituationReelle';
+import { Component, OnInit, Input } from '@angular/core';
+import { ChartDataSets } from 'chart.js';
+import { Label } from 'ng2-charts';
+import { Utils } from '../../shared/utils';
+import { DonneesReellesService } from '../donnees-reelles.service';
+import { SituationReelle } from '../../shared/model/SituationReelle';
 
 @Component({
   selector: 'app-actual-graph',
@@ -31,7 +31,7 @@ export class ActualGraphComponent implements OnInit {
 
   ngOnInit(): void {
     this.realValueData = this.allCasParJour;
-    this.lineChartData = [{data: this.realValueData, label: 'Infections cumulées', lineTension: 0}];
+    this.lineChartData = [{ data: this.realValueData, label: 'Infections quotidiennes', lineTension: 0 }];
     this.lineChartLabels = Utils.getAllDaysSinceTheBeginning(this.days);
   }
 

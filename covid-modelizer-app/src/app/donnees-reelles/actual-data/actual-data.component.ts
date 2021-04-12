@@ -20,11 +20,13 @@ export class ActualDataComponent implements OnInit {
   sousTitre = '';
   dateDonneesAffichees: Date;
   DATE_JOUR: Date;  // Date dernières données dispo (cf ngOnInit ci-dessous)
+  currentDay: Date;
 
   constructor(private donneesReellesService: DonneesReellesService) {
     this.currentSituationReelle = new SituationReelle();
     this.dateDonneesAffichees = REAL_DATE_JOUR; // Juste pour de l'initialisation
     this.DATE_JOUR = REAL_DATE_JOUR           // Juste pour de l'initialisation
+    this.currentDay = REAL_DATE_JOUR;
   }
 
   ngOnInit(): void {
@@ -35,7 +37,7 @@ export class ActualDataComponent implements OnInit {
   }
 
   setSousTitreByDate(date: Date) {
-    if(moment(date).format('DD-MM-YYYY') === moment(this.DATE_JOUR).format('DD-MM-YYYY')) {
+    if (moment(date).format('DD-MM-YYYY') === moment(this.DATE_JOUR).format('DD-MM-YYYY')) {
       this.sousTitre = 'Dernières données relatives à l\'épidémie de COVID-19.';
     } else {
       this.sousTitre = 'Données relatives à l\'épidémie de COVID-19.';
@@ -57,6 +59,7 @@ export class ActualDataComponent implements OnInit {
   goOneDayBeforeOrAfter(nbJoursToGo: number): void {
     if ((nbJoursToGo > 0 && this.isGoingAfterPossible()) || (nbJoursToGo < 0 && this.isGoingBackPossible())) {
       let dateDonneesAAfficher = Utils.getDayBeforeOrAfterGivenDate(this.dateDonneesAffichees, nbJoursToGo);
+      this.currentDay.setDate(this.currentDay.getDate() + (nbJoursToGo));
       this.donneesReellesService.getSituationReelleByDate(dateDonneesAAfficher).subscribe(data => {
         this.currentSituationReelle = data[0];
       });
@@ -69,7 +72,7 @@ export class ActualDataComponent implements OnInit {
   }
 
   setDonneesJoursTitle(newTitleDate: Date): void {
-    this.titre = Utils.getStrDate(newTitleDate);    
+    this.titre = Utils.getStrDate(newTitleDate);
     this.setSousTitreByDate(newTitleDate);
     // MaJ la date des données affichées pour le prochain appel
     this.dateDonneesAffichees = new Date(newTitleDate);
