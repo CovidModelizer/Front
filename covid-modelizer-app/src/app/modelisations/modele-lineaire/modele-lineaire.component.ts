@@ -16,6 +16,7 @@ export class ModeleLineaireComponent implements OnInit {
   // vaccin ou cas
   @Input() categorie = '';
   titreGraphe = '';
+  nbCasJ14: any = '';
   donneesReellesCumules: number[] | undefined;
   donneesModeliseesCumulees: number[] | undefined;
   labelDonneesReellesCumulees = '';
@@ -107,6 +108,7 @@ export class ModeleLineaireComponent implements OnInit {
     if(this.categorie === 'vaccination' || this.categorie === 'infection') {
       this.modelisationsService.getDonneesModeliseesByModel(this.categorie, MODEL).subscribe(data => {
       dateDebutGraphe = data[0].date;
+      this.nbCasJ14 = data[data.length-1].value - data[data.length-2].value;
       for(let elt of data) {
         donneesModeliseesCumulees.push(Number(elt.value));
         // Récupération de la plage de temps sur laquelle faire le graphe
@@ -141,6 +143,13 @@ export class ModeleLineaireComponent implements OnInit {
       }
     });
     this.donneesReellesCumules = donneesReellesCumules;
+  }
+
+  isConfinement(): string {
+    if( this.nbCasJ14 > 30000){
+      return "OUI";
+    }
+    return "NON";
   }
 
 }

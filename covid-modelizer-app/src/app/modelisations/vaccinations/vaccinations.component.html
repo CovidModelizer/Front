@@ -2,22 +2,22 @@
   <mat-card-content>
     <div class="d-flex flex-wrap">
       <div>
-        <mat-card-title>Dates clés</mat-card-title>
+        <mat-card-title>Données clefs</mat-card-title>
         <mat-card-subtitle>Données reflétant la situation actuelle</mat-card-subtitle>
       </div>
     </div>
     <!-- Ligne 1 -->
     <div class="m-t-30" fxLayout="row" fxLayoutWrap="wrap">
       <div class="eltActualData" fxFlex="100" fxFlex.gt-sm="33,33%" fxFlex.gt-xs="33,33%">
-        <h3 class="m-0 font-light">{{currentSituationReelle.nouvellesLivraisonsNombreDosesPfizer}}</h3>
+        <h3 class="m-0 font-light">+ {{currentSituationReelle.nouvellesLivraisonsNombreDosesPfizer}}</h3>
         <p>Livraisons de doses Pfizer<br>(sur la semaine)</p>
       </div>
       <div class="eltActualData" fxFlex="100" fxFlex.gt-sm="33,33%" fxFlex.gt-xs="33,33%">
-        <h3 class="m-0 font-light">{{currentSituationReelle.nouvellesPremieresInjections}}</h3>
+        <h3 class="m-0 font-light">+ {{currentSituationReelle.nouvellesPremieresInjections}}</h3>
         <p style="font-size: 14px;"><strong>Nouvelles premières injections</strong></p>
       </div>
       <div class="eltActualData" fxFlex="100" fxFlex.gt-sm="33,33%" fxFlex.gt-xs="33,33%">
-        <h3 class="m-0 font-light">{{currentSituationReelle.nouvellesLivraisonsNombreDosesModerna}}</h3>
+        <h3 class="m-0 font-light">+ {{currentSituationReelle.nouvellesLivraisonsNombreDosesModerna}}</h3>
         <p>Livraisons de doses Moderna<br>(sur la semaine)</p>
       </div>
     </div>

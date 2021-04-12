@@ -15,6 +15,7 @@ export class ModeleSirComponent implements OnInit {
 
   titreGraphe = 'Comparaison infections cumulées réelles et modélisées par jour';
   donneesReellesCumules: number[] | undefined;
+  nbCasJ14: any = '';
   donneesModeliseesCumulees: number[] | undefined;
   labelDonneesReellesCumulees = 'Infections réelles';
   labelDonneesModelisees = 'Infections modélisées';
@@ -77,6 +78,7 @@ export class ModeleSirComponent implements OnInit {
     let donneesModeliseesCumulees = new Array<number>();
     this.modelisationsService.getDonneesModeliseesByModel('infection', MODEL).subscribe(data => {
     dateDebutGraphe = data[0].date;
+    this.nbCasJ14 = data[data.length-1].value;
     for(let elt of data) {
       donneesModeliseesCumulees.push(Number(elt.value));
       // Récupération de la plage de temps sur laquelle faire le graphe
@@ -96,6 +98,13 @@ export class ModeleSirComponent implements OnInit {
       }
     });
     this.donneesReellesCumules = donneesReellesCumules;
+  }
+  
+  isConfinement(): string {
+    if( this.nbCasJ14 > 30000){
+      return "OUI";
+    }
+    return "NON";
   }
 
 }

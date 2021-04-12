@@ -1,3 +1,25 @@
+<mat-card *ngIf="categorie==='infection'">
+  <mat-card-content>
+    <div class="d-flex flex-wrap">
+      <div>
+        <mat-card-title>Données clefs</mat-card-title>
+        <mat-card-subtitle>Prédictions</mat-card-subtitle>
+      </div>
+    </div>
+
+    <div class="m-t-30" fxLayout="row" fxLayoutWrap="wrap">
+      <div class="datesClesEstimees" class="l1" fxFlex="100" fxFlex.gt-sm="50%" fxFlex.gt-xs="50%">
+        <h3 class="m-0 font-light">+ {{ nbCasJ14 }}</h3>
+        <p>Nouvelles infections J+21</p>
+      </div>
+      <div class="datesClesEstimees" class="l1" fxFlex="100" fxFlex.gt-sm="50%" fxFlex.gt-xs="50%">
+        <h3 class="m-0 font-light">{{isConfinement()}}</h3>
+        <p>Confinement prévu</p>
+      </div>
+    </div>
+  </mat-card-content>
+</mat-card>
+
 <mat-card>
   <mat-card-content>
     <div class="d-flex flex-wrap">
@@ -17,4 +39,19 @@
     </div>
   </mat-card-content>
 </mat-card>
-  
+
+<mat-card *ngIf="categorie==='infection'">
+  <mat-card-content>
+      <h3>Modélisation Machine Learning</h3>
+      <p class="text">Le modèle de Machine Learning utilisé est un modèle de régression linéaire basé sur 13 variables qui sont les suivantes : [remplir]
+      <br>Ce modèle nous permet de prédire pour chaque jour le nombre de nouvelles personnes infectées par la COVID-19.</p>
+  </mat-card-content>
+</mat-card>
+
+<mat-card *ngIf="categorie==='vaccination'">
+  <mat-card-content>
+      <h3>Modélisation Machine Learning</h3>
+      <p class="text">Le modèle de Machine Learning utilisé est un modèle de régression linéaire basé sur 11 variables qui sont les suivantes : [remplir]
+      <br>Ce modèle nous permet de prédire pour chaque jour le nombre de nouvelles doses de vaccin qui vont être injectées.</p>
+  </mat-card-content>
+</mat-card>

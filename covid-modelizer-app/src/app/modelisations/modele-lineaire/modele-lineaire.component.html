@@ -1,3 +1,25 @@
+<mat-card *ngIf="categorie==='infection'">
+  <mat-card-content>
+    <div class="d-flex flex-wrap">
+      <div>
+        <mat-card-title>Données clefs</mat-card-title>
+        <mat-card-subtitle>Prédictions</mat-card-subtitle>
+      </div>
+    </div>
+
+    <div class="m-t-30" fxLayout="row" fxLayoutWrap="wrap">
+      <div class="datesClesEstimees" class="l1" fxFlex="100" fxFlex.gt-sm="50%" fxFlex.gt-xs="50%">
+        <h3 class="m-0 font-light">+ {{ nbCasJ14 }}</h3>
+        <p>Nouvelles infections J+21</p>
+      </div>
+      <div class="datesClesEstimees" class="l1" fxFlex="100" fxFlex.gt-sm="50%" fxFlex.gt-xs="50%">
+        <h3 class="m-0 font-light">{{isConfinement()}}</h3>
+        <p>Confinement prévu</p>
+      </div>
+    </div>
+  </mat-card-content>
+</mat-card>
+
 <mat-card>
   <mat-card-content>
     <div class="d-flex flex-wrap">
@@ -17,3 +39,18 @@
     </div>
   </mat-card-content>
 </mat-card>
+
+<mat-card *ngIf="categorie==='infection'">
+  <mat-card-content>
+      <h3>Modélisation linéaire</h3>
+      <p class="text">Le modèle linéaire utilisé ici est un modèle de régression linéaire "simple" avec une seule variable qui est le cumul de personnes infectées en France depuis le début de la pandémie. Ce modèle nous permet de prédire le nombre cumulé de personnes testées positives à la COVID-19 dans les jours à venir.</p>
+  </mat-card-content>
+</mat-card>
+
+<mat-card *ngIf="categorie==='vaccination'">
+  <mat-card-content>
+      <h3>Modélisation linéaire</h3>
+      <p class="text">Le modèle linéaire utilisé ici est un modèle de régression linéaire "simple" avec une seule variable qui est le nombre de doses injectées en France depuis le début de la pandémie. Ce modèle nous permet de prédire le nombre cumulé de doses injectées dans les jours à venir.</p>
+  </mat-card-content>
+</mat-card>
+

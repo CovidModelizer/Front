@@ -10,14 +10,12 @@
                 <button type="button" class="btn btn-outline-primary" id="plus70" name="age" value="plus70" (click)="estEligible('plus70','', '', '')">Plus de 70 ans</button>
             </div>
             <br>
-
             <div id="enceinte_form" *ngIf="age === 'entre18et49'">
                 <h3>Êtes vous enceinte ?</h3>
                 <button type="button" class="btn btn-outline-primary" id="oui" name="enceinte" value="oui" (click)="estEligible('','oui','', '')">Oui</button>
                 <button type="button" class="btn btn-outline-primary" id="non" name="enceinte" value="non" (click)="estEligible('','non','', '')">Non</button>
             </div>
             <br>
-
             <div id="pro_form" *ngIf="displayProForm()">
                 <h3>Êtes vous un professionnel de santé, personnel d'un établissement médico-social, pompier ou aide à domicile ?</h3>
                 <button type="button" class="btn btn-outline-primary" id="oui" name="pro" value="oui" (click)="estEligible('','','oui', '')">Oui</button>
@@ -29,9 +27,7 @@
                 <button type="button" class="btn btn-outline-primary" id="oui" name="malade" value="oui" (click)="estEligible('','','', 'oui')">Oui</button>
                 <button type="button" class="btn btn-outline-primary" id="non" name="malade" value="non" (click)="estEligible('','','', 'non')">Non</button>
             </div>
-
         </form>
-
         <div id="results" *ngIf="displayResult() === true">
                 <div id="Pfizer-BioNTech" class="result">
                     <h3>Pfizer-BioNTech</h3>
@@ -53,10 +49,10 @@
 </mat-card>-->
 <mat-card>
     <mat-card-content>
-        <p class="intro">Ce questionnaire est un formulaire d'éligibilité vaccinale. Il tient compte de votre profil et
-            votre situation personnelle pour déterminer votre niveau d'éligibilité à recevoir le vaccin de la COVID-19.
+        <p class="text">Ce questionnaire est un formulaire d'éligibilité vaccinale. Il tient compte de votre profil et
+            votre situation personnelle pour déterminer votre niveau d'éligibilité à recevoir les vaccins contre la COVID-19.
             Le résultat de ce formulaire est conforme à la stratégie vaccinale du Gouvernement.</p>
-        <p class="intro">Aucune de vos données ne sont enregistrées dans notre système.</p>
+        <p class="text">Aucune de vos données ne sont enregistrées dans notre système.</p>
     </mat-card-content>
 </mat-card>
 <mat-card>
@@ -114,6 +110,7 @@
     </mat-card-content>
 </mat-card>
 
+
 <div id="results" *ngIf="displayResult() === true">
     <p class="com">{{commentaire1}}</p>
     <p> </p>
@@ -122,13 +119,12 @@
         <div class="result1" [ngStyle]="{'background-color' : colorPfizer, 'border-radius' : '10px'}">Pfizer-BioNTech
         </div>
     </div>
-
     <div id="Moderna" class="result">
         <div class="result2" [ngStyle]="{'background-color' : colorModerna, 'border-radius' : '10px'}">Moderna</div>
     </div>
-
     <div id="AstraZeneca" class="result">
         <div class="result3" [ngStyle]="{'background-color' : colorAstrazeneca, 'border-radius' : '10px'}">AstraZeneca
         </div>
     </div>
 </div>
+
