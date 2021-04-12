@@ -23,4 +23,4 @@
 npm install
 ng serve
 ```
-* Accés à [localhost:4200](localhost:4200)
+* Accès à [localhost:4200](localhost:4200)
