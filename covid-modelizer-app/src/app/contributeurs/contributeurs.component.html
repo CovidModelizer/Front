@@ -4,8 +4,11 @@
         <div class="pro-img">
             <img src="{{contrib.lien_photo}}" width="100" alt="user" class="img-circle">
         </div>
-        <h3 class="m-b-0">{{contrib.prenom}} {{contrib.nom}}</h3>
-        <h6 class="m-t-0 poste_projet">{{contrib.poste_projet}}</h6>
+        <h3 class="m-b-0">{{contrib.prenom}} <br> {{contrib.nom}}</h3>
+        <br>
+        <h4 class="m-t-0 poste_projet">Contributions : <br> {{contrib.poste_projet}}</h4>
+        <br>
+        <br>
         <div class="m-t-30 actual-data" fxLayout="row" fxLayoutWrap="wrap">
             <div class="logo1" fxFlex="100" fxFlex.gt-sm="45%" fxFlex.gt-xs="45%">
                 <a href="{{contrib.lien_github}}">

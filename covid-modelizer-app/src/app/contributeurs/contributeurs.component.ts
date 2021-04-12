@@ -41,7 +41,7 @@ export class ContributeursComponent implements OnInit {
     this.contrib1 = new Contributeur('Benamara', 'Abdel', 'Datascientist & Developpeur FullStack', 
     'Apprenti Innovation Analyst chez BNP Paribas', 'Certification Stanford Machine Learning',
     'https://github.com/Abdel-Benamara', 'https://linkedin.com/in/abdel-benamara', 'Abdel.jpeg');
-    this.contrib2 = new Contributeur('Ekchajzer', 'David', 'Infogérant & Developpeur FullStack',
+    this.contrib2 = new Contributeur('Ekchajzer', 'David', 'Chargé de projet DevOps & Developpeur FullStack',
     'Apprenti chargé de projet à OMC', 'Spécialisation Numérique Responsable',
     'https://github.com/da-ekchajzer', 'https://www.linkedin.com/in/david-ekchajzer/', 'David.PNG');
     this.contrib3 = new Contributeur('Ridet', 'Mathieu', 'Chargé de projet front & Developpeur FullStack', 
