@@ -34,11 +34,19 @@ export class Utils {
     return res;
   }
 
+  /*
   static isDate1EqualsDate2(date1: any, date2: any) {
     let date1Format = new Date(date1);
     return date1Format.getUTCFullYear() == date2.getUTCFullYear() && 
             date1Format.getUTCMonth()+1 == date2.getUTCMonth()+1 && 
             date1Format.getUTCDate() == date2.getUTCDate();
+  }
+  */
+
+  static getStrDate(date: Date): string {
+    var strDate = moment(date);
+    strDate.locale('fr');
+    return strDate.format('DD MMMM YYYY');
   }
 
 }
