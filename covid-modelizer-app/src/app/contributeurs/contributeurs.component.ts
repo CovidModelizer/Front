@@ -38,16 +38,16 @@ export class ContributeursComponent implements OnInit {
   public contributeurs: Contributeur[];
 
   constructor() { 
-    this.contrib1 = new Contributeur('Benamara', 'Abdel', 'Data Scientist & Developpeur FullStack', 
+    this.contrib1 = new Contributeur('Benamara', 'Abdel', 'Data Scientist & Développeur FullStack', 
     'Apprenti Innovation Analyst chez BNP Paribas', 'Certification Stanford Machine Learning',
     'https://github.com/Abdel-Benamara', 'https://linkedin.com/in/abdel-benamara', 'Abdel.jpeg');
-    this.contrib2 = new Contributeur('Ekchajzer', 'David', 'Chargé de projet DevOps & Developpeur FullStack',
+    this.contrib2 = new Contributeur('Ekchajzer', 'David', 'Chargé de projet DevOps & Développeur FullStack',
     'Apprenti chargé de projet à OMC', 'Spécialisation Numérique Responsable',
     'https://github.com/da-ekchajzer', 'https://www.linkedin.com/in/david-ekchajzer/', 'David.PNG');
-    this.contrib3 = new Contributeur('Ridet', 'Mathieu', 'Chargé de projet Front & Developpeur FullStack', 
+    this.contrib3 = new Contributeur('Ridet', 'Mathieu', 'Chargé de projet Front & Développeur FullStack', 
     'Apprenti Développeur FullStack chez Covea', 'Spécialisation Spring Batch/Spring Boot - Angular',
     'https://github.com/mathieuridet', 'https://www.linkedin.com/in/mathieu-ridet/', 'Mathieu.jpeg');
-    this.contrib4 = new Contributeur('Yalap', 'Sophia', 'Data Scientist & Developpeuse FullStack', 
+    this.contrib4 = new Contributeur('Yalap', 'Sophia', 'Data Scientist & Développeuse FullStack', 
     'Apprentie Cheffe de projet Data & Intelligence Artificielle chez Saint-Gobain', 'Certification Stanford Machine Learning',
     'https://github.com/sophiayalap', 'https://www.linkedin.com/in/sophia-yalap/', 'Sophia.jpeg');
     this.contributeurs = [this.contrib1, this.contrib2, this.contrib3, this.contrib4];
