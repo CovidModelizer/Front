@@ -6,6 +6,7 @@ import { ModelisationsComponent } from './modelisations/modelisations/modelisati
 import { InfectionsComponent } from './modelisations/infections/infections.component';
 import { VaccinationsComponent } from './modelisations/vaccinations/vaccinations.component';
 import { ContributeursComponent } from './contributeurs/contributeurs.component';
+import { ApiDocumentationComponent } from './api-documentation/api-documentation.component';
 
 
 export const AppRoutes: Routes = [
@@ -41,6 +42,10 @@ export const AppRoutes: Routes = [
       {
         path: 'contributeurs',
         component: ContributeursComponent
+      },
+      {
+        path: 'api-documentation',
+        component: ApiDocumentationComponent
       }
     ]
   }

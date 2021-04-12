@@ -28,6 +28,7 @@ import { DonneesReellesModule } from './donnees-reelles/donnees-reelles.module';
 import { ModelisationsModule } from './modelisations/modelisations.module';
 import { EventEmitterService } from './shared/event-emitter.service';
 import { ContributeursComponent } from './contributeurs/contributeurs.component';
+import { ApiDocumentationComponent } from './api-documentation/api-documentation.component';
 
 
 @NgModule({
@@ -38,7 +39,8 @@ import { ContributeursComponent } from './contributeurs/contributeurs.component'
     SpinnerComponent,
     AppSidebarComponent,
     EligibiliteVaccinComponent,
-    ContributeursComponent
+    ContributeursComponent,
+    ApiDocumentationComponent
   ],
   imports: [
     CommonModule,

@@ -8,7 +8,7 @@ const MENUITEMS = [
       {state: 'vaccinations', type: 'intern_link', name: 'Vaccinations', icon: 'assets/images/injection.png'},
     ]},
   {state: 'eligibilite-vaccin', type: 'intern_link', name: 'Se faire vacciner', icon: 'assets/images/injection.png'},
-  {state: 'null', type: 'extern_link', name: 'API', icon: 'assets/images/api.png'},
+  {state: 'api-documentation', type: 'intern_link', name: 'API', icon: 'assets/images/api.png'},
   {state: 'contributeurs', type: 'intern_link', name: 'Contributeurs', icon: 'assets/images/group.png'},
 ];
 

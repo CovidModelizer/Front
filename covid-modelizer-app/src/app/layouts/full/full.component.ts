@@ -76,6 +76,10 @@ export class FullComponent implements OnInit, OnDestroy, AfterViewInit {
         this.setTitrePage('Se faire vacciner');
         break;
       }
+      case '/api-documentation': {
+        this.setTitrePage('API');
+        break;
+      }
       default: {
         // Pas possible ?
         break;
