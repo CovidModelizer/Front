@@ -161,21 +161,17 @@ export class EligibiliteVaccinComponent implements OnInit {
           }
           break;
         }
-        case (LIBELLES_AGES[2] || LIBELLES_AGES[3]): {
+        case (LIBELLES_AGES[2]): {
           if (this.pro === 'oui') {
             this.colorPfizer = '#168838';
             this.colorModerna = '#168838';
             this.eligiblePfizer = 1;
             this.eligibleModerna = 1;
             this.commentaire1 = 'Vous êtes éligible à la vaccination.';
-            if (this.age === LIBELLES_AGES[2]) {
-              this.eligibleAstraZeneca = -1;
-              this.colorAstrazeneca = '#b92e2e'; //Rouge
-            }
-            else {
-              this.eligibleAstraZeneca = 1;
-              this.colorAstrazeneca = '#168838'; //Vert
-            }
+            this.eligibleAstraZeneca = -1;
+            this.colorAstrazeneca = '#b92e2e'; //Rouge
+            //this.eligibleAstraZeneca = 1;
+            //this.colorAstrazeneca = '#168838'; //Vert
           } else if (this.pro === 'non') {
             if (this.malade === 'oui') {
               this.colorPfizer = '#168838';
@@ -183,14 +179,10 @@ export class EligibiliteVaccinComponent implements OnInit {
               this.eligiblePfizer = 1;
               this.eligibleModerna = 1;
               this.commentaire1 = 'Vous êtes éligible à la vaccination.';
-              if (this.age === LIBELLES_AGES[2]) {
-                this.eligibleAstraZeneca = -1;
-                this.colorAstrazeneca = '#b92e2e'; //Rouge
-              }
-              else {
-                this.eligibleAstraZeneca = 1;
-                this.colorAstrazeneca = '#168838'; //Vert
-              }
+              this.eligibleAstraZeneca = -1;
+              this.colorAstrazeneca = '#b92e2e'; //Rouge
+              //this.eligibleAstraZeneca = 1;
+              //this.colorAstrazeneca = '#168838'; //Vert
             } else if (this.malade === 'non') {
               this.colorPfizer = '#b92e2e'; //Rouge
               this.colorModerna = '#b92e2e'; //Rouge
@@ -199,11 +191,43 @@ export class EligibiliteVaccinComponent implements OnInit {
               this.eligibleModerna = -1;
               this.eligibleAstraZeneca = -1;
               this.commentaire1 = 'Vous n\'êtes pas encore éligible à la vaccination contre la COVID-19.';
-              if (this.age === LIBELLES_AGES[2]) {
-                this.datePossibleVaccination += 'Date de vaccination possible : à partir de mi-mai.';
-              } else {
-                this.datePossibleVaccination += 'Date de vaccination possible : à partir de mi-avril pour les personnes âgées de 60 à 70 ans et à partir de mi-mai pour les personnes âgées de 50 à 60 ans.';
-              }
+              this.datePossibleVaccination += 'Date de vaccination possible : à partir de mi-mai.';
+              //this.datePossibleVaccination += 'Date de vaccination possible : à partir de mi-avril pour les personnes âgées de 60 à 70 ans et à partir de mi-mai pour les personnes âgées de 50 à 60 ans.';
+            } else {
+              console.log('est MALADE KO');
+            }
+          } else {
+            console.log('est PRO KO');
+          }
+          break;
+        }
+        case (LIBELLES_AGES[3]): {
+          if (this.pro === 'oui') {
+            this.colorPfizer = '#168838';
+            this.colorModerna = '#168838';
+            this.eligiblePfizer = 1;
+            this.eligibleModerna = 1;
+            this.commentaire1 = 'Vous êtes éligible à la vaccination.';
+            this.eligibleAstraZeneca = 1;
+            this.colorAstrazeneca = '#168838'; //Vert
+          } else if (this.pro === 'non') {
+            if (this.malade === 'oui') {
+              this.colorPfizer = '#168838';
+              this.colorModerna = '#168838';
+              this.eligiblePfizer = 1;
+              this.eligibleModerna = 1;
+              this.commentaire1 = 'Vous êtes éligible à la vaccination.';
+              this.eligibleAstraZeneca = 1;
+              this.colorAstrazeneca = '#168838'; //Vert
+            } else if (this.malade === 'non') {
+              this.colorPfizer = '#b92e2e'; //Rouge
+              this.colorModerna = '#b92e2e'; //Rouge
+              this.colorAstrazeneca = '#b92e2e'; //Rouge
+              this.eligiblePfizer = -1;
+              this.eligibleModerna = -1;
+              this.eligibleAstraZeneca = -1;
+              this.commentaire1 = 'Vous n\'êtes pas encore éligible à la vaccination contre la COVID-19.';
+              this.datePossibleVaccination += 'Date de vaccination possible : à partir de mi-avril pour les personnes âgées de 60 à 70 ans et à partir de mi-mai pour les personnes âgées de 50 à 60 ans.';
             } else {
               console.log('est MALADE KO');
             }
