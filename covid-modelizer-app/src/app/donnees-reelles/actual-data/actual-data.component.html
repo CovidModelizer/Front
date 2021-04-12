@@ -3,9 +3,11 @@
     <div class="d-flex flex-wrap">
       <div>
         <mat-card-title>
-          <button id="goOneDayBefore" (click)="goOneDayBeforeOrAfter(-1)" [disabled]="isGoingBackPossible() == false"><img src="assets/images/left-chevron.png"/></button>
+          <button id="goOneDayBefore" (click)="goOneDayBeforeOrAfter(-1)"
+            [disabled]="isGoingBackPossible() == false"><img src="assets/images/left-chevron.png" /></button>
           {{titre}}
-          <button id="goOneDayAfter" (click)="goOneDayBeforeOrAfter(1)" [disabled]="isGoingAfterPossible() == false" *ngIf="currentDay < DATE_JOUR"><img src="assets/images/right-chevron.png"/></button>        
+          <button id="goOneDayAfter" (click)="goOneDayBeforeOrAfter(1)" [disabled]="isGoingAfterPossible() == false"
+            *ngIf="dateDonneesAffichees < DATE_JOUR"><img src="assets/images/right-chevron.png" /></button>
         </mat-card-title>
         <mat-card-subtitle>{{sousTitre}}</mat-card-subtitle>
       </div>

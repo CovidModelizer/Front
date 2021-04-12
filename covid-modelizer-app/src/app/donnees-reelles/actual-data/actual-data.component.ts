@@ -6,7 +6,6 @@ import * as moment from 'moment';
 
 const REAL_DATE_JOUR = new Date();
 const DATE_DEBUT_EPIDEMIE = new Date('2020-03-02'); // recup le 1er élément de getAllSituationsReelles ?
-const DATE_VEILLE = new Date(new Date().valueOf() - 1000 * 60 * 60 * 24);
 
 @Component({
   selector: 'app-actual-data',
@@ -20,20 +19,21 @@ export class ActualDataComponent implements OnInit {
   sousTitre = '';
   dateDonneesAffichees: Date;
   DATE_JOUR: Date;  // Date dernières données dispo (cf ngOnInit ci-dessous)
-  currentDay: Date;
 
   constructor(private donneesReellesService: DonneesReellesService) {
     this.currentSituationReelle = new SituationReelle();
     this.dateDonneesAffichees = REAL_DATE_JOUR; // Juste pour de l'initialisation
-    this.DATE_JOUR = REAL_DATE_JOUR           // Juste pour de l'initialisation
-    this.currentDay = REAL_DATE_JOUR;
+    this.DATE_JOUR = REAL_DATE_JOUR;           // Juste pour de l'initialisation
   }
 
   ngOnInit(): void {
-    this.dateDonneesAffichees = new Date(this.currentSituationReelle.getDate().valueOf() - 1000 * 60 * 60 * 24);
-    this.titre = Utils.getStrDate(this.dateDonneesAffichees);
-    this.sousTitre = 'Dernières données relatives à l\'épidémie de COVID-19.';
-    this.DATE_JOUR = this.dateDonneesAffichees;
+    this.donneesReellesService.getLastSituationReelle().subscribe(data => {
+      this.currentSituationReelle.setDate(new Date(data[0].date));
+      this.dateDonneesAffichees = this.currentSituationReelle.getDate();
+      this.titre = Utils.getStrDate(this.dateDonneesAffichees);
+      this.sousTitre = 'Dernières données relatives à l\'épidémie de COVID-19.';
+      this.DATE_JOUR = this.dateDonneesAffichees;
+    });
   }
 
   setSousTitreByDate(date: Date) {
@@ -59,7 +59,6 @@ export class ActualDataComponent implements OnInit {
   goOneDayBeforeOrAfter(nbJoursToGo: number): void {
     if ((nbJoursToGo > 0 && this.isGoingAfterPossible()) || (nbJoursToGo < 0 && this.isGoingBackPossible())) {
       let dateDonneesAAfficher = Utils.getDayBeforeOrAfterGivenDate(this.dateDonneesAffichees, nbJoursToGo);
-      this.currentDay.setDate(this.currentDay.getDate() + (nbJoursToGo));
       this.donneesReellesService.getSituationReelleByDate(dateDonneesAAfficher).subscribe(data => {
         this.currentSituationReelle = data[0];
       });

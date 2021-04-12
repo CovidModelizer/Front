@@ -23,6 +23,10 @@ export class DonneesReellesService {
     return this.http.get(this.URL_REST_API + '/full/date?date=' + date);
   }
 
+  getLastSituationReelle(): Observable<any> {
+    return this.http.get(this.URL_REST_API + '/full/lastDays?total=0');
+  }
+
   // ********************** Autres **********************
   getDonneesReellesCumuleesByCategorieEtModelEtDateDebut(categorie: string, model: string, dateDebut: any): any[] {
     console.log(dateDebut);
