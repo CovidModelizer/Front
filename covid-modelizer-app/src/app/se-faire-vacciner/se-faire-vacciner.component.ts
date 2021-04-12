@@ -3,11 +3,11 @@ import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 const LIBELLES_AGES = ['moins18', 'entre18et49', 'entre50et54', 'entre55et69', 'plus70'];
 
 @Component({
-  selector: 'app-eligibilite-vaccin',
-  templateUrl: './eligibilite-vaccin.component.html',
-  styleUrls: ['./eligibilite-vaccin.component.css']
+  selector: 'app-se-faire-vacciner',
+  templateUrl: './se-faire-vacciner.component.html',
+  styleUrls: ['./se-faire-vacciner.component.css']
 })
-export class EligibiliteVaccinComponent implements OnInit {
+export class SeFaireVaccinerComponent implements OnInit {
 
 
   public age = '';
@@ -248,6 +248,4 @@ export class EligibiliteVaccinComponent implements OnInit {
       }
     }
   }
-  //TODO
-  //Fixer le bug des 55-69 ans
 }

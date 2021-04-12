@@ -1,6 +1,6 @@
-import {MediaMatcher} from '@angular/cdk/layout';
-import {AfterViewInit, ChangeDetectorRef, Component, OnChanges, OnDestroy, OnInit, ViewChild} from '@angular/core';
-import {MenuItems} from '../../shared/menu-items/menu-items';
+import { MediaMatcher } from '@angular/cdk/layout';
+import { AfterViewInit, ChangeDetectorRef, Component, OnChanges, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { MenuItems } from '../../shared/menu-items/menu-items';
 import { AppHeaderComponent } from './header/header.component';
 import { EventEmitterService } from '../../shared/event-emitter.service';
 
@@ -35,8 +35,8 @@ export class FullComponent implements OnInit, OnDestroy, AfterViewInit {
   ngOnInit() {
     this.initTitrePage();
 
-    this.eventEmitterService.subsVar = this.eventEmitterService.invokeChangePageTitleFunction.subscribe((title:string) => {    
-      this.setTitrePage(title); 
+    this.eventEmitterService.subsVar = this.eventEmitterService.invokeChangePageTitleFunction.subscribe((title: string) => {
+      this.setTitrePage(title);
     });
   }
 
@@ -49,27 +49,27 @@ export class FullComponent implements OnInit, OnDestroy, AfterViewInit {
 
   setTitrePage(newTitre: string): void {
     // Ne pas avoir de soucis de chemin lorsqu'on passe de Vaccin à Infections (et vice-versa)
-    if(this.header!= undefined) this.header.path_modelisations = newTitre.toLowerCase();
+    if (this.header != undefined) this.header.path_modelisations = newTitre.toLowerCase();
     this.titrePage = newTitre;
 
   }
 
   initTitrePage() {
-    switch(window.location.pathname) {
+    switch (window.location.pathname) {
+      case '/informations-generales': {
+        this.setTitrePage('Informations générales');
+        break;
+      }
       case '/modelisations': {
         this.setTitrePage('Modélisations');
         break;
       }
-      case '/donnees-reelles': {
-        this.setTitrePage('Informations générales');
+      case '/infections': {
+        this.setTitrePage('Infections');
         break;
       }
       case '/vaccinations': {
         this.setTitrePage('Vaccinations');
-        break;
-      }
-      case '/infections': {
-        this.setTitrePage('Infections');
         break;
       }
       case '/eligibilite-vaccin': {
@@ -77,14 +77,13 @@ export class FullComponent implements OnInit, OnDestroy, AfterViewInit {
         break;
       }
       case '/api-documentation': {
-        this.setTitrePage('API');
+        this.setTitrePage('API documentation');
         break;
       }
       default: {
         // Pas possible ?
         break;
       }
-
     }
   }
 }

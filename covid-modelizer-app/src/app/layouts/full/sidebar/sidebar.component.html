@@ -4,15 +4,6 @@
 <mat-nav-list appAccordion>
   <mat-list-item *ngFor="let menuitem of menuItems.getMenuitem()" appAccordionLink group="{{menuitem.state}}"
     routerLinkActive="selected">
-    <!-- Cas bouton API -->
-    <!-- <a *ngIf="menuitem.type === 'extern_link'" href="api.covid-modelizer.fr" appAccordionToggle >
-      <img style="width: 20px; margin: 10px;" src="{{ menuitem.icon }}">
-      <span>{{ menuitem.name }}</span>
-      <span fxFlex></span>
-      <span *ngFor="let badge of menuitem.badge" class="label label-{{ badge.type }}">{{ badge.value }}</span>
-    </a> -->
-
-    <!-- Cas autres boutons -->
     <a (click)="setTitrePage(menuitem.name)" *ngIf="menuitem.type === 'intern_link'"
       [routerLink]="['/', menuitem.state]" appAccordionToggle class="">
       <img style="width: 20px; margin: 10px;" src="{{ menuitem.icon }}">
@@ -22,7 +13,7 @@
     </a>
     <mat-nav-list style="padding-left: 20px;">
       <mat-list-item *ngFor="let subItem of menuitem.subItems" appAccordionLink group="{{subItem.state}}"
-        routerLinkActive="selected">
+        routerLinkActive="selected" style="padding-bottom: 8px;">
         <a (click)="setTitrePage(subItem.name)" *ngIf="subItem.type === 'intern_link'"
           [routerLink]="['/', subItem.state]" appAccordionToggle class="">
           <img style="width: 20px; margin: 10px;" src="{{ subItem.icon }}">
@@ -35,7 +26,7 @@
   </mat-list-item>
 
   <mat-card>
-    <mat-card-actions>
+    <mat-card-actions style="display: flex; text-align: center;">
       <a href="https://github.com/CovidModelizer">
         <img src="assets/images/github.png" style="margin-left: 30px;" />
       </a>

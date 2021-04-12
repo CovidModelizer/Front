@@ -1,22 +1,22 @@
-import {BrowserModule} from '@angular/platform-browser';
-import {NgModule} from '@angular/core';
-import {RouterModule} from '@angular/router';
-import {CommonModule, LocationStrategy, PathLocationStrategy} from '@angular/common';
-import {AppRoutes} from './app.routing';
-import {AppComponent} from './app.component';
-import {FullComponent} from './layouts/full/full.component';
-import {AppHeaderComponent} from './layouts/full/header/header.component';
-import {AppSidebarComponent} from './layouts/full/sidebar/sidebar.component';
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
+import { RouterModule } from '@angular/router';
+import { CommonModule, LocationStrategy, PathLocationStrategy } from '@angular/common';
+import { AppRoutes } from './app.routing';
+import { AppComponent } from './app.component';
+import { FullComponent } from './layouts/full/full.component';
+import { AppHeaderComponent } from './layouts/full/header/header.component';
+import { AppSidebarComponent } from './layouts/full/sidebar/sidebar.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-import {SharedModule} from './shared/shared.module';
-import {SpinnerComponent} from './shared/spinner.component';
-import {MaterialModule} from './material.module';
-import {FormsModule} from '@angular/forms';
-import {FlexLayoutModule} from '@angular/flex-layout';
-import {HttpClientModule} from '@angular/common/http';
-import { EligibiliteVaccinComponent } from './eligibilite-vaccin/eligibilite-vaccin.component';
-import { DonneesReellesComponent } from './donnees-reelles/donnees-reelles/donnees-reelles.component';
+import { SharedModule } from './shared/shared.module';
+import { SpinnerComponent } from './shared/spinner.component';
+import { MaterialModule } from './material.module';
+import { FormsModule } from '@angular/forms';
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { HttpClientModule } from '@angular/common/http';
+import { SeFaireVaccinerComponent } from './se-faire-vacciner/se-faire-vacciner.component';
+import { InformationsGeneralesComponent } from './donnees-reelles/informations-generales/informations-generales.component';
 import { ModelisationsComponent } from './modelisations/modelisations/modelisations.component';
 import { ActualDataComponent } from './donnees-reelles/actual-data/actual-data.component';
 import { ActualGraphComponent } from './donnees-reelles/actual-graph/actual-graph.component';
@@ -38,7 +38,7 @@ import { ApiDocumentationComponent } from './api-documentation/api-documentation
     AppHeaderComponent,
     SpinnerComponent,
     AppSidebarComponent,
-    EligibiliteVaccinComponent,
+    SeFaireVaccinerComponent,
     ContributeursComponent,
     ApiDocumentationComponent
   ],

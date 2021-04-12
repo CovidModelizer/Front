@@ -9,12 +9,12 @@
 
     <div class="m-t-30" fxLayout="row" fxLayoutWrap="wrap">
       <div class="datesClesEstimees" class="l1" fxFlex="100" fxFlex.gt-sm="50%" fxFlex.gt-xs="50%">
-        <h3 class="m-0 font-light">{{ nbCasJ14 }}</h3>
-        <p>Nombre d'infectés J+21</p>
+        <h3 class="m-0 font-medium">+ {{ nbCasJ21 }}</h3>
+        <p class="legende">Nombre d'infectés J+21</p>
       </div>
       <div class="datesClesEstimees" class="l1" fxFlex="100" fxFlex.gt-sm="50%" fxFlex.gt-xs="50%">
-        <h3 class="m-0 font-light">{{isConfinement()}}</h3>
-        <p>Confinement prévu</p>
+        <h3 class="m-0 font-medium">{{isConfinement()}}</h3>
+        <p class="legende">Confinement prévu</p>
       </div>
     </div>
   </mat-card-content>
@@ -22,19 +22,15 @@
 
 <mat-card>
   <mat-card-content>
-     <div class="d-flex flex-wrap">
+    <div class="d-flex flex-wrap">
       <div>
-        <mat-card-title>Temporalité</mat-card-title>
+        <mat-card-title>Modélisation du nombre total actuel d'infections</mat-card-title>
         <mat-card-subtitle>{{ titreGraphe }}</mat-card-subtitle>
       </div>
     </div>
     <div class="chart-wrapper">
-      <canvas baseChart
-              [datasets]="chartData"
-              [labels]="chartLabels"
-              [options]="chartOptions"
-              [legend]="chartLegend"
-              [chartType]="chartType">
+      <canvas baseChart [datasets]="chartData" [labels]="chartLabels" [options]="chartOptions" [legend]="chartLegend"
+        [chartType]="chartType">
       </canvas>
     </div>
   </mat-card-content>
@@ -42,13 +38,24 @@
 
 <mat-card>
   <mat-card-content>
-      <h3>Modélisation SIR</h3>
-      <p class="text">Le modèle SIR est un modèle épidémiologique qui consiste à diviser la population en trois catégories :
-        <br>- S : les personnes Susceptibles d'être inféctées
-        <br>- I : les personnes Infectées
-        <br>- R : les personnes Retirées (guéries ou décédées)
-        <br>Ce modèle repose sur la résolution d'équations différentielles basée sur S, I, R ainsi que certains indicateurs tels que le taux de reproduction du virus r0, le taux de guérison ou encore le taux de transmission du virus afin de déterminer l'évolution de la propagation du virus dans le temps. 
-        <br>Il nous permet de prédire le nombre de personnes infectées à l'instant t par la COVID-19
-        </p>
+    <h3>Modélisation SIR</h3>
+    <p class="text">Le modèle SIR est un modèle épidémiologique qui consiste à diviser la population en trois catégories
+      :</p>
+    <ul class="text">
+      <li><span class="text variable">S</span> : les personnes Susceptibles
+        d'être inféctées</li>
+      <li><span class="text variable">I</span> : les personnes Infectées</li>
+      <li><span class="text variable">R</span> : les personnes Retirées
+        (guéries ou décédées)</li>
+    </ul>
+    <br>
+    <p class="text">Ce modèle repose sur la résolution d'équations différentielles basées sur <span
+        class="text variable">S</span>, <span class="text variable">I</span> et <span class="text variable">R</span>
+      ainsi que sur certains indicateurs tels que le taux de reproduction du virus <span
+        class="text variable">r0</span>, le taux de guérison ou encore le taux de transmission du virus afin d'estimer
+      au mieux la propagation du virus dans le temps.
+      <br>
+      Cela nous permet de prédire le nombre de personnes infectées à un instant donné par la COVID-19.
+    </p>
   </mat-card-content>
 </mat-card>

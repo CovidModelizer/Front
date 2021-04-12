@@ -2,31 +2,40 @@
   <mat-card-content>
     <div class="d-flex flex-wrap">
       <div>
-        <mat-card-title>Temporalité</mat-card-title>
+        <mat-card-title>Modélisation du nombre cumulé de vaccinations</mat-card-title>
         <mat-card-subtitle>{{ titreGraphe }}</mat-card-subtitle>
       </div>
     </div>
     <div class="chart-wrapper">
-      <canvas baseChart
-              [datasets]="chartData"
-              [labels]="chartLabels"
-              [options]="chartOptions"
-              [legend]="chartLegend"
-              [chartType]="chartType">
+      <canvas baseChart [datasets]="chartData" [labels]="chartLabels" [options]="chartOptions" [legend]="chartLegend"
+        [chartType]="chartType">
       </canvas>
     </div>
   </mat-card-content>
 </mat-card>
-  
+
 <mat-card>
   <mat-card-content>
-      <h3>Modélisation SVIR</h3>
-      <p class="text">Le modèle SVIR est un modèle épidémiologique qui consiste à diviser la population en trois catégories :
-        <br>- S : les personnes Susceptibles d'être inféctées
-        <br>- V : les personnes Vaccinées
-        <br>- I : les personnes Infectées
-        <br>- R : les personnes Retirées (guéries ou décédées)
-        <br>Ce modèle repose sur la résolution d'équations différentielles basée sur S, V, I, R ainsi que certains indicateurs tels que le taux de reproduction du virus r0, le taux de guérison, le taux de transmission du virus ou encore le taux de vaccination afin de déterminer l'évolution de la propagation du virus dans le temps. 
-        <br>Il nous permet de prédire le nombre cumulé de personnes vaccinées par la COVID-19</p>
+    <h3>Modélisation SVIR</h3>
+    <p class="text">Le modèle SVIR est un modèle épidémiologique qui consiste à diviser la population en trois
+      catégories :</p>
+    <ul class="text">
+      <li><span class="text variable">S</span> : les personnes
+        Susceptibles
+        d'être inféctées</li>
+      <li><span class="text variable">V</span> : les personnes Vaccinées</li>
+      <li><span class="text variable">I</span> : les personnes Infectées</li>
+      <li><span class="text variable">R</span> : les personnes Retirées
+        (guéries ou décédées)</li>
+    </ul>
+    <br>
+    <p class="text">Ce modèle repose sur la résolution d'équations différentielles basées sur <span
+        class="text variable">S</span>, <span class="text variable">V</span>, <span class="text variable">I</span> et
+      <span class="text variable">R</span> ainsi que sur certains indicateurs tels que le taux de reproduction du virus
+      <span class="text variable">r0</span>, le taux de guérison, le taux de transmission du virus ou encore le taux de
+      vaccination afin d'estimer au mieux le nombre de premières injections à venir.
+      <br>
+      Cela nous permet de prédire le nombre cumulé de personnes vaccinées contre la COVID-19.
+    </p>
   </mat-card-content>
 </mat-card>
