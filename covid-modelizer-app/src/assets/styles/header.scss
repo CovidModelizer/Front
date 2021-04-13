@@ -41,6 +41,10 @@ button.selectModel{
   color: white;
 }
 
+button.selectModel:hover, button.selectModel:active {
+  background-color: $themecolor-alt;
+}
+
 /*******************
  Topbar
 *******************/

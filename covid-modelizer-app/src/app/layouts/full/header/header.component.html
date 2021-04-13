@@ -2,9 +2,10 @@
 <!-- Profile - style you can find in header.scss -->
 <!-- ============================================================== -->
 <button *ngIf="titrePage === 'Infections' || titrePage === 'Vaccinations'" [matMenuTriggerFor]="modeles"
-  class="btn btn-default btn-sm selectModel">
-  <span style="color: white; display: inline-block; padding: 5px;" class="glyphicon glyphicon-chevron-down"></span>
-  {{labelModel}}
+  class="btn-sm selectModel">
+  <span style="color: white; display: inline-block; padding: 5px; font-size: small;"
+    class="glyphicon glyphicon-chevron-down"></span>
+  <span style="font-size: 15px; font-weight: normal; padding-right: 7px;">{{labelModel}}</span>
 </button>
 <mat-menu #modeles="matMenu" class="mymegamenu">
   <button (click)="setLabelModel('Modèle Linéaire')" [queryParams]="{ modele: 'lin' }" [routerLink]="path_modelisations"
@@ -20,7 +21,6 @@
     Modèle SVIR
   </button>
   <button (click)="setLabelModel('Modèle Machine Learning')" [queryParams]="{ modele: 'ml' }"
-    [routerLink]="path_modelisations" mat-menu-item>Modèle
-    Machine Learning
+    [routerLink]="path_modelisations" mat-menu-item>Modèle Machine Learning
   </button>
 </mat-menu>
