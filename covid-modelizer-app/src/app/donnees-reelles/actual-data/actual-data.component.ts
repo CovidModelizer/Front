@@ -27,8 +27,8 @@ export class ActualDataComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.donneesReellesService.getLastSituationReelle().subscribe(data => {
-      this.currentSituationReelle.setDate(new Date(data[0].date));
+    this.donneesReellesService.getAllDonneesReelles("r0").subscribe(data => {
+      this.currentSituationReelle.setDate(new Date(data[data.length - 1].date));
       this.dateDonneesAffichees = this.currentSituationReelle.getDate();
       this.titre = Utils.getStrDate(this.dateDonneesAffichees);
       this.sousTitre = 'Dernières données relatives à l\'épidémie de COVID-19.';
