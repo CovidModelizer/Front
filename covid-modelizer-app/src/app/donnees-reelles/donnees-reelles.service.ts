@@ -23,8 +23,8 @@ export class DonneesReellesService {
     return this.http.get(this.URL_REST_API + '/full/date?date=' + date);
   }
 
-  getLastSituationReelle(): Observable<any> {
-    return this.http.get(this.URL_REST_API + '/full/lastDays?total=0');
+  getAllDonneesReelles(indicateur: string): Observable<any> {
+    return this.http.get(this.URL_REST_API + '/unit?name=' + indicateur);
   }
 
   // ********************** Autres **********************
@@ -33,14 +33,14 @@ export class DonneesReellesService {
     // Récupération des données réelles cumulées à afficher
     let donneesReellesCumules = new Array<number>();
     this.getAllSituationsReelles().subscribe(data => {
-      if (categorie === 'vaccin') {
+      if (categorie === 'vaccination') {
         for (let elt of data) {
           // On ne récupère que les valeurs à partir de la date de la 1ère prédiction
           if (elt.date >= dateDebut) {
             donneesReellesCumules.push(Number(this.getDataToReturnSiVaccination(model, elt)));
           }
         }
-      } else if (categorie === 'cas') {
+      } else if (categorie === 'infection') {
         for (let elt of data) {
           if (elt.date >= dateDebut) {
             donneesReellesCumules.push(Number(this.getDataToReturnSiInfection(model, elt)));
