@@ -1,6 +1,6 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { ActualGraphComponent } from './actual-graph.component';
+import {ActualGraphComponent} from './actual-graph.component';
 
 describe('ActualGraphComponent', () => {
   let component: ActualGraphComponent;
@@ -8,9 +8,9 @@ describe('ActualGraphComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ActualGraphComponent ]
+      declarations: [ActualGraphComponent]
     })
-    .compileComponents();
+      .compileComponents();
   });
 
   beforeEach(() => {

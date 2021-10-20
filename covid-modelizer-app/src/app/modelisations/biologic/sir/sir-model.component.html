@@ -29,8 +29,9 @@
       </div>
     </div>
     <div class="chart-wrapper">
-      <canvas baseChart [datasets]="chartData" [labels]="chartLabels" [options]="chartOptions" [legend]="chartLegend"
-        [chartType]="chartType">
+      <canvas [chartType]="chartType" [datasets]="chartData" [labels]="chartLabels" [legend]="chartLegend"
+              [options]="chartOptions"
+              baseChart>
       </canvas>
     </div>
   </mat-card-content>
@@ -43,14 +44,16 @@
       :</p>
     <ul class="text">
       <li><span class="text variable">S</span> : les personnes Susceptibles
-        d'être inféctées</li>
+        d'être inféctées
+      </li>
       <li><span class="text variable">I</span> : les personnes Infectées</li>
       <li><span class="text variable">R</span> : les personnes Retirées
-        (guéries ou décédées)</li>
+        (guéries ou décédées)
+      </li>
     </ul>
     <br>
     <p class="text">Ce modèle repose sur la résolution d'équations différentielles basées sur <span
-        class="text variable">S</span>, <span class="text variable">I</span> et <span class="text variable">R</span>
+      class="text variable">S</span>, <span class="text variable">I</span> et <span class="text variable">R</span>
       ainsi que sur certains indicateurs tels que le taux de reproduction du virus <span
         class="text variable">r0</span>, le taux de guérison ou encore le taux de transmission du virus afin d'estimer
       au mieux la propagation du virus dans le temps.

@@ -1,8 +1,8 @@
-import { MediaMatcher } from '@angular/cdk/layout';
-import { AfterViewInit, ChangeDetectorRef, Component, OnChanges, OnDestroy, OnInit, ViewChild } from '@angular/core';
-import { MenuItems } from '../../shared/menu-items/menu-items';
-import { AppHeaderComponent } from './header/header.component';
-import { EventEmitterService } from '../../shared/event-emitter.service';
+import {MediaMatcher} from '@angular/cdk/layout';
+import {ChangeDetectorRef, Component, OnInit, ViewChild} from '@angular/core';
+import {MenuItems} from '../../shared/menu-items/menu-items';
+import {AppHeaderComponent} from './header/header.component';
+import {EventEmitterService} from '../../shared/event-emitter.service';
 
 
 /** @title Responsive sidenav */
@@ -11,7 +11,7 @@ import { EventEmitterService } from '../../shared/event-emitter.service';
   templateUrl: 'full.component.html',
   styleUrls: []
 })
-export class FullComponent implements OnInit, OnDestroy, AfterViewInit {
+export class FullComponent implements OnInit {
 
   @ViewChild(AppHeaderComponent) header!: AppHeaderComponent;
 
@@ -19,7 +19,7 @@ export class FullComponent implements OnInit, OnDestroy, AfterViewInit {
   titrePage = '';
   mobileQuery: MediaQueryList;
 
-  private _mobileQueryListener: () => void;
+  private readonly mobileQueryListener: () => void;
 
   constructor(
     changeDetectorRef: ChangeDetectorRef,
@@ -28,33 +28,26 @@ export class FullComponent implements OnInit, OnDestroy, AfterViewInit {
     private eventEmitterService: EventEmitterService
   ) {
     this.mobileQuery = media.matchMedia('(min-width: 768px)');
-    this._mobileQueryListener = () => changeDetectorRef.detectChanges();
-    this.mobileQuery.addListener(this._mobileQueryListener);
+    this.mobileQueryListener = () => changeDetectorRef.detectChanges();
+    this.mobileQuery.addListener(this.mobileQueryListener);
   }
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.initTitrePage();
-
     this.eventEmitterService.subsVar = this.eventEmitterService.invokeChangePageTitleFunction.subscribe((title: string) => {
       this.setTitrePage(title);
     });
   }
 
-  ngOnDestroy(): void {
-    this.mobileQuery.removeListener(this._mobileQueryListener);
-  }
-
-  ngAfterViewInit() {
-  }
-
   setTitrePage(newTitre: string): void {
     // Ne pas avoir de soucis de chemin lorsqu'on passe de Vaccin à Infections (et vice-versa)
-    if (this.header != undefined) this.header.path_modelisations = newTitre.toLowerCase();
+    if (this.header !== undefined) {
+      this.header.pathModelisations = newTitre.toLowerCase();
+    }
     this.titrePage = newTitre;
-
   }
 
-  initTitrePage() {
+  initTitrePage(): void {
     switch (window.location.pathname) {
       case '/informations-generales': {
         this.setTitrePage('Informations générales');
@@ -81,7 +74,7 @@ export class FullComponent implements OnInit, OnDestroy, AfterViewInit {
         break;
       }
       default: {
-        // Pas possible ?
+        this.setTitrePage('Informations générales');
         break;
       }
     }

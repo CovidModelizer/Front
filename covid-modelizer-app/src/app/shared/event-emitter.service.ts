@@ -1,19 +1,19 @@
-import { Injectable, EventEmitter } from '@angular/core';
-import { Subscription } from 'rxjs/internal/Subscription';    
+import {EventEmitter, Injectable} from '@angular/core';
+import {Subscription} from 'rxjs/internal/Subscription';
 
 @Injectable({
   providedIn: 'root'
 })
 export class EventEmitterService {
 
-  invokeChangePageTitleFunction = new EventEmitter();    
+  invokeChangePageTitleFunction = new EventEmitter();
   subsVar: Subscription;
 
-  constructor() { 
+  constructor() {
     this.subsVar = new Subscription();
   }
 
-  onModelisationsComponentButtonClick(titre: string) {    
-    this.invokeChangePageTitleFunction.emit(titre);    
+  onModelisationsComponentButtonClick(titre: string): void {
+    this.invokeChangePageTitleFunction.emit(titre);
   }
 }

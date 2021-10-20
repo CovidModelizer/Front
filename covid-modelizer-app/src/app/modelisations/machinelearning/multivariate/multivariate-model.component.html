@@ -29,8 +29,9 @@
       </div>
     </div>
     <div class="chart-wrapper">
-      <canvas baseChart [datasets]="chartData" [labels]="chartLabels" [options]="chartOptions" [legend]="chartLegend"
-        [chartType]="chartType">
+      <canvas [chartType]="chartType" [datasets]="chartData" [labels]="chartLabels" [legend]="chartLegend"
+              [options]="chartOptions"
+              baseChart>
       </canvas>
     </div>
   </mat-card-content>
@@ -54,9 +55,11 @@
       <li><span class="text variable">x10</span> : le nombre d'entrées quotidiennes en réanimation</li>
       <li><span class="text variable">x11</span> : le nombre de nouvelles hospitalisations quotidiennes</li>
       <li><span class="text variable">x12</span> : le nombre de nouvelles premières injections de vaccin contre la
-        COVID-19</li>
+        COVID-19
+      </li>
       <li><span class="text variable">x13</span> : le dernier taux de reproduction du virus en date (aussi appelé <span
-          class="text variable">r0</span>) </li>
+        class="text variable">r0</span>)
+      </li>
     </ul>
     <br>
     <p class="text">Ce modèle nous permet de prédire le nombre de personnes qui seront quotidiennement testées positives
@@ -74,16 +77,20 @@
       <li><span class="text variable">x2</span> : le stock du nombre de doses de vaccin Pfizer-BioNTech</li>
       <li><span class="text variable">x3</span> : le stock du nombre de doses de vaccin Moderna</li>
       <li><span class="text variable">x4</span> : le stock du nombre de doses de vaccin Pfizer-BioNTech réservé aux
-        Ehpad</li>
+        Ehpad
+      </li>
       <li><span class="text variable">x5</span> : le nombre de nouvelles premières injections de vaccin</li>
       <li><span class="text variable">x6</span> : le total de prises de rendez-vous hebdomadaire pour vaccination</li>
       <li><span class="text variable">x7</span> : le nombre de prises de rendez-vous hebdomadaire pour injection de rang
-        1</li>
+        1
+      </li>
       <li><span class="text variable">x8</span> : le nombre de prises de rendez-vous hebdomadaire pour injection de rang
-        2</li>
+        2
+      </li>
       <li><span class="text variable">x9</span> : le nombre total de livraisons hebdomadaires de doses de vaccin</li>
       <li><span class="text variable">x10</span> : le nombre de livraisons hebdomadaires de doses de vaccin
-        Pfizer-BioNTech</li>
+        Pfizer-BioNTech
+      </li>
       <li><span class="text variable">x11</span> : le nombre de livraisons hebdomadaires de doses de vaccin Moderna</li>
     </ul>
     <br>

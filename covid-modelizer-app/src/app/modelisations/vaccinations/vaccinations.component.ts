@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
-import { DonneesReellesService } from 'src/app/donnees-reelles/donnees-reelles.service';
-import { SituationReelle } from 'src/app/shared/model/SituationReelle';
+import {DonneesReellesService} from 'src/app/donnees-reelles/donnees-reelles.service';
+import {SituationReelle} from 'src/app/shared/model/SituationReelle';
 
 @Component({
   selector: 'app-vaccinations',
@@ -11,13 +11,12 @@ import { SituationReelle } from 'src/app/shared/model/SituationReelle';
 export class VaccinationsComponent implements OnInit {
 
   public currentSituationReelle: SituationReelle;
-  private route: ActivatedRoute;
-  public modele = 'lin'; // On tombe sur le modèle linéaire par défaut
+  public modele = 'mul'; // On tombe sur le modèle de ML Multivariée par défaut
   public categorie = 'vaccination';
+  private route: ActivatedRoute;
 
-  // tslint:disable-next-line:variable-name
-  constructor(private _route: ActivatedRoute, private donneesReellesService: DonneesReellesService) {
-    this.route = _route;
+  constructor(private activatedRoute: ActivatedRoute, private donneesReellesService: DonneesReellesService) {
+    this.route = activatedRoute;
     this.currentSituationReelle = new SituationReelle();
   }
 
@@ -30,10 +29,7 @@ export class VaccinationsComponent implements OnInit {
 
   getLastSituationReelleAvailable(): void {
     this.donneesReellesService.getAllSituationsReelles().subscribe(data => {
-			this.currentSituationReelle = data[data.length-1];
+      this.currentSituationReelle = data[data.length - 1];
     });
   }
-
-
-
 }

@@ -1,41 +1,40 @@
-import {Component, EventEmitter, Input, OnChanges, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: []
 })
-export class AppHeaderComponent implements OnInit, OnChanges {
+export class AppHeaderComponent implements OnInit {
 
-  @Output('parentFunction') parentFunction: EventEmitter<any> = new EventEmitter();
-  labelModel = '';
+  @Output() parentFunction: EventEmitter<any> = new EventEmitter();
+  modelLabel = '';
   @Input() titrePage = '';
 
-  // tslint:disable-next-line:variable-name
-  path_modelisations = '';
+  pathModelisations = '';
 
   constructor() {
   }
 
   setLabelModel(newLabel: string): void {
-    this.labelModel = newLabel;
+    this.modelLabel = newLabel;
   }
 
   ngOnInit(): void {
-    this.path_modelisations = window.location.pathname.split('/')[1];
-    this.initLabelModelAtStartup(window.location.search.split('=')[1]);
+    this.pathModelisations = window.location.pathname.split('/')[1];
+    const model = window.location.search.split('=')[1];
+    this.updateModelLabel(model);
   }
 
-  ngOnChanges() {
-    this.path_modelisations = window.location.pathname.split('/')[1];
-    this.setLabelModel('Modèle Linéaire');
-  }
-
-  initLabelModelAtStartup(location: string): void {
-    switch(location) {
+  updateModelLabel(location: string): void {
+    switch (location) {
       case undefined: {
-        this.setLabelModel('Modèle Linéaire');
-        break
+        this.setLabelModel('Modèle ML Multivariée');
+        break;
+      }
+      case 'uni': {
+        this.setLabelModel('Modèle ML Univariée');
+        break;
       }
       case 'sir': {
         this.setLabelModel('Modèle SIR');
@@ -45,15 +44,14 @@ export class AppHeaderComponent implements OnInit, OnChanges {
         this.setLabelModel('Modèle SVIR');
         break;
       }
-      case 'ml': {
-        this.setLabelModel('Modèle Machine Learning');
+      case 'mul': {
+        this.setLabelModel('Modèle ML Multivariée');
         break;
       }
       default: {
-        // Impossible
+        this.setLabelModel('Modèle ML Multivariée');
         break;
       }
     }
   }
-
 }

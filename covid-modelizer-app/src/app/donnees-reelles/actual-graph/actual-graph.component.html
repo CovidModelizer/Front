@@ -3,17 +3,20 @@
     <div class="d-flex flex-wrap">
       <div>
         <mat-card-title>Depuis le début de l'épidémie</mat-card-title>
-        <mat-card-subtitle>Cas confirmés quotidiennement</mat-card-subtitle>
+        <mat-card-subtitle>Cas par semaine</mat-card-subtitle>
       </div>
     </div>
-    <div class="chart-wrapper">
-      <canvas [chartType]="lineChartType"
-              [datasets]="lineChartData"
-              [labels]="lineChartLabels"
-              [legend]="lineChartLegend"
-              [options]="lineChartOptions"
-              baseChart>
-      </canvas>
+    <div class="chartWrapper">
+      <div class="chartAreaWrapper">
+        <canvas [chartType]="lineChartType" [datasets]="lineChartData" [labels]="lineChartLabels"
+                [legend]="lineChartLegend"
+                [options]="lineChartOptions"
+                baseChart
+                height="500"
+                id="myChart"
+                width="1500"></canvas>
+      </div>
+      <canvas height="400" id="chartAxis" width="0"></canvas>
     </div>
   </mat-card-content>
 </mat-card>

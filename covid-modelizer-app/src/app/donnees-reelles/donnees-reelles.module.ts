@@ -9,7 +9,7 @@ import {FlexLayoutModule} from '@angular/flex-layout';
 import {ChartistModule} from 'ng-chartist';
 import {RouterModule} from '@angular/router';
 import {MaterialModule} from '../material.module';
-import {ChartsModule} from "ng2-charts";
+import {ChartsModule} from 'ng2-charts';
 
 
 @NgModule({

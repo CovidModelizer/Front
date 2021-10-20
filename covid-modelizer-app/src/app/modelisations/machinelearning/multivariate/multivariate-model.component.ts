@@ -1,21 +1,20 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { ChartDataSets, ChartOptions, ChartType } from 'chart.js';
-import { Label } from 'ng2-charts';
-import { ModelisationsService } from '../modelisations.service';
-import { DonneesReellesService } from '../../donnees-reelles/donnees-reelles.service';
+import {Component, Input, OnInit} from '@angular/core';
+import {ChartDataSets, ChartOptions, ChartType} from 'chart.js';
+import {Label} from 'ng2-charts';
+import {ModelisationsService} from '../../modelisations.service';
+import {DonneesReellesService} from '../../../donnees-reelles/donnees-reelles.service';
 
-const MODEL = 'LIN';
+const MODEL = 'MUL';
 
 @Component({
-  selector: 'app-modele-lineaire',
-  templateUrl: './modele-lineaire.component.html',
-  styleUrls: ['./modele-lineaire.component.css']
+  selector: 'app-multivariate-model',
+  templateUrl: './multivariate-model.component.html',
+  styleUrls: ['./multivariate-model.component.css']
 })
-export class ModeleLineaireComponent implements OnInit {
+export class MultivariateModelComponent implements OnInit {
 
   // infections ou vaccinations
   @Input() categorie = '';
-  deter = '';
   titreGraphe = '';
   nbCasJ21: any = '';
   donneesReellesCumules: number[] | undefined;
@@ -42,8 +41,14 @@ export class ModeleLineaireComponent implements OnInit {
     this.setLabelDonneesModelisees();
     this.getAllDataToDisplay();
     this.chartData = [
-      { data: this.donneesReellesCumules, label: this.labelDonneesReellesCumulees },
-      { data: this.donneesModeliseesCumulees, label: this.labelDonneesModelisees, type: 'line', lineTension: 0, fill: false }
+      {data: this.donneesReellesCumules, label: this.labelDonneesReellesCumulees},
+      {
+        data: this.donneesModeliseesCumulees,
+        label: this.labelDonneesModelisees,
+        type: 'line',
+        lineTension: 0,
+        fill: false
+      }
     ];
     this.chartLabels = this.days;
   }
@@ -60,7 +65,8 @@ export class ModeleLineaireComponent implements OnInit {
             display: true,
             scaleLabel: {
               display: true,
-              labelString: this.categorie === 'vaccination' ? "Cumul de " + this.categorie + "s" : "Cumul d'" + this.categorie + "s",
+              labelString: this.categorie === 'vaccination' ? 'V' + this.categorie.substring(1) + 's quotidiennes'
+                : 'I' + this.categorie.substring(1) + 's quotidiennes',
             },
           },
         ],
@@ -68,7 +74,7 @@ export class ModeleLineaireComponent implements OnInit {
           {
             scaleLabel: {
               display: true,
-              labelString: "Date",
+              labelString: 'Date',
             },
           },
         ],
@@ -77,12 +83,7 @@ export class ModeleLineaireComponent implements OnInit {
   }
 
   setTitreGraphe(): void {
-    if (this.categorie === 'vaccination') {
-      this.deter = 'de '
-    } else {
-      this.deter = 'd\''
-    }
-    this.titreGraphe = 'Mise en comparaison entre les ' + this.categorie + 's cumulées réelles et modélisées';
+    this.titreGraphe = 'Mise en comparaison entre les nouvelles ' + this.categorie + 's quotidiennes réelles et modélisées';
   }
 
   setLabelCasOuVaccinsCumules(): void {
@@ -106,12 +107,12 @@ export class ModeleLineaireComponent implements OnInit {
     let dateDebutGraphe: any;
 
     // Récupération des données modélisées cumulées à afficher
-    let donneesModeliseesCumulees = new Array<number>();
+    const donneesModeliseesCumulees = new Array<number>();
     if (this.categorie === 'vaccination' || this.categorie === 'infection') {
       this.modelisationsService.getDonneesModeliseesByModel(this.categorie, MODEL).subscribe(data => {
         dateDebutGraphe = data[0].date;
-        this.nbCasJ21 = data[data.length - 1].value - data[data.length - 2].value;
-        for (let elt of data) {
+        this.nbCasJ21 = data[data.length - 1].value;
+        for (const elt of data) {
           donneesModeliseesCumulees.push(Number(elt.value));
           // Récupération de la plage de temps sur laquelle faire le graphe
           this.days?.push(elt.date);
@@ -119,29 +120,29 @@ export class ModeleLineaireComponent implements OnInit {
       });
     } else {
       // ERROR
-      console.log('ERROR : categorie doit être égale à \'vaccin\' ou \'cas\' !');
+      console.log('ERROR : categorie doit être égale à \'infection\' \'vaccination\' !');
     }
     this.donneesModeliseesCumulees = donneesModeliseesCumulees;
 
     // Récupération des données réelles cumulées à afficher
-    let donneesReellesCumules = new Array<number>();
+    const donneesReellesCumules = new Array<number>();
     this.donneesReellesService.getAllSituationsReelles().subscribe(data => {
       if (this.categorie === 'vaccination') {
-        for (let elt of data) {
+        for (const elt of data) {
           // On ne récupère que les valeurs à partir de la date de la 1ère prédiction
           if (elt.date >= dateDebutGraphe) {
-            donneesReellesCumules.push(Number(elt.cumulPremieresInjections));
+            donneesReellesCumules.push(Number(elt.nouvellesPremieresInjections));
           }
         }
       } else if (this.categorie === 'infection') {
-        for (let elt of data) {
+        for (const elt of data) {
           if (elt.date >= dateDebutGraphe) {
-            donneesReellesCumules.push(Number(elt.cumulCasConfirmes));
+            donneesReellesCumules.push(Number(elt.nouveauxCasConfirmes));
           }
         }
       } else {
         // ERROR
-        console.log('ERROR : categorie doit être égale à \'vaccin\' ou \'cas\' !');
+        console.log('ERROR : categorie doit être égale à \'infection\' ou \'vaccination\' !');
       }
     });
     this.donneesReellesCumules = donneesReellesCumules;
@@ -149,9 +150,8 @@ export class ModeleLineaireComponent implements OnInit {
 
   isConfinement(): string {
     if (this.nbCasJ21 > 30000) {
-      return "OUI";
+      return 'OUI';
     }
-    return "NON";
+    return 'NON';
   }
-
 }
