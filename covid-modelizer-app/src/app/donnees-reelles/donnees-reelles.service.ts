@@ -1,15 +1,15 @@
-import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
-import { SituationReelle } from '../shared/model/SituationReelle';
+import {Injectable} from '@angular/core';
+import {HttpClient} from '@angular/common/http';
+import {Observable} from 'rxjs';
+import {SituationReelle} from '../shared/model/SituationReelle';
 
 @Injectable({
   providedIn: 'root'
 })
 export class DonneesReellesService {
 
-  private URL_REST_API = 'http://api.covid-modelizer.fr/data';
-
+  // private URL_REST_API = 'http://api.covid-modelizer.fr/data';
+  private URL_REST_API = 'http://localhost:8080/data';
 
   constructor(private http: HttpClient) {
   }

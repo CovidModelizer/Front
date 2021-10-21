@@ -29,8 +29,9 @@
       </div>
     </div>
     <div class="chart-wrapper">
-      <canvas baseChart [datasets]="chartData" [labels]="chartLabels" [options]="chartOptions" [legend]="chartLegend"
-        [chartType]="chartType">
+      <canvas [chartType]="chartType" [datasets]="chartData" [labels]="chartLabels" [legend]="chartLegend"
+              [options]="chartOptions"
+              baseChart>
       </canvas>
     </div>
   </mat-card-content>
@@ -40,11 +41,12 @@
   <mat-card-content>
     <h3>Modélisation linéaire</h3>
     <p class="text">Le modèle linéaire utilisé ici est un modèle de régression linéaire à une seule variable <span
-        class="text" style="font-family: 'Verdana'; font-style: italic;">x1</span> :
+      class="text" style="font-family: 'Verdana'; font-style: italic;">x1</span> :
     </p>
     <ul class="text">
       <li><span class="text variable">x1</span> : le
-        cumul de personnes infectées en France depuis le début de la pandémie</li>
+        cumul de personnes infectées en France depuis le début de la pandémie
+      </li>
     </ul>
     <br>
     <p class="text">Ce modèle nous permet de prédire le nombre cumulé de personnes testées positives à la COVID-19 dans
@@ -56,11 +58,12 @@
   <mat-card-content>
     <h3>Modélisation linéaire</h3>
     <p class="text">Le modèle linéaire utilisé ici est un modèle de régression linéaire à une seule variable <span
-        class="text variable">x1</span> :
+      class="text variable">x1</span> :
     </p>
     <ul class="text">
       <li><span class="text variable">x1</span> : le cumul de premières
-        injections de vaccin contre la COVID-19 en France depuis le début de la pandémie</li>
+        injections de vaccin contre la COVID-19 en France depuis le début de la pandémie
+      </li>
     </ul>
     <br>
     <p class="text">Ce modèle nous permet de prédire le nombre cumulé de premières doses qui seront injectées dans les

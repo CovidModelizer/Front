@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { EventEmitterService } from '../../shared/event-emitter.service';
+import {Component, OnInit} from '@angular/core';
+import {Router} from '@angular/router';
+import {EventEmitterService} from '../../shared/event-emitter.service';
 
 @Component({
   selector: 'app-modelisations',
@@ -12,27 +12,24 @@ export class ModelisationsComponent implements OnInit {
   constructor(private router: Router, private eventEmitterService: EventEmitterService) {
   }
 
-  ngOnInit(): void {
-  }
-
-  goTo(path: string): void {
-    this.router.navigate([path]);
-    let pageTitle = this.setPageTitleByPath(path);
-    this.eventEmitterService.onModelisationsComponentButtonClick(pageTitle);
-  }
-
-  private setPageTitleByPath(path: string) {
-    let pageTitle = '';
+  private static setPageTitleByPath(path: string): string {
+    let pageTitle;
     if (path === 'infections') {
       pageTitle = 'Infections';
     } else if (path === 'vaccinations') {
       pageTitle = 'Vaccinations';
     } else {
-      // ERROR
+      pageTitle = 'Error';
     }
     return pageTitle;
   }
 
+  ngOnInit(): void {
+  }
 
-
+  goTo(path: string): void {
+    this.router.navigate([path]);
+    const pageTitle = ModelisationsComponent.setPageTitleByPath(path);
+    this.eventEmitterService.onModelisationsComponentButtonClick(pageTitle);
+  }
 }

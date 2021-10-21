@@ -1,17 +1,17 @@
-import { Component, OnInit } from '@angular/core';
-import { ChartDataSets, ChartOptions, ChartType } from 'chart.js';
-import { Label } from 'ng2-charts';
-import { ModelisationsService } from '../modelisations.service';
-import { DonneesReellesService } from '../../donnees-reelles/donnees-reelles.service';
+import {Component, OnInit} from '@angular/core';
+import {ChartDataSets, ChartOptions, ChartType} from 'chart.js';
+import {Label} from 'ng2-charts';
+import {ModelisationsService} from '../../modelisations.service';
+import {DonneesReellesService} from '../../../donnees-reelles/donnees-reelles.service';
 
 const MODEL = 'SIR';
 
 @Component({
-  selector: 'app-modele-sir',
-  templateUrl: './modele-sir.component.html',
-  styleUrls: ['./modele-sir.component.css']
+  selector: 'app-sir-model',
+  templateUrl: './sir-model.component.html',
+  styleUrls: ['./sir-model.component.css']
 })
-export class ModeleSirComponent implements OnInit {
+export class SirModelComponent implements OnInit {
 
   titreGraphe = 'Mise en comparaison entre le total actuel d\'infections réelles et modélisées';
   donneesReellesCumules: number[] | undefined;
@@ -36,8 +36,14 @@ export class ModeleSirComponent implements OnInit {
     this.setChartLegends();
     this.getAllDataToDisplay();
     this.chartData = [
-      { data: this.donneesReellesCumules, label: this.labelDonneesReellesCumulees },
-      { data: this.donneesModeliseesCumulees, label: this.labelDonneesModelisees, type: 'line', lineTension: 0, fill: false }
+      {data: this.donneesReellesCumules, label: this.labelDonneesReellesCumulees},
+      {
+        data: this.donneesModeliseesCumulees,
+        label: this.labelDonneesModelisees,
+        type: 'line',
+        lineTension: 0,
+        fill: false
+      }
     ];
     this.chartLabels = this.days;
   }
@@ -45,7 +51,7 @@ export class ModeleSirComponent implements OnInit {
   /**
    * Labels des axes du graphe
    */
-  setChartLegends() {
+  setChartLegends(): void {
     this.chartOptions = {
       responsive: true,
       scales: {
@@ -54,7 +60,7 @@ export class ModeleSirComponent implements OnInit {
             display: true,
             scaleLabel: {
               display: true,
-              labelString: "Total de personnes encore infectées",
+              labelString: 'Total de personnes encore infectées',
             },
           },
         ],
@@ -62,7 +68,7 @@ export class ModeleSirComponent implements OnInit {
           {
             scaleLabel: {
               display: true,
-              labelString: "Date",
+              labelString: 'Date',
             },
           },
         ],
@@ -75,11 +81,11 @@ export class ModeleSirComponent implements OnInit {
     let dateDebutGraphe: any;
 
     // Récupération des données modélisées cumulées à afficher
-    let donneesModeliseesCumulees = new Array<number>();
+    const donneesModeliseesCumulees = new Array<number>();
     this.modelisationsService.getDonneesModeliseesByModel('infection', MODEL).subscribe(data => {
       dateDebutGraphe = data[0].date;
       this.nbCasJ21 = data[data.length - 1].value;
-      for (let elt of data) {
+      for (const elt of data) {
         donneesModeliseesCumulees.push(Number(elt.value));
         // Récupération de la plage de temps sur laquelle faire le graphe
         this.days?.push(elt.date);
@@ -88,9 +94,9 @@ export class ModeleSirComponent implements OnInit {
     this.donneesModeliseesCumulees = donneesModeliseesCumulees;
 
     // Récupération des données réelles cumulées à afficher
-    let donneesReellesCumules = new Array<number>();
+    const donneesReellesCumules = new Array<number>();
     this.donneesReellesService.getAllSituationsReelles().subscribe(data => {
-      for (let elt of data) {
+      for (const elt of data) {
         // On ne récupère que les valeurs à partir de la date de la 1ère prédiction
         if (elt.date >= dateDebutGraphe) {
           donneesReellesCumules.push(Number(elt.sirI));
@@ -102,9 +108,8 @@ export class ModeleSirComponent implements OnInit {
 
   isConfinement(): string {
     if (this.nbCasJ21 > 30000) {
-      return "OUI";
+      return 'OUI';
     }
-    return "NON";
+    return 'NON';
   }
-
 }

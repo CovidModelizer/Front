@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import {Component, OnInit} from '@angular/core';
+import {ActivatedRoute} from '@angular/router';
 
 @Component({
   selector: 'app-infections',
@@ -8,13 +8,12 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class InfectionsComponent implements OnInit {
 
-  private route: ActivatedRoute;
-  public modele = 'lin'; // On tombe sur le modèle linéaire par défaut
+  public modele = 'mul'; // On tombe sur le modèle de ML Multivariée par défaut
   public categorie = 'infection';
+  private route: ActivatedRoute;
 
-  // tslint:disable-next-line:variable-name
-  constructor(private _route: ActivatedRoute) {
-    this.route = _route;
+  constructor(private activatedRoute: ActivatedRoute) {
+    this.route = activatedRoute;
   }
 
   ngOnInit(): void {

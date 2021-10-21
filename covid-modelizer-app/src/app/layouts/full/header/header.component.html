@@ -1,26 +1,28 @@
 <!-- ============================================================== -->
 <!-- Profile - style you can find in header.scss -->
 <!-- ============================================================== -->
+{{ ngOnInit() }}
 <button *ngIf="titrePage === 'Infections' || titrePage === 'Vaccinations'" [matMenuTriggerFor]="modeles"
-  class="btn-sm selectModel">
-  <span style="color: white; display: inline-block; padding: 5px; font-size: small;"
-    class="glyphicon glyphicon-chevron-down"></span>
-  <span style="font-size: 15px; font-weight: normal; padding-right: 7px;">{{labelModel}}</span>
+        class="btn-sm selectModel">
+  <span class="glyphicon glyphicon-chevron-down"
+        style="color: white; display: inline-block; padding: 5px; font-size: small;"></span>
+  <span style="font-size: 15px; font-weight: normal; padding-right: 7px;">{{modelLabel}}</span>
 </button>
 <mat-menu #modeles="matMenu" class="mymegamenu">
-  <button (click)="setLabelModel('Modèle Linéaire')" [queryParams]="{ modele: 'lin' }" [routerLink]="path_modelisations"
-    mat-menu-item>
-    Modèle Linéaire
+  <button (click)="setLabelModel('Modèle ML Multivariée')" [queryParams]="{ modele: 'mul' }"
+          [routerLink]="pathModelisations" mat-menu-item>
+    Modèle ML Multivariée
   </button>
-  <button *ngIf="path_modelisations === 'infections'" (click)="setLabelModel('Modèle SIR')"
-    [queryParams]="{ modele: 'sir' }" [routerLink]="path_modelisations" mat-menu-item>
+  <button (click)="setLabelModel('Modèle SIR')" *ngIf="pathModelisations === 'infections'"
+          [queryParams]="{ modele: 'sir' }" [routerLink]="pathModelisations" mat-menu-item>
     Modèle SIR
   </button>
-  <button *ngIf="path_modelisations === 'vaccinations'" (click)="setLabelModel('Modèle SVIR')"
-    [queryParams]="{ modele: 'svir' }" [routerLink]="path_modelisations" mat-menu-item>
+  <button (click)="setLabelModel('Modèle SVIR')" *ngIf="pathModelisations === 'vaccinations'"
+          [queryParams]="{ modele: 'svir' }" [routerLink]="pathModelisations" mat-menu-item>
     Modèle SVIR
   </button>
-  <button (click)="setLabelModel('Modèle Machine Learning')" [queryParams]="{ modele: 'ml' }"
-    [routerLink]="path_modelisations" mat-menu-item>Modèle Machine Learning
+  <button (click)="setLabelModel('Modèle ML Univariée')" [queryParams]="{ modele: 'uni' }"
+          [routerLink]="pathModelisations" mat-menu-item>
+    Modèle ML Univariée
   </button>
 </mat-menu>

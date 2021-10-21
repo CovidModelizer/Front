@@ -37,6 +37,8 @@ testem.log
 /e2e/*.js
 /e2e/*.map
 
-# System Files
+# Mac
 .DS_Store
+
+# System Files
 Thumbs.db

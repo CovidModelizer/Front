@@ -1,7 +1,7 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { SituationReelle } from '../../shared/model/SituationReelle';
-import { DonneesReellesService } from '../donnees-reelles.service';
-import { Utils } from '../../shared/utils';
+import {Component, Input, OnInit} from '@angular/core';
+import {SituationReelle} from '../../shared/model/SituationReelle';
+import {DonneesReellesService} from '../donnees-reelles.service';
+import {Utils} from '../../shared/utils';
 import * as moment from 'moment';
 
 const REAL_DATE_JOUR = new Date();
@@ -27,7 +27,7 @@ export class ActualDataComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.donneesReellesService.getAllDonneesReelles("r0").subscribe(data => {
+    this.donneesReellesService.getAllDonneesReelles('r0').subscribe(data => {
       this.currentSituationReelle.setDate(new Date(data[data.length - 1].date));
       this.dateDonneesAffichees = this.currentSituationReelle.getDate();
       this.titre = Utils.getStrDate(this.dateDonneesAffichees);
@@ -36,7 +36,7 @@ export class ActualDataComponent implements OnInit {
     });
   }
 
-  setSousTitreByDate(date: Date) {
+  setSousTitreByDate(date: Date): void {
     if (moment(date).format('DD-MM-YYYY') === moment(this.DATE_JOUR).format('DD-MM-YYYY')) {
       this.sousTitre = 'Dernières données relatives à l\'épidémie de COVID-19.';
     } else {
@@ -53,12 +53,12 @@ export class ActualDataComponent implements OnInit {
   }
 
   /**
-   * 
+   *
    * @param newTitleDate -1 = jour précédent & 1 = jour suivant
    */
   goOneDayBeforeOrAfter(nbJoursToGo: number): void {
     if ((nbJoursToGo > 0 && this.isGoingAfterPossible()) || (nbJoursToGo < 0 && this.isGoingBackPossible())) {
-      let dateDonneesAAfficher = Utils.getDayBeforeOrAfterGivenDate(this.dateDonneesAffichees, nbJoursToGo);
+      const dateDonneesAAfficher = Utils.getDayBeforeOrAfterGivenDate(this.dateDonneesAffichees, nbJoursToGo);
       this.donneesReellesService.getSituationReelleByDate(dateDonneesAAfficher).subscribe(data => {
         this.currentSituationReelle = data[0];
       });

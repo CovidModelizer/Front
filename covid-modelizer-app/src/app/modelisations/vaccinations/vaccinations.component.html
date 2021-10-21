@@ -24,14 +24,15 @@
   </mat-card-content>
 </mat-card>
 <div fxLayout="row wrap">
-  <div *ngIf="modele === 'lin' || modele === undefined" fxFlex="100" fxFlex.gt-lg="100" fxFlex.gt-md="100"
-    fxFlex.gt-xs="100">
-    <app-modele-lineaire [categorie]="categorie"></app-modele-lineaire>
+  <div *ngIf="modele === 'uni'" fxFlex="100" fxFlex.gt-lg="100" fxFlex.gt-md="100"
+       fxFlex.gt-xs="100">
+    <app-univariate-model [categorie]="categorie"></app-univariate-model>
   </div>
   <div *ngIf="modele == 'svir'" fxFlex="100" fxFlex.gt-lg="100" fxFlex.gt-md="100" fxFlex.gt-xs="100">
-    <app-modele-svir></app-modele-svir>
+    <app-svir-model></app-svir-model>
   </div>
-  <div *ngIf="modele == 'ml'" fxFlex="100" fxFlex.gt-lg="100" fxFlex.gt-md="100" fxFlex.gt-xs="100">
-    <app-modele-machine-learning [categorie]="categorie"></app-modele-machine-learning>
+  <div *ngIf="modele == 'mul' || modele === undefined" fxFlex="100" fxFlex.gt-lg="100" fxFlex.gt-md="100"
+       fxFlex.gt-xs="100">
+    <app-multivariate-model [categorie]="categorie"></app-multivariate-model>
   </div>
 </div>

@@ -1,79 +1,97 @@
 <mat-card>
-    <mat-card-content>
-        <p class="text">Ce questionnaire est un formulaire d'éligibilité vaccinale. Il tient compte de votre profil et
-            de votre situation personnelle pour déterminer votre niveau d'éligibilité à recevoir les vaccins contre la
-            COVID-19. Le résultat de ce formulaire est conforme à la stratégie vaccinale du Gouvernement.</p>
-        <p class="text">Aucune donnée personnelle n'est enregistrée dans notre système.</p>
-    </mat-card-content>
+  <mat-card-content>
+    <p class="text">Ce questionnaire est un formulaire d'éligibilité vaccinale. Il tient compte de votre profil et
+      de votre situation personnelle pour déterminer votre niveau d'éligibilité à recevoir les vaccins contre la
+      COVID-19. Le résultat de ce formulaire est conforme à la stratégie vaccinale du Gouvernement.</p>
+    <p class="text">Aucune donnée personnelle n'est enregistrée dans notre système.</p>
+  </mat-card-content>
 </mat-card>
 <mat-card>
-    <mat-card-content>
-        <form>
-            <div id="age_form">
-                <h3>Veuillez indiquer votre âge</h3>
-                <button type="button" class="btn btn-space" id="moins18" name="age" value="moins18"
-                    (click)="estEligible('moins18','', '', '')">Moins de 18 ans</button>
-                <button type="button" class="btn btn-space" id="entre18et49" name="age" value="entre18et49"
-                    (click)="estEligible('entre18et49','', '', '')">Entre 18 et 49 ans</button>
-                <button type="button" class="btn btn-space" id="entre50et54" name="age" value="entre50et54"
-                    (click)="estEligible('entre50et54','', '', '')">Entre 50 et 54 ans</button>
-                <button type="button" class="btn btn-space" id="entre55et69" name="age" value="entre55et69"
-                    (click)="estEligible('entre55et69','', '', '')">Entre 55 et 69 ans</button>
-                <button type="button" class="btn btn-space" id="plus70" name="age" value="plus70"
-                    (click)="estEligible('plus70','', '', '')">Plus de 70 ans</button>
-            </div>
+  <mat-card-content>
+    <form>
+      <div id="age_form">
+        <h3>Veuillez indiquer votre âge</h3>
+        <button (click)="estEligible('0à11ans','', '', '')" class="btn btn-space" id="moins18" name="age" type="button"
+                value="moins18">O à 11 ans
+        </button>
+        <button (click)="estEligible('12à17ans','', '', '')" class="btn btn-space" id="entre18et49" name="age"
+                type="button"
+                value="entre18et49">12 à 17 ans
+        </button>
+        <button (click)="estEligible('18à54ans','', '', '')" class="btn btn-space" id="entre50et54" name="age"
+                type="button"
+                value="entre50et54">18 à 54 ans
+        </button>
+        <button (click)="estEligible('55ansEtPlus','', '', '')" class="btn btn-space" id="entre55et69" name="age"
+                type="button"
+                value="entre55et69">55 et plus
+        </button>
+      </div>
 
-            <div id="enceinte_form" *ngIf="age === 'entre18et49'">
-                <br>
-                <hr>
-                <h3>Êtes vous enceinte ?</h3>
-                <button type="button" class="btn btn-space" id="oui" name="enceinte" value="oui"
-                    (click)="estEligible('','oui','', '')">Oui</button>
-                <button type="button" class="btn btn-space" id="non" name="enceinte" value="non"
-                    (click)="estEligible('','non','', '')">Non</button>
-            </div>
+      <div *ngIf="age !== '' && age !== '0à11ans'" id="enceinte_form">
+        <br>
+        <hr>
+        <h3>Êtes-vous enceinte ?</h3>
+        <button (click)="estEligible('','oui','', '')" class="btn btn-space" id="oui-enceinte"
+                name="enceinte" type="button" value="oui">Oui
+        </button>
+        <button (click)="estEligible('','non','', '')" class="btn btn-space" id="non-enceinte"
+                name="enceinte" type="button" value="non">Non
+        </button>
+      </div>
 
-            <div id="pro_form" *ngIf="displayProForm()">
-                <br>
-                <hr>
-                <h3>Êtes vous un professionnel de santé, personnel d'un établissement médico-social, pompier ou aide à
-                    domicile ?</h3>
-                <button type="button" class="btn btn-space" id="oui" name="pro" value="oui"
-                    (click)="estEligible('','','oui', '')">Oui</button>
-                <button type="button" class="btn btn-space" id="non" name="pro" value="non"
-                    (click)="estEligible('','','non', '')">Non</button>
-            </div>
+      <div *ngIf="displayProForm()" id="pro_form">
+        <br>
+        <hr>
+        <h3>Êtes-vous un professionnel de santé, personnel d'un établissement médico-social, pompier ou aide à
+          domicile ?</h3>
+        <button (click)="estEligible('','','oui', '')" class="btn btn-space" id="oui-pro"
+                name="pro" type="button" value="oui">Oui
+        </button>
+        <button (click)="estEligible('','','non', '')" class="btn btn-space" id="non-pro"
+                name="pro" type="button" value="non">Non
+        </button>
+      </div>
 
-            <div id="malade_form" *ngIf="displayMaladeForm()">
-                <br>
-                <hr>
-                <h3>Présentez-vous <a target="_blank"
-                        href="https://solidarites-sante.gouv.fr/IMG/pdf/liste_maladies_rares_cosv_fmr-2.pdf">une
-                        pathologie conduisant à un risque de forme grave</a> ?</h3>
-                <button type="button" class="btn btn-space" id="oui" name="malade" value="oui"
-                    (click)="estEligible('','','', 'oui')">Oui</button>
-                <button type="button" class="btn btn-space" id="non" name="malade" value="non"
-                    (click)="estEligible('','','', 'non')">Non</button>
-            </div>
-        </form>
-    </mat-card-content>
+      <div *ngIf="displayMaladeForm()" id="malade_form">
+        <br>
+        <hr>
+        <h3>Présentez-vous <a href="https://solidarites-sante.gouv.fr/IMG/pdf/liste_maladies_rares_cosv_fmr-2.pdf"
+                              target="_blank">une pathologie conduisant à un risque de forme grave</a> ?
+        </h3>
+        <button (click)="estEligible('','','', 'oui')" class="btn btn-space" id="oui-malade"
+                name="malade" type="button" value="oui">Oui
+        </button>
+        <button (click)="estEligible('','','', 'non')" class="btn btn-space" id="non-malade"
+                name="malade" type="button" value="non">Non
+        </button>
+      </div>
+    </form>
+  </mat-card-content>
 </mat-card>
-<div id="results" *ngIf="displayResult() === true">
-    <p class="com">{{commentaire1}}</p>
-    <p class="com">{{datePossibleVaccination}}</p>
-    <div class="result">
-        <div id="Pfizer-BioNTech">
-            <div class="result1" [ngStyle]="{'background-color' : colorPfizer, 'border-radius' : '10px'}">
-                Pfizer-BioNTech
-            </div>
-        </div>
-        <div id="Moderna">
-            <div class="result2" [ngStyle]="{'background-color' : colorModerna, 'border-radius' : '10px'}">Moderna</div>
-        </div>
-        <div id="AstraZeneca">
-            <div class="result3" [ngStyle]="{'background-color' : colorAstrazeneca, 'border-radius' : '10px'}">
-                AstraZeneca
-            </div>
-        </div>
+<div *ngIf="displayResult() === true" id="results">
+  <p class="com">{{commentaire1}}</p>
+  <p class="com">{{datePossibleVaccination}}</p>
+  <div class="result">
+    <div id="Pfizer-BioNTech">
+      <div [ngStyle]="{'background-color' : colorPfizer, 'border-radius' : '10px'}" class="result1">
+        Pfizer-BioNTech
+      </div>
     </div>
+    <div id="Moderna">
+      <div [ngStyle]="{'background-color' : colorModerna, 'border-radius' : '10px'}" class="result2">
+        Moderna
+      </div>
+    </div>
+    <div id="AstraZeneca">
+      <div [ngStyle]="{'background-color' : colorAstrazeneca, 'border-radius' : '10px'}" class="result3">
+        AstraZeneca
+      </div>
+    </div>
+    <div id="Janssen">
+      <div [ngStyle]="{'background-color' : colorJanssen, 'border-radius' : '10px'}" class="result4">
+        Janssen
+      </div>
+    </div>
+  </div>
 </div>
