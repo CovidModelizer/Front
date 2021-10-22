@@ -19,10 +19,7 @@
 
 * Node 14
 * Angular 12
-
-## Docker
-
-* [docker-hub](https://hub.docker.com/r/covidmodelizer/front)
+* [Docker](https://hub.docker.com/r/covidmodelizer/front)
 
 ## Exécution
 
