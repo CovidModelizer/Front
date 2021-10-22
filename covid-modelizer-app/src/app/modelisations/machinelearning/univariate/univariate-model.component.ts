@@ -1,20 +1,21 @@
-import { Component, ComponentFactoryResolver, Input, OnInit } from '@angular/core';
-import { ChartDataSets, ChartOptions, ChartType } from 'chart.js';
-import { Label } from 'ng2-charts';
-import { ModelisationsService } from '../modelisations.service';
-import { DonneesReellesService } from '../../donnees-reelles/donnees-reelles.service';
+import {Component, Input, OnInit} from '@angular/core';
+import {ChartDataSets, ChartOptions, ChartType} from 'chart.js';
+import {Label} from 'ng2-charts';
+import {ModelisationsService} from '../../modelisations.service';
+import {DonneesReellesService} from '../../../donnees-reelles/donnees-reelles.service';
 
-const MODEL = 'MCL';
+const MODEL = 'UNI';
 
 @Component({
-  selector: 'app-modele-machine-learning',
-  templateUrl: './modele-machine-learning.component.html',
-  styleUrls: ['./modele-machine-learning.component.css']
+  selector: 'app-univariate-model',
+  templateUrl: './univariate-model.component.html',
+  styleUrls: ['./univariate-model.component.css']
 })
-export class ModeleMachineLearningComponent implements OnInit {
+export class UnivariateModelComponent implements OnInit {
 
   // infections ou vaccinations
   @Input() categorie = '';
+  deter = '';
   titreGraphe = '';
   nbCasJ21: any = '';
   donneesReellesCumules: number[] | undefined;
@@ -41,8 +42,14 @@ export class ModeleMachineLearningComponent implements OnInit {
     this.setLabelDonneesModelisees();
     this.getAllDataToDisplay();
     this.chartData = [
-      { data: this.donneesReellesCumules, label: this.labelDonneesReellesCumulees },
-      { data: this.donneesModeliseesCumulees, label: this.labelDonneesModelisees, type: 'line', lineTension: 0, fill: false }
+      {data: this.donneesReellesCumules, label: this.labelDonneesReellesCumulees},
+      {
+        data: this.donneesModeliseesCumulees,
+        label: this.labelDonneesModelisees,
+        type: 'line',
+        lineTension: 0,
+        fill: false
+      }
     ];
     this.chartLabels = this.days;
   }
@@ -59,7 +66,7 @@ export class ModeleMachineLearningComponent implements OnInit {
             display: true,
             scaleLabel: {
               display: true,
-              labelString: this.categorie === 'vaccination' ? "V" + this.categorie.substring(1) + "s quotidiennes" : "I" + this.categorie.substring(1) + "s quotidiennes",
+              labelString: this.categorie === 'vaccination' ? 'Cumul de ' + this.categorie + 's' : 'Cumul d\'' + this.categorie + 's',
             },
           },
         ],
@@ -67,7 +74,7 @@ export class ModeleMachineLearningComponent implements OnInit {
           {
             scaleLabel: {
               display: true,
-              labelString: "Date",
+              labelString: 'Date',
             },
           },
         ],
@@ -76,7 +83,12 @@ export class ModeleMachineLearningComponent implements OnInit {
   }
 
   setTitreGraphe(): void {
-    this.titreGraphe = 'Mise en comparaison entre les nouvelles ' + this.categorie + 's quotidiennes réelles et modélisées';
+    if (this.categorie === 'vaccination') {
+      this.deter = 'de ';
+    } else {
+      this.deter = 'd\'';
+    }
+    this.titreGraphe = 'Mise en comparaison entre les ' + this.categorie + 's cumulées réelles et modélisées';
   }
 
   setLabelCasOuVaccinsCumules(): void {
@@ -100,12 +112,12 @@ export class ModeleMachineLearningComponent implements OnInit {
     let dateDebutGraphe: any;
 
     // Récupération des données modélisées cumulées à afficher
-    let donneesModeliseesCumulees = new Array<number>();
+    const donneesModeliseesCumulees = new Array<number>();
     if (this.categorie === 'vaccination' || this.categorie === 'infection') {
       this.modelisationsService.getDonneesModeliseesByModel(this.categorie, MODEL).subscribe(data => {
         dateDebutGraphe = data[0].date;
-        this.nbCasJ21 = data[data.length - 1].value;
-        for (let elt of data) {
+        this.nbCasJ21 = data[data.length - 1].value - data[data.length - 2].value;
+        for (const elt of data) {
           donneesModeliseesCumulees.push(Number(elt.value));
           // Récupération de la plage de temps sur laquelle faire le graphe
           this.days?.push(elt.date);
@@ -113,29 +125,29 @@ export class ModeleMachineLearningComponent implements OnInit {
       });
     } else {
       // ERROR
-      console.log('ERROR : categorie doit être égale à \'infection\' \'vaccination\' !');
+      console.log('ERROR : categorie doit être égale à \'vaccin\' ou \'cas\' !');
     }
     this.donneesModeliseesCumulees = donneesModeliseesCumulees;
 
     // Récupération des données réelles cumulées à afficher
-    let donneesReellesCumules = new Array<number>();
+    const donneesReellesCumules = new Array<number>();
     this.donneesReellesService.getAllSituationsReelles().subscribe(data => {
       if (this.categorie === 'vaccination') {
-        for (let elt of data) {
+        for (const elt of data) {
           // On ne récupère que les valeurs à partir de la date de la 1ère prédiction
           if (elt.date >= dateDebutGraphe) {
-            donneesReellesCumules.push(Number(elt.nouvellesPremieresInjections));
+            donneesReellesCumules.push(Number(elt.cumulPremieresInjections));
           }
         }
       } else if (this.categorie === 'infection') {
-        for (let elt of data) {
+        for (const elt of data) {
           if (elt.date >= dateDebutGraphe) {
-            donneesReellesCumules.push(Number(elt.nouveauxCasConfirmes));
+            donneesReellesCumules.push(Number(elt.cumulCasConfirmes));
           }
         }
       } else {
         // ERROR
-        console.log('ERROR : categorie doit être égale à \'infection\' ou \'vaccination\' !');
+        console.log('ERROR : categorie doit être égale à \'vaccin\' ou \'cas\' !');
       }
     });
     this.donneesReellesCumules = donneesReellesCumules;
@@ -143,8 +155,8 @@ export class ModeleMachineLearningComponent implements OnInit {
 
   isConfinement(): string {
     if (this.nbCasJ21 > 30000) {
-      return "OUI";
+      return 'OUI';
     }
-    return "NON";
+    return 'NON';
   }
 }

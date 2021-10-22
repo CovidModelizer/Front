@@ -1,5 +1,5 @@
 iframe {
-    height: calc(100vh);
-    width: calc(100%);
-    box-sizing: border-box;
+  height: calc(100vh);
+  width: calc(100%);
+  box-sizing: border-box;
 }

@@ -1,6 +1,6 @@
-import { Directive, HostListener, Inject } from '@angular/core';
+import {Directive, HostListener, Inject} from '@angular/core';
 
-import { AccordionLinkDirective } from './accordionlink.directive';
+import {AccordionLinkDirective} from './accordionlink.directive';
 
 @Directive({
   selector: '[appAccordionToggle]'

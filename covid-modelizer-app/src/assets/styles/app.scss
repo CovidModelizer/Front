@@ -16,8 +16,8 @@ File: scss
  *	7. Widgets
  *	8. Custom Templates
  */
-/******************* 
-Global Styles 
+/*******************
+Global Styles
 *******************/
 
 * {
@@ -39,35 +39,43 @@ html {
   min-height: 100%;
   background: $white;
 }
+
 a:hover,
 a:focus,
 a {
   text-decoration: none;
 }
+
 a.link {
   color: $headingtext;
   text-decoration: none;
+
   &:hover,
   &:focus {
     color: $themecolor;
   }
 }
+
 .img-responsive {
   width: 100%;
   height: auto;
   display: inline-block;
 }
+
 .img-fluid {
   max-width: 100%;
   height: auto;
 }
+
 .img-rounded {
   border-radius: $radius;
 }
+
 html body .mdi:before,
 html body .mdi-set {
   line-height: initial;
 }
+
 code {
   padding: 0.2rem 0.4rem;
   font-size: 90%;
@@ -79,18 +87,23 @@ code {
 .shadow-none {
   box-shadow: none !important;
 }
+
 .ml-auto {
   margin-left: auto;
 }
+
 .m-auto {
   margin: auto;
 }
+
 .mr-auto {
   margin-right: auto;
 }
+
 .rounded {
   border-radius: $radius;
 }
+
 /*******************
 Headings
 *******************/
@@ -147,49 +160,62 @@ body {
   .display-5 {
     font-size: 3rem;
   }
+
   .display-6 {
     font-size: 36px;
   }
 }
+
 .box {
   border-radius: $radius;
   padding: 10px;
 }
+
 html body {
   .dl {
     display: inline-block;
   }
+
   .db {
     display: block;
   }
+
   .op-5 {
     opacity: 0.5;
   }
+
   .op-3 {
     opacity: 0.3;
   }
 }
+
 .no-wrap {
   td,
   th {
     white-space: nowrap;
   }
 }
+
 .relative {
   position: relative;
 }
+
 .absolute {
   position: absolute;
 }
+
 .d-flex {
   display: flex;
 }
+
 .no-shrink {
   flex-shrink: 0;
 }
+
 .oh {
   overflow: hidden;
 }
+
 /*******************
 Blockquote
 *******************/
@@ -204,6 +230,7 @@ html body blockquote {
 .clear {
   clear: both;
 }
+
 ol li {
   margin: 5px 0;
 }
@@ -430,12 +457,14 @@ html body {
     vertical-align: bottom;
   }
 }
+
 /*******************
 Opacity
 *******************/
 .op-5 {
   opacity: 0.5;
 }
+
 /*******************
 font weight
 *******************/
@@ -451,28 +480,36 @@ html body {
   .font-light {
     font-weight: 300;
   }
+
   .font-medium {
     font-weight: 500;
   }
+
   .font-16 {
     font-size: 16px;
   }
+
   .font-14 {
     font-size: 14px;
   }
+
   .font-10 {
     font-size: 10px;
   }
+
   .font-12 {
     font-size: 12px;
   }
+
   .font-18 {
     font-size: 18px;
   }
+
   .font-20 {
     font-size: 20px;
   }
 }
+
 /*******************
 Border
 *******************/
@@ -480,22 +517,28 @@ html body {
   .b-0 {
     border: none;
   }
+
   .b-r {
     border-right: 1px solid $border;
   }
+
   .b-l {
     border-left: 1px solid $border;
   }
+
   .b-b {
     border-bottom: 1px solid $border;
   }
+
   .b-t {
     border-top: 1px solid $border;
   }
+
   .b-all {
     border: 1px solid $border;
   }
 }
+
 /*******************
 Thumb size
 *******************/
@@ -514,15 +557,19 @@ Thumb size
   height: 88px;
   width: 88px;
 }
+
 .hide {
   display: none;
 }
+
 .img-circle {
   border-radius: 100%;
 }
+
 .radius {
   border-radius: $radius;
 }
+
 /*******************
 Text Colors
 *******************/
@@ -553,6 +600,7 @@ Text Colors
 .text-inverse {
   color: $inverse !important;
 }
+
 html body {
   .text-blue {
     color: $blue;
@@ -573,19 +621,24 @@ html body {
   .text-dark {
     color: $bodytext;
   }
+
   .text-themecolor {
     color: $themecolor;
   }
+
   .text-center {
     text-align: center;
   }
+
   .text-right {
     text-align: right;
   }
+
   .text-left {
     text-align: left;
   }
 }
+
 /*******************
 Background Colors
 *******************/
@@ -609,10 +662,12 @@ Background Colors
 .bg-danger {
   background-color: $danger !important;
 }
+
 html body {
   .bg-megna {
     background-color: $megna;
   }
+
   .bg-theme {
     background-color: $themecolor;
   }
@@ -636,6 +691,7 @@ html body {
   .bg-light-info {
     background-color: $light-info;
   }
+
   .bg-light-extra {
     background-color: $extra-light;
   }
@@ -651,24 +707,30 @@ html body {
   .bg-light-inverse {
     background-color: $light-inverse;
   }
+
   .bg-light {
     background-color: $light;
   }
+
   .bg-white {
     background-color: $white;
   }
 }
+
 .img-circle {
   border-radius: 100%;
 }
+
 .no-shadow {
   box-shadow: none;
 }
+
 hr {
   border: 0px;
   height: 1px;
   background: $border;
 }
+
 /*******************
 Rounds
 *******************/
@@ -682,10 +744,12 @@ Rounds
   text-align: center;
   border-radius: 100%;
   background: $info;
+
   img {
     border-radius: 100%;
   }
 }
+
 .round.round-info {
   background: $info;
 }
@@ -694,9 +758,11 @@ Rounds
   display: block;
   width: 100%;
 }
+
 .btn-lg {
   line-height: 48px !important;
 }
+
 /*******************
 froms
 *******************/
@@ -707,12 +773,15 @@ froms
   width: 100%;
   font-size: $font-16;
 }
+
 .mat-form-field-underline {
   background-color: rgba(0, 0, 0, 0.25);
 }
+
 .mat-form-field {
   width: 100%;
 }
+
 /*******************
 Mat card
 *******************/
@@ -728,39 +797,48 @@ Mat card
     line-height: 23px;
     padding: 24px;
   }
+
   .mat-card-image {
     width: calc(100% + 0px);
     margin: 0 0px 0px 0px;
   }
+
   .mat-card-header {
     padding: 12px;
     border-radius: $radius $radius 0 0;
+
     .mat-card-title {
       margin-bottom: 2px;
       font-size: 20px;
     }
+
     .mat-card-subtitle,
     .mat-card-subtitle:not(:first-child) {
       margin-bottom: 0px;
       margin-top: 0px;
       font-size: 14px;
     }
+
     &.text-white {
       .mat-card-title {
         color: $white;
       }
+
       .mat-card-subtitle {
         color: rgba(255, 255, 255, 0.7);
       }
     }
   }
+
   .mat-card-title {
     font-size: 20px;
     margin-bottom: 5px;
   }
+
   .mat-card-subtitle {
     margin-bottom: 20px;
   }
+
   .mat-card-actions {
     margin: 0px !important;
   }
@@ -772,6 +850,7 @@ Grid
 .row {
   margin: 0 -10px;
 }
+
 /*******************
 Table
 *******************/
@@ -779,30 +858,37 @@ Table
   width: 100%;
   text-align: left;
 }
+
 .table-rasponsive {
   overflow: auto;
+
   .mat-table {
     min-width: 280px;
   }
+
   .mat-header-row {
     .mat-header-cell {
       white-space: nowrap;
     }
   }
+
   .mat-cell {
     white-space: nowrap;
   }
 }
+
 /*******************
 list inline
 *******************/
 .list-inline {
   margin-left: 0px;
   padding: 0px;
+
   li {
     display: inline-block;
     list-style: none;
     margin-right: 10px;
+
     &:last-child {
       margin-right: 0px;
     }
@@ -820,35 +906,44 @@ list inline
       padding: 11px 20px 15px;
       border-bottom: 1px solid $border;
     }
+
     .nav-link {
       border-top: 1px solid $border;
       padding-top: 15px;
     }
   }
+
   .message-widget {
     position: relative;
+
     a {
       border-bottom: 1px solid $border;
       display: flex;
       text-decoration: none;
       padding: 9px 15px;
+
       &:hover {
         background: $light;
       }
+
       &:last-child {
         border-bottom: 0px;
       }
+
       div {
         white-space: normal;
       }
+
       .user-img {
         width: 45px;
         position: relative;
         display: inline-block;
         margin-right: 10px;
+
         img {
           width: 100%;
         }
+
         .profile-status {
           border: 2px solid $white;
           border-radius: 50%;
@@ -859,27 +954,34 @@ list inline
           top: -1px;
           width: 10px;
         }
+
         .online {
           background: $success;
         }
+
         .busy {
           background: $danger;
         }
+
         .away {
           background: $warning;
         }
+
         .offline {
           background: $warning;
         }
       }
+
       .mail-contnet {
         display: inline-block;
         width: 73%;
         vertical-align: middle;
+
         h5 {
           margin: 5px 0px 0;
           color: #212121;
         }
+
         .mail-desc,
         .time {
           font-size: 12px;

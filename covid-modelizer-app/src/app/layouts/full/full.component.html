@@ -24,20 +24,20 @@
       </a>
       <!-- (Menu) Affichage Sidebar ou pas -->
       <button (click)="snav.toggle()" mat-icon-button style="color: white; margin: auto; padding-right: 5px;"
-        value="sidebarclosed">
+              value="sidebarclosed">
         <mat-icon style="font-size: 30px;">menu</mat-icon>
       </button>
       <span fxFlex></span>
     </div>
 
     <!-- Affichage Titre de la page -->
-    <mat-panel-title style="color: white; text-align: center;" fxFlex="40" fxFlex.gt-lg="40" fxFlex.gt-md="40"
-      fxFlex.gt-xs="40">
+    <mat-panel-title fxFlex="40" fxFlex.gt-lg="40" fxFlex.gt-md="40" fxFlex.gt-xs="40"
+                     style="color: white; text-align: center;">
       {{titrePage}}
     </mat-panel-title>
     <!-- Menu en haut à droite (label modèles) -->
-    <app-header style="text-align: right;" [titrePage]="titrePage" fxFlex="30" fxFlex.gt-lg="30" fxFlex.gt-md="30"
-      fxFlex.gt-xs="30"></app-header>
+    <app-header [titrePage]="titrePage" fxFlex="30" fxFlex.gt-lg="30" fxFlex.gt-md="30" fxFlex.gt-xs="30"
+                style="text-align: right;"></app-header>
   </mat-toolbar>
 
   <!-- ============================================================== -->
@@ -48,7 +48,7 @@
     <!-- Begin Sidebar - style you can find in sidebar.scss -->
     <!-- ============================================================== -->
     <mat-sidenav #snav [disableClose]="mobileQuery.matches" [mode]="mobileQuery.matches ? 'side' : 'over'"
-      [opened]="mobileQuery.matches" class="dark-sidebar pl-xs" fixedTopGap="0" id="snav">
+                 [opened]="mobileQuery.matches" class="dark-sidebar pl-xs" fixedTopGap="0" id="snav">
       <app-sidebar (parentFunction)="setTitrePage($event)"></app-sidebar>
     </mat-sidenav>
     <!-- ============================================================== -->

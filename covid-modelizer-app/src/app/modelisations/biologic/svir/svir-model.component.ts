@@ -1,17 +1,17 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {ChartDataSets, ChartOptions, ChartType} from 'chart.js';
 import {Label} from 'ng2-charts';
-import {ModelisationsService} from '../modelisations.service';
-import {DonneesReellesService} from '../../donnees-reelles/donnees-reelles.service';
+import {ModelisationsService} from '../../modelisations.service';
+import {DonneesReellesService} from '../../../donnees-reelles/donnees-reelles.service';
 
-const MODEL = 'SVR';
+const MODEL = 'SVI';
 
 @Component({
-  selector: 'app-modele-svir',
-  templateUrl: './modele-svir.component.html',
-  styleUrls: ['./modele-svir.component.css']
+  selector: 'app-svir-model',
+  templateUrl: './svir-model.component.html',
+  styleUrls: ['./svir-model.component.css']
 })
-export class ModeleSvirComponent implements OnInit {
+export class SvirModelComponent implements OnInit {
 
   titreGraphe = 'Mise en comparaison entre les vaccinations cumulées réelles et modélisées';
   donneesReellesCumules: number[] | undefined;
@@ -35,8 +35,14 @@ export class ModeleSvirComponent implements OnInit {
     this.setChartLegends();
     this.getAllDataToDisplay();
     this.chartData = [
-      { data: this.donneesReellesCumules, label: this.labelDonneesReellesCumulees },
-      { data: this.donneesModeliseesCumulees, label: this.labelDonneesModelisees, type: 'line', lineTension: 0, fill: false }
+      {data: this.donneesReellesCumules, label: this.labelDonneesReellesCumulees},
+      {
+        data: this.donneesModeliseesCumulees,
+        label: this.labelDonneesModelisees,
+        type: 'line',
+        lineTension: 0,
+        fill: false
+      }
     ];
     this.chartLabels = this.days;
   }
@@ -44,28 +50,28 @@ export class ModeleSvirComponent implements OnInit {
   /**
    * Labels des axes du graphe
    */
-  setChartLegends() {
+  setChartLegends(): void {
     this.chartOptions = {
       responsive: true,
       scales: {
         yAxes: [
-         {
-          display: true,
-          scaleLabel: {
-           display: true,
-           labelString: "Cumul de vaccinations",
+          {
+            display: true,
+            scaleLabel: {
+              display: true,
+              labelString: 'Cumul de vaccinations',
+            },
           },
-         },
         ],
         xAxes: [
-         {
-          scaleLabel: {
-           display: true,
-           labelString: "Date",
+          {
+            scaleLabel: {
+              display: true,
+              labelString: 'Date',
+            },
           },
-         },
         ],
-       },
+      },
     };
   }
 
@@ -74,28 +80,27 @@ export class ModeleSvirComponent implements OnInit {
     let dateDebutGraphe: any;
 
     // Récupération des données modélisées cumulées à afficher
-    let donneesModeliseesCumulees = new Array<number>();
+    const donneesModeliseesCumulees = new Array<number>();
     this.modelisationsService.getDonneesModeliseesByModel('vaccination', MODEL).subscribe(data => {
-    dateDebutGraphe = data[0].date;
-    for(let elt of data) {
-      donneesModeliseesCumulees.push(Number(elt.value));
-      // Récupération de la plage de temps sur laquelle faire le graphe
-      this.days?.push(elt.date);
-    }
+      dateDebutGraphe = data[0].date;
+      for (const elt of data) {
+        donneesModeliseesCumulees.push(Number(elt.value));
+        // Récupération de la plage de temps sur laquelle faire le graphe
+        this.days?.push(elt.date);
+      }
     });
     this.donneesModeliseesCumulees = donneesModeliseesCumulees;
 
     // Récupération des données réelles cumulées à afficher
-    let donneesReellesCumules = new Array<number>();
+    const donneesReellesCumules = new Array<number>();
     this.donneesReellesService.getAllSituationsReelles().subscribe(data => {
-      for(let elt of data) {
+      for (const elt of data) {
         // On ne récupère que les valeurs à partir de la date de la 1ère prédiction
-        if(elt.date >= dateDebutGraphe) {
+        if (elt.date >= dateDebutGraphe) {
           donneesReellesCumules.push(Number(elt.svirV));
         }
       }
     });
     this.donneesReellesCumules = donneesReellesCumules;
   }
-
 }

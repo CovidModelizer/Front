@@ -1,7 +1,31 @@
+p {
+  font-family: Lato;
+}
+
+.chartWrapper {
+  position: relative;
+  overflow-x: scroll;
+  display: flex;
+  flex-direction: row-reverse;
+}
+
+.chartWrapper > canvas {
+  position: absolute;
+  left: 0;
+  top: 0;
+  pointer-events: none;
+  width: 100%;
+}
+
+.chartAreaWrapper {
+  width: 1500px;
+  display: block;
+}
+
 mat-card-title {
-    font-size: large;
+  font-size: large;
 }
 
 mat-card-subtitle {
-    font-size: medium;
+  font-size: medium;
 }

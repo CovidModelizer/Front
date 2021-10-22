@@ -1,15 +1,16 @@
-.preloader{
+.preloader {
   position: absolute;
   margin: 0 auto;
   width: 100%;
   height: 100%;
- z-index: 100; 
-    background: #fff;
+  z-index: 100;
+  background: #fff;
 }
+
 .spinner {
   width: 40px;
   height: 40px;
-  top:35%; 
+  top: 35%;
   position: relative;
   margin: 100px auto;
 }
@@ -23,7 +24,7 @@
   position: absolute;
   top: 0;
   left: 0;
-  
+
   -webkit-animation: sk-bounce 2.0s infinite ease-in-out;
   animation: sk-bounce 2.0s infinite ease-in-out;
 }
@@ -34,15 +35,20 @@
 }
 
 @-webkit-keyframes sk-bounce {
-  0%, 100% { -webkit-transform: scale(0.0) }
-  50% { -webkit-transform: scale(1.0) }
+  0%, 100% {
+    -webkit-transform: scale(0.0)
+  }
+  50% {
+    -webkit-transform: scale(1.0)
+  }
 }
 
 @keyframes sk-bounce {
-  0%, 100% { 
+  0%, 100% {
     transform: scale(0.0);
     -webkit-transform: scale(0.0);
-  } 50% { 
+  }
+  50% {
     transform: scale(1.0);
     -webkit-transform: scale(1.0);
   }

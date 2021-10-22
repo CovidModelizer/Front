@@ -1,26 +1,34 @@
 [![Build Status](https://travis-ci.com/CovidModelizer/Front.svg?branch=main)](https://travis-ci.com/CovidModelizer/Front)
-# Covid_Modelizer_Front
+
+# CovidModelizer - Front
 
 ## Accès
-* Application : http://covid-modelizer.fr
-* API : [http://api.covid-modelizer.fr](http://api.covid-modelizer.fr/swagger-ui/index.html?configUrl=/api-docs/swagger-config)
+
+* [API](https://api.covid-modelizer.fr/swagger-ui/index.html?configUrl=/api-docs/swagger-config)
+* [Application](https://covid-modelizer.fr)
 
 ## Fonctionnalités
-* Affichage des données réelles épidémique françaises ([données gouvernementales](https://www.data.gouv.fr/fr/datasets/r/d2671c6c-c0eb-4e12-b69a-8e8f87fc224c))
-* Affichage de différents modèles de prédiction d'infections et de vaccinations
-* Accès à l'API via SWAGGER
-* Formulaire d'élégibilité vaccinale
+
+* Affichage des données épidémiques
+  françaises ([données gouvernementales](https://www.data.gouv.fr/fr/datasets/r/d2671c6c-c0eb-4e12-b69a-8e8f87fc224c))
+* Affichage de différentes prédictions d'infections et de vaccinations
+* Accès à la documentation de l'API
+* Formulaire d'éligibilité vaccinale
 
 ## Technologies
-* Angular 11
 
-## Docker
-* [docker-hub](https://hub.docker.com/r/covidmodelizer/front)
+* Node 14
+* Angular 12
+* [Docker](https://hub.docker.com/r/covidmodelizer/front)
 
-## Launch
-* Dans [covid-modelizer-app](https://github.com/CovidModelizer/Front/tree/main/covid-modelizer-app)
+## Exécution
+
+* Dans [covid-modelizer-app/](https://github.com/CovidModelizer/Front/tree/main/covid-modelizer-app)
+
 ```
 npm install
-ng serve
+npm run start
 ```
-* Accès à [localhost:4200](localhost:4200)
+
+* Accéder à l'application :
+    * [localhost:4200](http://localhost:4200)

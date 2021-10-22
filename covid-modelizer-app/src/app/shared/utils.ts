@@ -22,13 +22,17 @@ export class Utils {
     return (moment(date).add(beforeOrAfter, 'day')).format('YYYY-MM-DD');
   }
 
-  static isDate1BeforeDate2(date1: Date, date2: Date) {
+  static isDate1BeforeDate2(date1: Date, date2: Date): boolean {
     let res = true;
-    if(date1.getUTCFullYear() > date2.getUTCFullYear()) res = false;
-    else if(date1.getUTCFullYear() == date2.getUTCFullYear()) {
-      if(date1.getUTCMonth()+1 > date2.getUTCMonth()+1) res = false;
-      else if(date1.getUTCMonth()+1 == date2.getUTCMonth()+1) {
-        if(date1.getUTCDate() >= date2.getUTCDate()) res = false;
+    if (date1.getUTCFullYear() > date2.getUTCFullYear()) {
+      res = false;
+    } else if (date1.getUTCFullYear() === date2.getUTCFullYear()) {
+      if (date1.getUTCMonth() + 1 > date2.getUTCMonth() + 1) {
+        res = false;
+      } else if (date1.getUTCMonth() + 1 === date2.getUTCMonth() + 1) {
+        if (date1.getUTCDate() >= date2.getUTCDate()) {
+          res = false;
+        }
       }
     }
     return res;
@@ -37,14 +41,14 @@ export class Utils {
   /*
   static isDate1EqualsDate2(date1: any, date2: any) {
     let date1Format = new Date(date1);
-    return date1Format.getUTCFullYear() == date2.getUTCFullYear() && 
-            date1Format.getUTCMonth()+1 == date2.getUTCMonth()+1 && 
+    return date1Format.getUTCFullYear() == date2.getUTCFullYear() &&
+            date1Format.getUTCMonth()+1 == date2.getUTCMonth()+1 &&
             date1Format.getUTCDate() == date2.getUTCDate();
   }
   */
 
   static getStrDate(date: Date): string {
-    var strDate = moment(date);
+    const strDate = moment(date);
     strDate.locale('fr');
     return strDate.format('DD MMMM YYYY');
   }

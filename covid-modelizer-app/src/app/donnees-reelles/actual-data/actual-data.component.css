@@ -1,18 +1,18 @@
 #goOneDayBefore, #goOneDayAfter {
-    border: none;
-    background-color: white;
+  border: none;
+  background-color: white;
 }
 
 .l1 {
-    text-align: center;
+  text-align: center;
 }
 
 mat-card-title {
-    font-family: 'Trebuchet MS';
-    font-size: large;
-    font-weight: bold;
+  font-family: 'Trebuchet MS';
+  font-size: large;
+  font-weight: bold;
 }
 
 mat-card-subtitle, .legende {
-    font-size: medium;
+  font-size: medium;
 }
