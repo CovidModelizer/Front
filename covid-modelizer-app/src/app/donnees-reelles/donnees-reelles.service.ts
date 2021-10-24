@@ -8,8 +8,7 @@ import {SituationReelle} from '../shared/model/SituationReelle';
 })
 export class DonneesReellesService {
 
-  // private URL_REST_API = 'http://api.covid-modelizer.fr/data';
-  private URL_REST_API = 'http://localhost:8080/data';
+  private URL_REST_API = 'https://api.covid-modelizer.fr/data';
 
   constructor(private http: HttpClient) {
   }
@@ -28,21 +27,21 @@ export class DonneesReellesService {
   }
 
   // ********************** Autres **********************
-  getDonneesReellesCumuleesByCategorieEtModelEtDateDebut(categorie: string, model: string, dateDebut: any): any[] {
-    console.log(dateDebut);
+  getDonneesReellesCumuleesByCategoryAndModelAndStartDate(category: string, model: string, startDate: any): any[] {
+    console.log(startDate);
     // Récupération des données réelles cumulées à afficher
-    let donneesReellesCumules = new Array<number>();
+    const donneesReellesCumules = new Array<number>();
     this.getAllSituationsReelles().subscribe(data => {
-      if (categorie === 'vaccination') {
-        for (let elt of data) {
+      if (category === 'vaccination') {
+        for (const elt of data) {
           // On ne récupère que les valeurs à partir de la date de la 1ère prédiction
-          if (elt.date >= dateDebut) {
+          if (elt.date >= startDate) {
             donneesReellesCumules.push(Number(this.getDataToReturnSiVaccination(model, elt)));
           }
         }
-      } else if (categorie === 'infection') {
-        for (let elt of data) {
-          if (elt.date >= dateDebut) {
+      } else if (category === 'infection') {
+        for (const elt of data) {
+          if (elt.date >= startDate) {
             donneesReellesCumules.push(Number(this.getDataToReturnSiInfection(model, elt)));
           }
         }
@@ -57,7 +56,7 @@ export class DonneesReellesService {
   getDataToReturnSiInfection(model: string, situationReelle: SituationReelle): string {
     let elt = '';
     switch (model) {
-      case ('LIN'): {
+      case ('UNI'): {
         elt = situationReelle.cumulCasConfirmes;
         break;
       }
@@ -65,12 +64,11 @@ export class DonneesReellesService {
         elt = situationReelle.sirI;
         break;
       }
-      case ('MCL'): {
+      case ('MUL'): {
         elt = situationReelle.nouveauxCasConfirmes;
         break;
       }
       default: {
-        // ERROR
         break;
       }
     }
@@ -80,20 +78,19 @@ export class DonneesReellesService {
   getDataToReturnSiVaccination(model: string, situationReelle: SituationReelle): string {
     let elt = '';
     switch (model) {
-      case ('LIN'): {
+      case ('UNI'): {
         elt = situationReelle.cumulPremieresInjections;
         break;
       }
-      case ('SVR'): {
+      case ('SVI'): {
         elt = situationReelle.svirV;
         break;
       }
-      case ('MCL'): {
+      case ('MUL'): {
         elt = situationReelle.nouvellesPremieresInjections;
         break;
       }
       default: {
-        // ERROR
         break;
       }
     }
